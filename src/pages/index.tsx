@@ -22,15 +22,15 @@ const Home: NextPage = () => {
     | "november"
     | "december";
 
-  const produceInSeason = api.produce.getAllByMonth.useQuery({
+  const { data, isLoading } = api.produce.getAllByMonth.useQuery({
     month: currentMonth,
     availability: [AvailabilityType.Available],
   });
 
   let fruitInSeason, vegetablesInSeason, otherProduceInSeason;
 
-  if (produceInSeason.data) {
-    fruitInSeason = produceInSeason.data.filter((item) =>
+  if (data) {
+    fruitInSeason = data.filter((item) =>
       [
         ProduceType.Fruit,
         ProduceType.SpecialtyFruit,
@@ -39,13 +39,13 @@ const Home: NextPage = () => {
       ].some((type) => item.type === type)
     );
 
-    vegetablesInSeason = produceInSeason.data.filter((item) =>
+    vegetablesInSeason = data.filter((item) =>
       [ProduceType.Vegetable, ProduceType.SpecialtyVegetable].some(
         (type) => item.type === type
       )
     );
 
-    otherProduceInSeason = produceInSeason.data.filter((item) =>
+    otherProduceInSeason = data.filter((item) =>
       [ProduceType.EdibleFlower, ProduceType.Herb].some(
         (type) => item.type === type
       )
