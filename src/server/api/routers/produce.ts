@@ -63,11 +63,47 @@ export const produceRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
     const allProduce = await ctx.prisma.produce.findMany({
       take: 10,
-      orderBy: { createdAt: "desc" },
+      orderBy: { id: "asc" },
+      include: { seasonality: true },
     });
 
     return addUserDataToAllProduce(allProduce);
   }),
+
+  getAllByMonth: publicProcedure
+    .input(
+      z.object({
+        month: z.enum([
+          "january",
+          "february",
+          "march",
+          "april",
+          "may",
+          "june",
+          "july",
+          "august",
+          "september",
+          "october",
+          "november",
+          "december",
+        ]),
+        availability: z.array(availabilityType),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const allProduce = await ctx.prisma.produce.findMany({
+        where: {
+          seasonality: {
+            [input.month]: {
+              in: input.availability,
+            },
+          },
+        },
+        orderBy: { type: "asc" },
+      });
+
+      return allProduce;
+    }),
 
   create: privateProcedure
     .input(
