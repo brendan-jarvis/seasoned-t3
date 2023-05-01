@@ -47,7 +47,6 @@ model Seasonality {
   id        Int              @id @default(autoincrement())
   createdAt DateTime         @default(now())
   updatedAt DateTime         @updatedAt
-  produceId Int
   january   AvailabilityType
   february  AvailabilityType
   march     AvailabilityType
