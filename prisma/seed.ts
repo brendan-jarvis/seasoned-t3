@@ -1,10 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  const artichoke = await prisma.produce.upsert({
+  const artichoke = await prisma.produce.create({
     data: {
+      authorId: "prismaSeed",
       title: "Artichoke - Globe",
       type: "Vegetable",
       seasonality: {
