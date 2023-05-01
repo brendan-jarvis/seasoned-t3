@@ -30,7 +30,7 @@ const Home: NextPage = () => {
           </h1>
           <SignedOut>
             <SignInButton>
-              <button className="rounded bg-blue-500 px-4 py-2 font-bold text-info hover:bg-blue-700">
+              <button className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                 Sign in
               </button>
             </SignInButton>
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
             </h2>
             {/* Signout button */}
             <button
-              className="rounded bg-blue-500 px-4 py-2 font-bold text-info hover:bg-blue-700"
+              className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               onClick={() => {
                 void signOut();
               }}
