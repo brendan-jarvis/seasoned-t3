@@ -1,11 +1,57 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { SignedIn, SignedOut, SignInButton, useClerk } from "@clerk/nextjs";
+import { AvailabilityType, ProduceType } from "@prisma/client";
 
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const produce = api.produce.getAll.useQuery();
+  const currentMonth = new Date()
+    .toLocaleString("default", { month: "long" })
+    .toLowerCase() as
+    | "january"
+    | "february"
+    | "march"
+    | "april"
+    | "may"
+    | "june"
+    | "july"
+    | "august"
+    | "september"
+    | "october"
+    | "november"
+    | "december";
+
+  const produceInSeason = api.produce.getAllByMonth.useQuery({
+    month: currentMonth,
+    availability: [AvailabilityType.Available],
+  });
+
+  let fruitInSeason, vegetablesInSeason, otherProduceInSeason;
+
+  if (produceInSeason.data) {
+    fruitInSeason = produceInSeason.data.filter((item) =>
+      [
+        ProduceType.Fruit,
+        ProduceType.SpecialtyFruit,
+        ProduceType.Berry,
+        ProduceType.StoneFruit,
+      ].some((type) => item.type === type)
+    );
+
+    vegetablesInSeason = produceInSeason.data.filter((item) =>
+      [ProduceType.Vegetable, ProduceType.SpecialtyVegetable].some(
+        (type) => item.type === type
+      )
+    );
+
+    otherProduceInSeason = produceInSeason.data.filter((item) =>
+      [ProduceType.EdibleFlower, ProduceType.Herb].some(
+        (type) => item.type === type
+      )
+    );
+  }
+
   const { user, signOut } = useClerk();
 
   return (
@@ -40,7 +86,6 @@ const Home: NextPage = () => {
               Welcome to Seasoned,{" "}
               <span className="text-primary">{user?.firstName}</span>!
             </h2>
-            {/* Signout button */}
             <button
               className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               onClick={() => {
@@ -50,15 +95,43 @@ const Home: NextPage = () => {
               Sign out
             </button>
           </SignedIn>
-          <h3 className="text-2xl text-secondary">Produce</h3>
-          <ul className="text-black">
-            {produce.data &&
-              produce.data.map((p) => (
-                <li key={p.produce.id}>
-                  {p.produce.id}. {p.produce.title}
-                </li>
-              ))}
-          </ul>
+          <h3 className="text-2xl text-secondary">
+            Produce in season this{" "}
+            <span className="font-bold text-primary">
+              {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
+            </span>
+          </h3>
+          <div className="flex flex-wrap gap-4">
+            <div>
+              <h4 className="text-lg font-bold text-primary">Fruit</h4>
+              <ol className="text-black">
+                {fruitInSeason &&
+                  fruitInSeason.map((fruit) => (
+                    <li key={fruit.id}>{fruit.title}</li>
+                  ))}
+              </ol>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold text-primary">Vegetables</h4>
+              <ol className="text-black">
+                {vegetablesInSeason &&
+                  vegetablesInSeason.map((vegetable) => (
+                    <li key={vegetable.id}>{vegetable.title}</li>
+                  ))}
+              </ol>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold text-primary">Other</h4>
+              <ol className="text-black">
+                {otherProduceInSeason &&
+                  otherProduceInSeason.map((item) => (
+                    <li key={item.id}>
+                      {item.type} - {item.title}
+                    </li>
+                  ))}
+              </ol>
+            </div>
+          </div>
         </div>
       </main>
     </>
