@@ -20,7 +20,7 @@ const config = {
   },
 
   images: {
-    domains: ["images.clerk.dev"],
+    domains: ["images.clerk.dev", "dish.co.nz"],
   },
 };
 export default config;
