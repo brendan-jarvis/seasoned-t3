@@ -69,6 +69,11 @@ model Recipe {
   updatedAt          DateTime            @updatedAt
   title              String
   byline             String              @default("")
+  serves             String              @default("")
+  prepTime           String              @default("")
+  cookTime           String              @default("")
+  totalTime          String              @default("")
+  sourceURL          String              @default("")
   description        String              @default("")
   smallImage         String              @default("")
   mediumImage        String              @default("")
