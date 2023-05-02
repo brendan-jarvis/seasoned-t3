@@ -61,3 +61,18 @@ model Seasonality {
   december  AvailabilityType
   Produce   Produce[]
 }
+
+model Recipe {
+  id           Int           @id @default(autoincrement())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  title        String
+  description  String        @default("")
+  image        String        @default("")
+  authorId     String
+  ingredients  Ingredient[]
+  instructions Instruction[]
+  tags         Tag[]
+
+  @@index([authorId])
+}
