@@ -88,3 +88,15 @@ model Ingredient {
 
   @@index([recipeId])
 }
+
+model Instruction {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  content   String
+  recipe    Recipe   @relation(fields: [recipeId], references: [id])
+  recipeId  Int
+
+  @@index([recipeId])
+}
