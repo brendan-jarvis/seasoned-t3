@@ -110,7 +110,7 @@ const Home: NextPage = () => {
                 {fruitInSeason &&
                   fruitInSeason.map((fruit) => (
                     <li key={fruit.id}>
-                      <Badge produceType={fruit.type} /> {fruit.title}
+                      <Badge color="red">{fruit.type}</Badge> {fruit.title}
                     </li>
                   ))}
               </ol>
@@ -121,7 +121,8 @@ const Home: NextPage = () => {
                 {vegetablesInSeason &&
                   vegetablesInSeason.map((vegetable) => (
                     <li key={vegetable.id}>
-                      <Badge produceType={vegetable.type} /> {vegetable.title}
+                      <Badge color="blue">{vegetable.type}</Badge>{" "}
+                      {vegetable.title}
                     </li>
                   ))}
               </ol>
@@ -132,7 +133,7 @@ const Home: NextPage = () => {
                 {otherProduceInSeason &&
                   otherProduceInSeason.map((item) => (
                     <li key={item.id}>
-                      <Badge produceType={item.type} /> {item.title}
+                      <Badge color="green">{item.type}</Badge> {item.title}
                     </li>
                   ))}
               </ol>
