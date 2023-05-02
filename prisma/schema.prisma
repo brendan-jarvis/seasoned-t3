@@ -28,16 +28,17 @@ enum AvailabilityType {
 }
 
 model Produce {
-  id            Int         @id @default(autoincrement())
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
+  id            Int          @id @default(autoincrement())
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
   title         String
   type          ProduceType
-  description   String      @default("")
-  image         String      @default("")
+  description   String       @default("")
+  image         String       @default("")
   authorId      String
-  seasonality   Seasonality @relation(fields: [seasonalityId], references: [id])
+  seasonality   Seasonality  @relation(fields: [seasonalityId], references: [id])
   seasonalityId Int
+  Ingredient    Ingredient[]
 
   @@index([authorId])
   @@index([seasonalityId])
@@ -63,31 +64,45 @@ model Seasonality {
 }
 
 model Recipe {
-  id           Int             @id @default(autoincrement())
-  createdAt    DateTime        @default(now())
-  updatedAt    DateTime        @updatedAt
-  title        String
-  byline       String          @default("")
-  description  String          @default("")
-  smallImage   String          @default("")
-  largeImage   String          @default("")
-  authorId     String
-  ingredients  Ingredient[]
-  instructions Instruction[]
-  tags         TagsOnRecipes[]
+  id                 Int                 @id @default(autoincrement())
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  title              String
+  byline             String              @default("")
+  description        String              @default("")
+  smallImage         String              @default("")
+  mediumImage        String              @default("")
+  largeImage         String              @default("")
+  authorId           String
+  ingredientSegments IngredientSegment[]
+  instructions       Instruction[]
+  tags               TagsOnRecipes[]
 
   @@index([authorId])
 }
 
-model Ingredient {
-  id       Int    @id @default(autoincrement())
-  title    String
-  amount   String
-  unit     String
-  recipe   Recipe @relation(fields: [recipeId], references: [id])
-  recipeId Int
+model IngredientSegment {
+  id          Int          @id @default(autoincrement())
+  title       String
+  ingredients Ingredient[]
+  recipe      Recipe       @relation(fields: [recipeId], references: [id])
+  recipeId    Int
 
   @@index([recipeId])
+}
+
+model Ingredient {
+  id        Int               @id @default(autoincrement())
+  name      String
+  amount    String
+  unit      String
+  segment   IngredientSegment @relation(fields: [segmentId], references: [id])
+  segmentId Int
+  produce   Produce?          @relation(fields: [produceId], references: [id])
+  produceId Int?
+
+  @@index([segmentId])
+  @@index([produceId])
 }
 
 model Instruction {
