@@ -7,7 +7,6 @@ import { api } from "~/utils/api";
 
 const Recipes: NextPage = () => {
   const { data, isLoading } = api.recipes.getAll.useQuery();
-  console.log(data);
 
   return (
     <>
