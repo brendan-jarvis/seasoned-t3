@@ -3,6 +3,8 @@ import Head from "next/head";
 import { SignedIn, SignedOut, SignInButton, useClerk } from "@clerk/nextjs";
 import { AvailabilityType, ProduceType } from "@prisma/client";
 
+import { Badge } from "~/components/Badge";
+
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
@@ -107,7 +109,9 @@ const Home: NextPage = () => {
               <ol className="text-black">
                 {fruitInSeason &&
                   fruitInSeason.map((fruit) => (
-                    <li key={fruit.id}>{fruit.title}</li>
+                    <li key={fruit.id}>
+                      <Badge produceType={fruit.type} /> {fruit.title}
+                    </li>
                   ))}
               </ol>
             </div>
@@ -116,7 +120,9 @@ const Home: NextPage = () => {
               <ol className="text-black">
                 {vegetablesInSeason &&
                   vegetablesInSeason.map((vegetable) => (
-                    <li key={vegetable.id}>{vegetable.title}</li>
+                    <li key={vegetable.id}>
+                      <Badge produceType={vegetable.type} /> {vegetable.title}
+                    </li>
                   ))}
               </ol>
             </div>
@@ -126,7 +132,7 @@ const Home: NextPage = () => {
                 {otherProduceInSeason &&
                   otherProduceInSeason.map((item) => (
                     <li key={item.id}>
-                      {item.type} - {item.title}
+                      <Badge produceType={item.type} /> {item.title}
                     </li>
                   ))}
               </ol>
