@@ -16,32 +16,32 @@ export const recipes = [
           ingredients: {
             create: {
               "1": {
-                quantity: "1.3",
+                amount: "1.3",
                 unit: "kilogram",
                 name: "whole free-range chicken",
               },
               "2": {
-                quantity: "1",
+                amount: "1",
                 unit: "",
                 name: "carrot, chopped",
               },
               "3": {
-                quantity: "1",
+                amount: "1",
                 unit: "",
                 name: "onion, chopped",
               },
               "4": {
-                quantity: "8",
+                amount: "8",
                 unit: "",
                 name: "whole cloves",
               },
               "5": {
-                quantity: "1/2",
+                amount: "1/2",
                 unit: "tsp",
                 name: "allspice",
               },
               "6": {
-                quantity: "3",
+                amount: "3",
                 unit: "",
                 name: "bay leaves",
               },
@@ -53,37 +53,37 @@ export const recipes = [
           ingredients: {
             create: {
               "1": {
-                quantity: "40",
+                amount: "40",
                 unit: "grams",
                 name: "butter",
               },
               "2": {
-                quantity: "1",
+                amount: "1",
                 unit: "",
                 name: "carrot, finely chopped",
               },
               "3": {
-                quantity: "1",
+                amount: "1",
                 unit: "",
                 name: "onion, finely chopped",
               },
               "4": {
-                quantity: "",
+                amount: "",
                 unit: "",
                 name: "sea salt and freshly ground black pepper",
               },
               "5": {
-                quantity: "1/4",
+                amount: "1/4",
                 unit: "cup",
                 name: "plain flour",
               },
               "6": {
-                quantity: "1 1/4",
+                amount: "1 1/4",
                 unit: "cups",
                 name: "chilled stock",
               },
               "7": {
-                quantity: "1",
+                amount: "1",
                 unit: "packet",
                 name: "chicken noodle soup",
               },
@@ -95,17 +95,17 @@ export const recipes = [
           ingredients: {
             create: {
               "1": {
-                quantity: "5",
+                amount: "5",
                 unit: "cups",
                 name: "breadcrumbs",
               },
               "2": {
-                quantity: "3",
+                amount: "3",
                 unit: "",
                 name: "eggs",
               },
               "3": {
-                quantity: "5",
+                amount: "5",
                 unit: "cups",
                 name: "rice bran or other neutral oil",
               },
@@ -117,12 +117,12 @@ export const recipes = [
           ingredients: {
             create: {
               "1": {
-                quantity: "",
+                amount: "",
                 unit: "",
                 name: "dijon mustard",
               },
               "2": {
-                quantity: "",
+                amount: "",
                 unit: "",
                 name: "chopped parsley",
               },
