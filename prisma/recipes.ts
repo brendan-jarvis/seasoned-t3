@@ -9,37 +9,125 @@ export const recipes = [
       "https://dish.co.nz/assets/Uploads/croquettes-hero-v2__FillWzM2MCw0OTBd.jpg",
     largeImage:
       "https://dish.co.nz/assets/Uploads/croquettes-hero-v2__FillWzg1MCwxMTc0XQ.jpg",
-    ingredients: {
+    ingredientSegments: {
       create: {
         "1": {
-          quantity: "1.3",
-          unit: "kilogram",
-          name: "whole free-range chicken",
+          title: "Ingredients",
+          ingredients: {
+            create: {
+              "1": {
+                quantity: "1.3",
+                unit: "kilogram",
+                name: "whole free-range chicken",
+              },
+              "2": {
+                quantity: "1",
+                unit: "",
+                name: "carrot, chopped",
+              },
+              "3": {
+                quantity: "1",
+                unit: "",
+                name: "onion, chopped",
+              },
+              "4": {
+                quantity: "8",
+                unit: "",
+                name: "whole cloves",
+              },
+              "5": {
+                quantity: "1/2",
+                unit: "tsp",
+                name: "allspice",
+              },
+              "6": {
+                quantity: "3",
+                unit: "",
+                name: "bay leaves",
+              },
+            },
+          },
         },
         "2": {
-          quantity: "1",
-          unit: "",
-          name: "carrot, chopped",
+          title: "Filling",
+          ingredients: {
+            create: {
+              "1": {
+                quantity: "40",
+                unit: "grams",
+                name: "butter",
+              },
+              "2": {
+                quantity: "1",
+                unit: "",
+                name: "carrot, finely chopped",
+              },
+              "3": {
+                quantity: "1",
+                unit: "",
+                name: "onion, finely chopped",
+              },
+              "4": {
+                quantity: "",
+                unit: "",
+                name: "sea salt and freshly ground black pepper",
+              },
+              "5": {
+                quantity: "1/4",
+                unit: "cup",
+                name: "plain flour",
+              },
+              "6": {
+                quantity: "1 1/4",
+                unit: "cups",
+                name: "chilled stock",
+              },
+              "7": {
+                quantity: "1",
+                unit: "packet",
+                name: "chicken noodle soup",
+              },
+            },
+          },
         },
         "3": {
-          quantity: "1",
-          unit: "",
-          name: "onion, chopped",
+          title: "To assemble",
+          ingredients: {
+            create: {
+              "1": {
+                quantity: "5",
+                unit: "cups",
+                name: "breadcrumbs",
+              },
+              "2": {
+                quantity: "3",
+                unit: "",
+                name: "eggs",
+              },
+              "3": {
+                quantity: "5",
+                unit: "cups",
+                name: "rice bran or other neutral oil",
+              },
+            },
+          },
         },
         "4": {
-          quantity: "8",
-          unit: "",
-          name: "whole cloves",
-        },
-        "5": {
-          quantity: "1/2",
-          unit: "tsp",
-          name: "allspice",
-        },
-        "6": {
-          quantity: "3",
-          unit: "",
-          name: "bay leaves",
+          title: "To serve",
+          ingredients: {
+            create: {
+              "1": {
+                quantity: "",
+                unit: "",
+                name: "dijon mustard",
+              },
+              "2": {
+                quantity: "",
+                unit: "",
+                name: "chopped parsley",
+              },
+            },
+          },
         },
       },
     },
