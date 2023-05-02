@@ -69,7 +69,8 @@ model Recipe {
   title        String
   byline       String          @default("")
   description  String          @default("")
-  image        String          @default("")
+  smallImage   String          @default("")
+  largeImage   String          @default("")
   authorId     String
   ingredients  Ingredient[]
   instructions Instruction[]
