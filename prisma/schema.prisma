@@ -108,7 +108,7 @@ model Ingredient {
 model Instruction {
   id       Int    @id @default(autoincrement())
   title    String
-  content  String
+  content  String @db.Text
   recipe   Recipe @relation(fields: [recipeId], references: [id])
   recipeId Int
 
