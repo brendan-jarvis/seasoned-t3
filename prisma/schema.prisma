@@ -93,9 +93,9 @@ model IngredientSegment {
 
 model Ingredient {
   id        Int               @id @default(autoincrement())
-  name      String
   amount    String
   unit      String
+  name      String
   segment   IngredientSegment @relation(fields: [segmentId], references: [id])
   segmentId Int
   produce   Produce?          @relation(fields: [produceId], references: [id])
