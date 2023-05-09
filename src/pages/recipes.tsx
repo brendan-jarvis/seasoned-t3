@@ -4,6 +4,7 @@ import type { NextPage } from "next";
 import type { RecipeWithIngredients as Recipe } from "~/utils/types";
 import { api } from "~/utils/api";
 
+import { PageLayout } from "../components/Layout";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 import { RecipeView } from "~/components/RecipeView";
 
@@ -25,10 +26,12 @@ const Recipes: NextPage = () => {
           href="/images/apple-touch-icon.png"
         />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-info">
-        <h1 className="mb-4 text-4xl font-bold text-gray-700">Recipes</h1>
+      <PageLayout>
+        <h1 className="p-4 text-center text-4xl font-bold tracking-wide text-secondary">
+          Recipes
+        </h1>
 
-        <div className="flex flex-wrap gap-4">
+        <div>
           {isLoading ? (
             <LoadingSpinner size={64} />
           ) : (
@@ -37,7 +40,7 @@ const Recipes: NextPage = () => {
             ))
           )}
         </div>
-      </main>
+      </PageLayout>
     </>
   );
 };

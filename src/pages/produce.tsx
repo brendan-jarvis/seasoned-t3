@@ -2,7 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { AvailabilityType, ProduceType } from "@prisma/client";
 
-import { Nav } from "~/components/Nav";
+import { PageLayout } from "../components/Layout";
 import { Badge } from "~/components/Badge";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 
@@ -70,57 +70,54 @@ const Produce: NextPage = () => {
           href="/images/apple-touch-icon.png"
         />
       </Head>
-      <Nav />
-      <div className="flex min-h-screen flex-col items-center justify-center bg-info">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <h1 className="text-4xl font-bold tracking-wide text-secondary">
-            Produce in season this{" "}
-            <span className="font-bold text-primary">
-              {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
-            </span>
-          </h1>
-          {isLoading ? (
-            <LoadingSpinner size={64} />
-          ) : (
-            <div className="flex flex-wrap gap-4">
-              <div>
-                <h4 className="text-lg font-bold text-primary">Fruit</h4>
-                <ol className="text-black">
-                  {fruitInSeason &&
-                    fruitInSeason.map((fruit) => (
-                      <li key={fruit.id}>
-                        <Badge color="red">{fruit.type}</Badge> {fruit.title}
-                      </li>
-                    ))}
-                </ol>
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-primary">Vegetables</h4>
-                <ol className="text-black">
-                  {vegetablesInSeason &&
-                    vegetablesInSeason.map((vegetable) => (
-                      <li key={vegetable.id}>
-                        <Badge color="blue">{vegetable.type}</Badge>{" "}
-                        {vegetable.title}
-                      </li>
-                    ))}
-                </ol>
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-primary">Other</h4>
-                <ol className="text-black">
-                  {otherProduceInSeason &&
-                    otherProduceInSeason.map((item) => (
-                      <li key={item.id}>
-                        <Badge color="green">{item.type}</Badge> {item.title}
-                      </li>
-                    ))}
-                </ol>
-              </div>
+      <PageLayout>
+        <h1 className="py-8 text-center text-4xl font-bold tracking-wide text-secondary">
+          Produce in season this{" "}
+          <span className="font-bold text-primary">
+            {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
+          </span>
+        </h1>
+        {isLoading ? (
+          <LoadingSpinner size={64} />
+        ) : (
+          <div className="flex flex-wrap gap-4 pb-8">
+            <div>
+              <h4 className="text-lg font-bold text-primary">Fruit</h4>
+              <ol className="text-black">
+                {fruitInSeason &&
+                  fruitInSeason.map((fruit) => (
+                    <li key={fruit.id}>
+                      <Badge color="red">{fruit.type}</Badge> {fruit.title}
+                    </li>
+                  ))}
+              </ol>
             </div>
-          )}
-        </div>
-      </div>
+            <div>
+              <h4 className="text-lg font-bold text-primary">Vegetables</h4>
+              <ol className="text-black">
+                {vegetablesInSeason &&
+                  vegetablesInSeason.map((vegetable) => (
+                    <li key={vegetable.id}>
+                      <Badge color="blue">{vegetable.type}</Badge>{" "}
+                      {vegetable.title}
+                    </li>
+                  ))}
+              </ol>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold text-primary">Other</h4>
+              <ol className="text-black">
+                {otherProduceInSeason &&
+                  otherProduceInSeason.map((item) => (
+                    <li key={item.id}>
+                      <Badge color="green">{item.type}</Badge> {item.title}
+                    </li>
+                  ))}
+              </ol>
+            </div>
+          </div>
+        )}
+      </PageLayout>
     </>
   );
 };

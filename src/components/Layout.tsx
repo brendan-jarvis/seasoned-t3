@@ -6,8 +6,8 @@ export const PageLayout = (props: PropsWithChildren) => {
   return (
     <>
       <Nav />
-      <main className="overflow-none flex h-screen justify-center">
-        <div className="flex h-full w-full flex-col">{props.children}</div>
+      <main className="flex min-h-screen flex-col items-center justify-center bg-info">
+        <div>{props.children}</div>
       </main>
       <Footer />
     </>
