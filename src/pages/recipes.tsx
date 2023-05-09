@@ -34,7 +34,7 @@ const Recipes: NextPage = () => {
           ) : (
             data?.map((recipe: Recipe) => (
               <div key={recipe.id} className="flex flex-col items-center gap-4">
-                <h2 className="text-2xl font-bold text-primary">
+                <h2 className="text-2xl font-bold tracking-wider text-primary">
                   {recipe.title}
                 </h2>
                 <p className="text-sm font-thin">By {recipe.byline}</p>
@@ -62,11 +62,13 @@ const Recipes: NextPage = () => {
                     <span className="font-light">{recipe.totalTime}</span>
                   </p>
                 )}
-                <h3 className="text-lg font-bold text-gray-900">Ingredients</h3>
+                <h3 className="text-lg font-bold tracking-wider text-gray-900">
+                  Ingredients
+                </h3>
                 <ul className="text-black">
                   {recipe.ingredientSegments.map((segment) => (
                     <li key={segment.id}>
-                      <h4 className="font-bold text-gray-700">
+                      <h4 className="mb-1 py-2 font-semibold tracking-wider text-gray-900">
                         {segment.title}
                       </h4>{" "}
                       {segment.ingredients.map((ingredient) => (
@@ -78,14 +80,14 @@ const Recipes: NextPage = () => {
                     </li>
                   ))}
                 </ul>
-                <h3 className="text-lg font-bold text-gray-900">
+                <h3 className="text-lg font-bold tracking-wider text-gray-900">
                   Instructions
                 </h3>
                 <ol className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                   {recipe.instructions.map((instruction, index) => (
                     <>
                       {instruction.title && (
-                        <h4 className="mb-1 p-2 tracking-wider text-gray-800">
+                        <h4 className="mb-1 p-2 tracking-wider text-gray-900">
                           {instruction.title}
                         </h4>
                       )}
