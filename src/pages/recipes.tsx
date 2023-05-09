@@ -44,6 +44,7 @@ const Recipes: NextPage = () => {
                   width={300}
                   height={300}
                 />
+
                 {recipe.prepTime && (
                   <p className="font-thin">
                     Prep time:{" "}
@@ -65,6 +66,11 @@ const Recipes: NextPage = () => {
                 <h3 className="text-lg font-bold tracking-wider text-gray-900">
                   Ingredients
                 </h3>
+                {recipe.serves && (
+                  <p className="font-thin">
+                    Serves: <span className="font-light">{recipe.serves}</span>
+                  </p>
+                )}
                 <ul className="text-black">
                   {recipe.ingredientSegments.map((segment) => (
                     <li key={segment.id}>
@@ -102,7 +108,7 @@ const Recipes: NextPage = () => {
                     href={recipe.sourceURL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-light underline"
+                    className="p-4 font-light underline"
                   >
                     View full recipe on{" "}
                     {recipe.sourceURL.replace(
