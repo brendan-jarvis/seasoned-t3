@@ -1,6 +1,6 @@
 export const LoadingSpinner = (props: { size?: number }) => {
   return (
-    <div role="status">
+    <div role="status" className="flex justify-center align-middle">
       <svg
         aria-hidden="true"
         className="animate-spin fill-primary text-slate-200 dark:text-slate-600"
