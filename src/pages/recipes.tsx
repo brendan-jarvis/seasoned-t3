@@ -35,7 +35,7 @@ const Recipes: NextPage = () => {
             data?.map((recipe: Recipe) => (
               <div
                 key={recipe.id}
-                className="flex flex-col items-center justify-center gap-4 border-red-800"
+                className="flex flex-col items-center justify-center gap-4"
               >
                 <h2 className="text-2xl font-bold text-primary">
                   {recipe.title}
@@ -63,6 +63,23 @@ const Recipes: NextPage = () => {
                     </li>
                   ))}
                 </ul>
+                <h3 className="text-lg font-bold text-gray-900">
+                  Instructions
+                </h3>
+                <ol className="flex w-1/2 flex-col justify-center ">
+                  {recipe.instructions.map((instruction, index) => (
+                    <>
+                      {instruction.title && (
+                        <h4 className="mb-1 p-2 text-sm font-medium tracking-wider text-gray-900">
+                          {instruction.title}
+                        </h4>
+                      )}
+                      <li key={index} className="flex-grow p-2 leading-relaxed">
+                        {instruction.content}
+                      </li>
+                    </>
+                  ))}
+                </ol>
               </div>
             ))
           )}
