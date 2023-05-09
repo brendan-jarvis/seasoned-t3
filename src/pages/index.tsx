@@ -28,27 +28,6 @@ const Home: NextPage = () => {
             <h1 className="text-5xl font-extrabold tracking-tight text-primary drop-shadow-md sm:text-[5rem]">
               Seasoned
             </h1>
-            <SignedOut>
-              <SignInButton>
-                <button className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                  Sign in
-                </button>
-              </SignInButton>
-            </SignedOut>
-            <SignedIn>
-              <h2 className="font-sans text-lg text-black">
-                Welcome to Seasoned,{" "}
-                <span className="text-primary">{user?.firstName}</span>!
-              </h2>
-              <button
-                className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                onClick={() => {
-                  void signOut();
-                }}
-              >
-                Sign out
-              </button>
-            </SignedIn>
           </div>
         </div>
       </PageLayout>
