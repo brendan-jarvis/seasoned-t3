@@ -56,6 +56,12 @@ const Recipes: NextPage = () => {
                     <span className="font-light">{recipe.cookTime}</span>
                   </p>
                 )}
+                {recipe.totalTime && (
+                  <p className="font-thin">
+                    Total time:{" "}
+                    <span className="font-light">{recipe.totalTime}</span>
+                  </p>
+                )}
                 <h3 className="text-lg font-bold text-gray-900">Ingredients</h3>
                 <ul className="text-black">
                   {recipe.ingredientSegments.map((segment) => (
