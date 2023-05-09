@@ -5,6 +5,8 @@ import type { NextPage } from "next";
 import type { RecipeWithIngredients as Recipe } from "~/utils/types";
 import { api } from "~/utils/api";
 
+import { LoadingSpinner } from "~/components/LoadingSpinner";
+
 const Recipes: NextPage = () => {
   const { data, isLoading } = api.recipes.getAll.useQuery();
 
@@ -24,11 +26,11 @@ const Recipes: NextPage = () => {
         />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-info">
-        <h1 className="text-4xl font-bold text-gray-700">Recipes</h1>
+        <h1 className="mb-4 text-4xl font-bold text-gray-700">Recipes</h1>
 
         <div className="flex flex-wrap justify-center gap-4">
           {isLoading ? (
-            <p>Loading...</p>
+            <LoadingSpinner size={64} />
           ) : (
             data?.map((recipe: Recipe) => (
               <div
