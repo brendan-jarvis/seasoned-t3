@@ -45,16 +45,22 @@ const Recipes: NextPage = () => {
                   height={300}
                 />
                 {recipe.prepTime && (
-                  <p className="text-md font-thin">
+                  <p className="font-thin">
                     Prep time:{" "}
                     <span className="font-light">{recipe.prepTime}</span>
+                  </p>
+                )}
+                {recipe.cookTime && (
+                  <p className="font-thin">
+                    Cook time:{" "}
+                    <span className="font-light">{recipe.cookTime}</span>
                   </p>
                 )}
                 <h3 className="text-lg font-bold text-gray-900">Ingredients</h3>
                 <ul className="text-black">
                   {recipe.ingredientSegments.map((segment) => (
                     <li key={segment.id}>
-                      <h4 className="text-md font-bold text-gray-700">
+                      <h4 className="font-bold text-gray-700">
                         {segment.title}
                       </h4>{" "}
                       {segment.ingredients.map((ingredient) => (
@@ -73,7 +79,7 @@ const Recipes: NextPage = () => {
                   {recipe.instructions.map((instruction, index) => (
                     <>
                       {instruction.title && (
-                        <h4 className="text-md mb-1 p-2 tracking-wider text-gray-800">
+                        <h4 className="mb-1 p-2 tracking-wider text-gray-800">
                           {instruction.title}
                         </h4>
                       )}
