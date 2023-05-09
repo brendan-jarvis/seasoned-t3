@@ -28,19 +28,16 @@ const Recipes: NextPage = () => {
       <main className="flex min-h-screen flex-col items-center justify-center bg-info">
         <h1 className="mb-4 text-4xl font-bold text-gray-700">Recipes</h1>
 
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap gap-4">
           {isLoading ? (
             <LoadingSpinner size={64} />
           ) : (
             data?.map((recipe: Recipe) => (
-              <div
-                key={recipe.id}
-                className="flex flex-col items-center justify-center gap-4"
-              >
+              <div key={recipe.id} className="flex flex-col items-center gap-4">
                 <h2 className="text-2xl font-bold text-primary">
                   {recipe.title}
                 </h2>
-                {recipe.byline}
+                <p className="text-sm font-thin">By {recipe.byline}</p>
                 <Image
                   src={recipe.mediumImage}
                   alt={`${recipe.title} photo`}
@@ -66,15 +63,15 @@ const Recipes: NextPage = () => {
                 <h3 className="text-lg font-bold text-gray-900">
                   Instructions
                 </h3>
-                <ol className="flex w-1/2 flex-col justify-center ">
+                <ol className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                   {recipe.instructions.map((instruction, index) => (
                     <>
                       {instruction.title && (
-                        <h4 className="mb-1 p-2 text-sm font-medium tracking-wider text-gray-900">
+                        <h4 className="text-md mb-1 p-2 tracking-wider text-gray-800">
                           {instruction.title}
                         </h4>
                       )}
-                      <li key={index} className="flex-grow p-2 leading-relaxed">
+                      <li key={index} className="p-2 text-base leading-relaxed">
                         {instruction.content}
                       </li>
                     </>
