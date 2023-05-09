@@ -44,6 +44,12 @@ const Recipes: NextPage = () => {
                   width={300}
                   height={300}
                 />
+                {recipe.prepTime && (
+                  <p className="text-md font-thin">
+                    Prep time:{" "}
+                    <span className="font-light">{recipe.prepTime}</span>
+                  </p>
+                )}
                 <h3 className="text-lg font-bold text-gray-900">Ingredients</h3>
                 <ul className="text-black">
                   {recipe.ingredientSegments.map((segment) => (
