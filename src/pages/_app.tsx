@@ -7,7 +7,7 @@ import { api } from "~/utils/api";
 import "~/styles/globals.css";
 
 const nobile = Nobile({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin-ext"],
   weight: ["400", "700"],
   variable: "--font-nobile",
   display: "swap",
@@ -23,9 +23,13 @@ const breeSerif = Bree_Serif({
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ClerkProvider {...pageProps}>
-      <main className={`${nobile.variable} ${breeSerif.variable}`}>
-        <Component {...pageProps} />
-      </main>
+      <style jsx global>{`
+        :root {
+          --font-nobile: ${nobile.style.fontFamily};
+          --font-bree-serif: ${breeSerif.style.fontFamily};
+        }
+      `}</style>
+      <Component {...pageProps} />
     </ClerkProvider>
   );
 };

@@ -31,16 +31,16 @@ export const Nav = () => {
               stroke-linecap="round"
             />
           </svg>
-          <span className="ml-3 text-xl">Seasoned</span>
+          <span className="ml-3 font-serif text-6xl font-bold">Seasoned</span>
         </a>
-        <nav className="flex flex-wrap items-center justify-center text-base md:ml-auto">
+        <nav className="flex flex-wrap items-center justify-center text-base font-bold tracking-tighter md:ml-auto">
           {links.map(({ href, label }, index) => (
             <Link
               key={index}
               href={href}
-              className="mr-5 hover:cursor-pointer hover:underline"
+              className="mr-5 text-sm hover:cursor-pointer hover:underline"
             >
-              {label}
+              {label.toUpperCase()}
             </Link>
           ))}
           <SignedIn>
@@ -48,9 +48,9 @@ export const Nav = () => {
               <Link
                 key={index}
                 href={href}
-                className="mr-5 hover:cursor-pointer hover:underline"
+                className="mr-5 text-sm font-bold tracking-tighter hover:cursor-pointer hover:underline"
               >
-                {label}
+                {label.toUpperCase()}
               </Link>
             ))}
           </SignedIn>

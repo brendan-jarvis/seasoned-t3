@@ -10,8 +10,8 @@ export default {
         info: "#EFF6EE",
       },
       fontFamily: {
-        sans: ["--var(--font-nobile)"],
-        serif: ["--var(--font-bree-serif)"],
+        sans: ["var(--font-nobile)"],
+        serif: ["var(--font-bree-serif)"],
       },
     },
   },
