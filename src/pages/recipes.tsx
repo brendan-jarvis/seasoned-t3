@@ -95,6 +95,20 @@ const Recipes: NextPage = () => {
                     </>
                   ))}
                 </ol>
+                {recipe.sourceURL && (
+                  <a
+                    href={recipe.sourceURL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-light underline"
+                  >
+                    View full recipe on{" "}
+                    {recipe.sourceURL.replace(
+                      /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+).*/i,
+                      "$1"
+                    )}
+                  </a>
+                )}
               </div>
             ))
           )}
