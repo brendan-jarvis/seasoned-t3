@@ -3,6 +3,7 @@ export const recipes = [
     authorId: "prismaSeed",
     title: "Sarah's Mum's Chicken Croquettes",
     byline: "Sarah Tuck",
+    sourceURL: "https://dish.co.nz/recipes/sarahs-mums-chicken-croquettes/",
     smallImage:
       "https://dish.co.nz/assets/Uploads/croquettes-hero-v2__FillWzE5MCwyNThd.jpg",
     mediumImage:
