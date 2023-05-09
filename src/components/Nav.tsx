@@ -31,14 +31,16 @@ export const Nav = () => {
               stroke-linecap="round"
             />
           </svg>
-          <span className="ml-3 font-serif text-6xl font-bold">Seasoned</span>
+          <span className="ml-3 font-serif text-6xl font-light text-info">
+            Seasoned
+          </span>
         </a>
-        <nav className="flex flex-wrap items-center justify-center text-base font-bold tracking-tighter md:ml-auto">
+        <nav className="flex flex-wrap items-center justify-center font-serif text-base font-medium md:ml-auto">
           {links.map(({ href, label }, index) => (
             <Link
               key={index}
               href={href}
-              className="mr-5 text-sm hover:cursor-pointer hover:underline"
+              className="mr-5 hover:cursor-pointer hover:underline"
             >
               {label.toUpperCase()}
             </Link>
@@ -48,34 +50,35 @@ export const Nav = () => {
               <Link
                 key={index}
                 href={href}
-                className="mr-5 text-sm font-bold tracking-tighter hover:cursor-pointer hover:underline"
+                className="mr-5 hover:cursor-pointer hover:underline"
               >
                 {label.toUpperCase()}
               </Link>
             ))}
           </SignedIn>
+
+          <SignedOut>
+            <SignInButton>
+              <button className="inline-flex items-center justify-center rounded-md border-2 border-[#BF572B] bg-secondary px-3 py-1 text-base hover:border-2 hover:border-gray-900 hover:bg-[#BF572B]">
+                Sign in
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  className="ml-1 h-4 w-4"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
         </nav>
-        <SignedOut>
-          <SignInButton>
-            <button className="inline-flex items-center justify-center rounded-md border-2 border-[#BF572B] bg-secondary px-3 py-1 text-base hover:border-2 hover:border-gray-900 hover:bg-[#BF572B]">
-              Sign in
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                className="ml-1 h-4 w-4"
-                viewBox="0 0 24 24"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </button>
-          </SignInButton>
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
       </div>
     </header>
   );
