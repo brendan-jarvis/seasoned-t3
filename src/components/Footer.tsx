@@ -10,21 +10,25 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="h-48 w-full bg-secondary text-info">
-      <div className="flex flex-wrap items-center justify-center p-4 text-base md:ml-auto">
+    <footer className="flex w-full items-center justify-center bg-secondary p-8 text-info">
+      <div className="flex flex-col flex-wrap p-4 text-base sm:flex-row">
         {founders.map(({ href, label }, index) => (
           <a
             key={index}
             href={href}
-            className="mr-5 hover:cursor-pointer hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mr-5 p-2 hover:cursor-pointer hover:underline"
           >
-            {label}
-            <Image
-              width={16}
-              height={16}
-              src="/images/github-mark-white.png"
-              alt="Github Invertocat Logo"
-            />
+            <div className="flex items-center gap-1">
+              {label}
+              <Image
+                width={16}
+                height={16}
+                src="/images/github-mark-white.png"
+                alt="Github Invertocat Logo"
+              />
+            </div>
           </a>
         ))}
       </div>
