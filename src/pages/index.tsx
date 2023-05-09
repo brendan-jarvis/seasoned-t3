@@ -2,9 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { SignedIn, SignedOut, SignInButton, useClerk } from "@clerk/nextjs";
 
-import { Nav } from "~/components/Nav";
-import { Badge } from "~/components/Badge";
-import { LoadingSpinner } from "~/components/LoadingSpinner";
+import { PageLayout } from "../components/Layout";
 
 const Home: NextPage = () => {
   const { user, signOut } = useClerk();
@@ -24,35 +22,36 @@ const Home: NextPage = () => {
           href="/images/apple-touch-icon.png"
         />
       </Head>
-      <Nav />
-      <div className="flex min-h-screen flex-col items-center justify-center bg-info">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <h1 className="text-5xl font-extrabold tracking-tight text-primary drop-shadow-md sm:text-[5rem]">
-            Seasoned
-          </h1>
-          <SignedOut>
-            <SignInButton>
-              <button className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                Sign in
+      <PageLayout>
+        <div className="flex min-h-screen flex-col items-center justify-center bg-info">
+          <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+            <h1 className="text-5xl font-extrabold tracking-tight text-primary drop-shadow-md sm:text-[5rem]">
+              Seasoned
+            </h1>
+            <SignedOut>
+              <SignInButton>
+                <button className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  Sign in
+                </button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <h2 className="font-sans text-lg text-black">
+                Welcome to Seasoned,{" "}
+                <span className="text-primary">{user?.firstName}</span>!
+              </h2>
+              <button
+                className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                onClick={() => {
+                  void signOut();
+                }}
+              >
+                Sign out
               </button>
-            </SignInButton>
-          </SignedOut>
-          <SignedIn>
-            <h2 className="font-sans text-lg text-black">
-              Welcome to Seasoned,{" "}
-              <span className="text-primary">{user?.firstName}</span>!
-            </h2>
-            <button
-              className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              onClick={() => {
-                void signOut();
-              }}
-            >
-              Sign out
-            </button>
-          </SignedIn>
+            </SignedIn>
+          </div>
         </div>
-      </div>
+      </PageLayout>
     </>
   );
 };
