@@ -8,8 +8,8 @@ export const Nav = () => {
   ];
 
   return (
-    <header className="w-full bg-[#BF572B] font-semibold text-info">
-      <div className="container mx-auto flex flex-col flex-wrap items-center p-5 md:flex-row">
+    <header className="w-full bg-[#BF572B] font-semibold text-info shadow-stone-950 drop-shadow-lg">
+      <div className="container mx-auto flex flex-col flex-wrap items-center p-4 md:flex-row">
         <a className="title-font mb-4 flex items-center font-medium text-info md:mb-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
