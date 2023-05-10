@@ -4,7 +4,7 @@ import type { RecipeWithIngredients as Recipe } from "~/utils/types";
 export const RecipeView = (recipe: Recipe) => {
   return (
     <div key={recipe.id} className="flex flex-col items-center gap-4">
-      <h2 className="text-2xl font-bold tracking-wider text-primary">
+      <h2 className="text-center text-2xl font-bold tracking-wider text-primary">
         {recipe.title}
       </h2>
       <p className="text-sm font-thin">By {recipe.byline}</p>
@@ -13,7 +13,6 @@ export const RecipeView = (recipe: Recipe) => {
         alt={`${recipe.title} photo`}
         width={300}
         height={300}
-        placeholder="blur"
       />
 
       {recipe.prepTime && (
