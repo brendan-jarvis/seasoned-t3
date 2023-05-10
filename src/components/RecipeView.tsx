@@ -9,10 +9,11 @@ export const RecipeView = (recipe: Recipe) => {
       </h2>
       <p className="text-sm font-thin">By {recipe.byline}</p>
       <Image
-        src={recipe.mediumImage}
+        src={recipe.largeImage}
         alt={`${recipe.title} photo`}
         width={300}
         height={300}
+        placeholder="blur"
       />
 
       {recipe.prepTime && (
