@@ -7,7 +7,7 @@ export const RecipeView = (recipe: Recipe) => {
       <h2 className="text-center text-2xl font-bold tracking-wider text-primary">
         {recipe.title}
       </h2>
-      <p className="text-sm font-thin">By {recipe.byline}</p>
+      <p className="text-sm font-thin text-gray-600">By {recipe.byline}</p>
       <Image
         src={recipe.largeImage}
         alt={`${recipe.title} photo`}
@@ -34,7 +34,7 @@ export const RecipeView = (recipe: Recipe) => {
         Ingredients
       </h3>
       {recipe.serves && (
-        <p className="font-thin">
+        <p className="font-sans text-sm font-thin text-gray-600">
           Serves: <span className="font-light">{recipe.serves}</span>
         </p>
       )}
@@ -55,11 +55,11 @@ export const RecipeView = (recipe: Recipe) => {
       <h3 className="text-lg font-bold tracking-wider text-gray-900">
         Instructions
       </h3>
-      <ol className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <ol className="mx-auto max-w-4xl px-4 font-sans text-gray-800 sm:px-6 lg:px-8">
         {recipe.instructions.map((instruction, index) => (
           <>
             {instruction.title && (
-              <h4 className="mb-1 p-2 tracking-wider text-gray-900">
+              <h4 className="mb-1 p-2 tracking-wider text-gray-950">
                 {instruction.title}
               </h4>
             )}
@@ -74,7 +74,7 @@ export const RecipeView = (recipe: Recipe) => {
           href={recipe.sourceURL}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-4 font-light underline"
+          className="p-4 font-light text-gray-800 underline"
         >
           View full recipe on{" "}
           {recipe.sourceURL.replace(
