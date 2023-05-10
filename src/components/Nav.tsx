@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import Image from "next/image";
 
 export const Nav = () => {
   const links = [
@@ -11,75 +12,108 @@ export const Nav = () => {
   const signedInLinks = [{ href: "/favourites", label: "Favourites" }];
 
   return (
-    <header className="w-full bg-[#BF572B] font-semibold text-info shadow-stone-950 drop-shadow-lg">
-      <div className="container mx-auto flex flex-col flex-wrap items-center p-4 md:flex-row">
-        <a className="mb-4 flex items-center font-medium text-info md:mb-0">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            className="h-10 w-10 rounded-full p-2 text-info"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M3 12h18M3 6h18M3 18h18"
-              stroke="#EFF6EE"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
-          <span className="ml-3 font-serif text-6xl font-light text-info">
-            Seasoned
-          </span>
-        </a>
-        <nav className="flex flex-wrap items-center justify-center font-serif text-base font-medium md:ml-auto">
-          {links.map(({ href, label }, index) => (
-            <Link
-              key={index}
-              href={href}
-              className="mr-5 hover:cursor-pointer hover:underline"
+    <div className="navbar bg-base-100">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn-ghost btn-circle btn" title="Menu">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              {label.toUpperCase()}
-            </Link>
-          ))}
-          <SignedIn>
-            {signedInLinks.map(({ href, label }, index) => (
-              <Link
-                key={index}
-                href={href}
-                className="mr-5 hover:cursor-pointer hover:underline"
-              >
-                {label.toUpperCase()}
-              </Link>
-            ))}
-          </SignedIn>
-
-          <SignedOut>
-            <SignInButton>
-              <button className="inline-flex items-center justify-center rounded-md border-2 border-[#BF572B] bg-secondary px-3 py-1 text-base hover:border-2 hover:border-gray-900 hover:bg-[#BF572B]">
-                Sign in
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  className="ml-1 h-4 w-4"
-                  viewBox="0 0 24 24"
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
+          >
+            {links.map(({ href, label }, index) => (
+              <li key={index}>
+                <Link
+                  href={href}
+                  className="mr-5 hover:cursor-pointer hover:underline"
                 >
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  {label.toUpperCase()}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="navbar-center">
+        <Link
+          href="/"
+          className="btn-ghost btn font-serif text-xl font-light normal-case"
+        >
+          Seasoned
+          <Image
+            src="/images/fa-carrot.svg"
+            width={28}
+            height={28}
+            alt="Orange carrot icon"
+            className="ml-1"
+          />
+        </Link>
+      </div>
+      <div className="navbar-end">
+        <SignedIn>
+          <button className="btn-ghost btn-circle btn">
+            <div className="indicator">
+              <Link href="/favourites">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m12 21.35-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                  />
                 </svg>
-              </button>
-            </SignInButton>
-          </SignedOut>
+              </Link>
+            </div>
+          </button>
+        </SignedIn>
+        <button className="btn-ghost btn-circle btn">
           <SignedIn>
             <UserButton />
           </SignedIn>
-        </nav>
+          <SignedOut>
+            <SignInButton>
+              <button className="btn-ghost btn-circle btn" title="Sign in">
+                <div className="indicator">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M11 7 9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"
+                    />
+                  </svg>
+                </div>
+              </button>
+            </SignInButton>
+          </SignedOut>
+        </button>
       </div>
-    </header>
+    </div>
   );
 };
