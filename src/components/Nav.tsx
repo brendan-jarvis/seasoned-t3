@@ -9,8 +9,6 @@ export const Nav = () => {
     { href: "/produce", label: "Produce" },
   ];
 
-  const signedInLinks = [{ href: "/favourites", label: "Favourites" }];
-
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -59,7 +57,7 @@ export const Nav = () => {
             width={28}
             height={28}
             alt="Orange carrot icon"
-            className="ml-1"
+            className="bounce-once ml-1"
           />
         </Link>
       </div>
