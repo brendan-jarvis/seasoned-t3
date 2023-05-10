@@ -80,13 +80,13 @@ const Produce: NextPage = () => {
         {isLoading ? (
           <LoadingSpinner size={64} />
         ) : (
-          <div className="flex flex-wrap gap-4 pb-8">
+          <div className="flex flex-wrap gap-4 px-4 pb-8">
             <div>
               <h4 className="text-lg font-bold text-primary">Fruit</h4>
               <ol className="text-black">
                 {fruitInSeason &&
                   fruitInSeason.map((fruit) => (
-                    <li key={fruit.id}>
+                    <li key={fruit.id} className="p-1">
                       <Badge color="red">{fruit.type}</Badge> {fruit.title}
                     </li>
                   ))}
@@ -97,7 +97,7 @@ const Produce: NextPage = () => {
               <ol className="text-black">
                 {vegetablesInSeason &&
                   vegetablesInSeason.map((vegetable) => (
-                    <li key={vegetable.id}>
+                    <li key={vegetable.id} className="p-1">
                       <Badge color="blue">{vegetable.type}</Badge>{" "}
                       {vegetable.title}
                     </li>
@@ -109,7 +109,7 @@ const Produce: NextPage = () => {
               <ol className="text-black">
                 {otherProduceInSeason &&
                   otherProduceInSeason.map((item) => (
-                    <li key={item.id}>
+                    <li key={item.id} className="p-1">
                       <Badge color="green">{item.type}</Badge> {item.title}
                     </li>
                   ))}
