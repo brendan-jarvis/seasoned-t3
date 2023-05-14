@@ -79,6 +79,11 @@ const Produce: NextPage = () => {
         </h1>
         {isLoading ? (
           <LoadingSpinner size={64} />
+        ) : !data ? (
+          <p className="text-center text-lg font-semibold text-red-600">
+            Sorry, Seasoned was unable to load a list of produce that&apos;s in
+            season.
+          </p>
         ) : (
           <div className="flex flex-wrap gap-4 px-4 pb-8">
             <div>

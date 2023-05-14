@@ -34,6 +34,10 @@ const Recipes: NextPage = () => {
         <div>
           {isLoading ? (
             <LoadingSpinner size={64} />
+          ) : !data ? (
+            <p className="text-center text-lg font-semibold text-red-600">
+              Sorry, Seasoned was unable to load recipes.
+            </p>
           ) : (
             data?.map((recipe: Recipe) => (
               <RecipeView key={recipe.id} {...recipe} />
