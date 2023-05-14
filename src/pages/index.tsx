@@ -1,12 +1,9 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { SignedIn, SignedOut, SignInButton, useClerk } from "@clerk/nextjs";
 
 import { PageLayout } from "../components/Layout";
 
 const Home: NextPage = () => {
-  const { user, signOut } = useClerk();
-
   return (
     <>
       <Head>
