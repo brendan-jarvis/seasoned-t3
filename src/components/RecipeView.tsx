@@ -1,6 +1,11 @@
 import Image from "next/image";
 import type { RecipeWithIngredients as Recipe } from "~/utils/types";
 
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
+
 export const RecipeView = (recipe: Recipe) => {
   return (
     <div key={recipe.id} className="flex flex-col items-center gap-4">
@@ -8,6 +13,11 @@ export const RecipeView = (recipe: Recipe) => {
         {recipe.title}
       </h2>
       <p className="text-sm font-thin text-gray-600">By {recipe.byline}</p>
+      <p className="text-sm font-thin text-gray-600">
+        Added {dayjs(recipe.createdAt).fromNow()}
+        {recipe.updatedAt !== recipe.createdAt &&
+          ` (updated ${dayjs(recipe.updatedAt).fromNow()})`}
+      </p>
       <Image
         src={recipe.largeImage}
         alt={`${recipe.title} photo`}
