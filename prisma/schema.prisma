@@ -75,9 +75,7 @@ model Recipe {
   totalTime          String              @default("")
   sourceURL          String              @default("")
   description        String              @default("")
-  smallImage         String              @default("")
-  mediumImage        String              @default("")
-  largeImage         String              @default("")
+  image              String              @default("")
   authorId           String
   ingredientSegments IngredientSegment[]
   instructions       Instruction[]

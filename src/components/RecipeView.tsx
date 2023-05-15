@@ -19,7 +19,7 @@ export const RecipeView = (recipe: Recipe) => {
           ` (updated ${dayjs(recipe.updatedAt).fromNow()})`}
       </p>
       <Image
-        src={recipe.largeImage}
+        src={recipe.image}
         alt={`${recipe.title} photo`}
         width={300}
         height={300}

@@ -38,9 +38,7 @@ export const recipesRouter = createTRPCRouter({
         totalTime: z.string(),
         sourceURL: z.string().url({ message: "Invalid recipe source url" }),
         description: z.string(),
-        smallImage: z.string().url({ message: "Invalid small image url" }),
-        mediumImage: z.string().url({ message: "Invalid medium image url" }),
-        largeImage: z.string().url({ message: "Invalid large image url" }),
+        image: z.string().url({ message: "Invalid image url" }),
         ingredientSegments: z.array(
           z.object({
             title: z.string(),
@@ -73,9 +71,7 @@ export const recipesRouter = createTRPCRouter({
           totalTime: input.totalTime,
           sourceURL: input.sourceURL,
           description: input.description,
-          smallImage: input.smallImage,
-          mediumImage: input.mediumImage,
-          largeImage: input.largeImage,
+          image: input.image,
           ingredientSegments: {
             create: input.ingredientSegments.map((segment) => ({
               title: segment.title,
