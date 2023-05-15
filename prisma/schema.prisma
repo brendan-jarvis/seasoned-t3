@@ -79,7 +79,7 @@ model Recipe {
   authorId           String
   ingredientSegments IngredientSegment[]
   instructions       Instruction[]
-  tags               TagsOnRecipes[]
+  tags               Tag[]
 
   @@index([authorId])
 }
@@ -119,18 +119,7 @@ model Instruction {
 }
 
 model Tag {
-  id      Int             @id @default(autoincrement())
-  name    String          @unique
-  recipes TagsOnRecipes[]
-}
-
-model TagsOnRecipes {
-  id       Int    @id @default(autoincrement())
-  recipe   Recipe @relation(fields: [recipeId], references: [id])
-  recipeId Int
-  tag      Tag    @relation(fields: [tagId], references: [id])
-  tagId    Int
-
-  @@index([recipeId])
-  @@index([tagId])
+  id     Int      @id @default(autoincrement())
+  name   String   @unique
+  recipe Recipe[]
 }

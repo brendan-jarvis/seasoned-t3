@@ -54,8 +54,7 @@ export const recipesRouter = createTRPCRouter({
         instructions: z.array(
           z.object({ title: z.string(), content: z.string() })
         ),
-        // TODO: Implement tags
-        // tags: z.array(z.object({ name: z.string() })),
+        tags: z.array(z.object({ name: z.string() })),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -90,13 +89,14 @@ export const recipesRouter = createTRPCRouter({
               content: instruction.content,
             })),
           },
-          // TODO: Implement tags
-          //   tags: {
-          //     connectOrCreate: {
-          //       where: input.tags.map((tag) => ({ name: tag.name })),
-          //       create: input.tags.map((tag) => ({ name: tag.name })),
-          //   },
-          // },
+          tags: {
+            connectOrCreate: input.tags.map(({ name }) => {
+              return {
+                where: { name },
+                create: { name },
+              };
+            }),
+          },
         },
       });
 
