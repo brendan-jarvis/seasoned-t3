@@ -26,7 +26,7 @@ const TextInput = ({ label, placeholder, value, onChange }: TextInputProps) => {
         value={value}
         onChange={onChange}
         // className="input-bordered input w-full"
-        className="focus:shadow-outline w-full rounded-lg px-4 py-3 font-sans font-serif font-medium text-gray-600 shadow-sm focus:outline-none"
+        className="focus:shadow-outline w-full rounded-md px-4 py-3 font-serif font-light text-info shadow-sm focus:outline-none"
       />
     </div>
   );
@@ -90,55 +90,55 @@ export const CreateRecipe = () => {
     <div className="mx-auto flex max-w-lg flex-col items-center justify-center rounded-md bg-gray-100 px-8">
       <TextInput
         label="Title"
-        placeholder="Title"
+        placeholder="Enter recipe title"
         value={input.title}
         onChange={(e) => setInput({ ...input, title: e.target.value })}
       />
       <TextInput
         label="Byline"
-        placeholder="Byline"
+        placeholder="Enter author name"
         value={input.byline}
         onChange={(e) => setInput({ ...input, byline: e.target.value })}
       />
       <TextInput
         label="Serves"
-        placeholder="Serves"
+        placeholder="Enter number of servings"
         value={input.serves}
         onChange={(e) => setInput({ ...input, serves: e.target.value })}
       />
       <TextInput
         label="Prep Time"
-        placeholder="Prep Time"
+        placeholder="Enter preparation time e.g. 20 minutes"
         value={input.prepTime}
         onChange={(e) => setInput({ ...input, prepTime: e.target.value })}
       />
       <TextInput
         label="Cook Time"
-        placeholder="Cook Time"
+        placeholder="Enter cooking time e.g. 30 minutes"
         value={input.cookTime}
         onChange={(e) => setInput({ ...input, cookTime: e.target.value })}
       />
       <TextInput
         label="Total Time"
-        placeholder="Total Time"
+        placeholder="Enter total time e.g. 50 minutes"
         value={input.totalTime}
         onChange={(e) => setInput({ ...input, totalTime: e.target.value })}
       />
       <TextInput
         label="Source URL"
-        placeholder="Source URL"
+        placeholder="Enter source URL"
         value={input.sourceURL}
         onChange={(e) => setInput({ ...input, sourceURL: e.target.value })}
       />
       <TextInput
         label="Description"
-        placeholder="Description"
+        placeholder="Enter recipe description"
         value={input.description}
         onChange={(e) => setInput({ ...input, description: e.target.value })}
       />
       <TextInput
         label="Image"
-        placeholder="Image"
+        placeholder="Enter image URL"
         value={input.image}
         onChange={(e) => setInput({ ...input, image: e.target.value })}
       />
