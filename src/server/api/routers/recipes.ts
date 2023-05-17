@@ -32,13 +32,15 @@ export const recipesRouter = createTRPCRouter({
     .input(
       z.object({
         title: z.string(),
-        serves: z.string(),
-        prepTime: z.string(),
-        cookTime: z.string(),
-        totalTime: z.string(),
-        sourceURL: z.string().url({ message: "Invalid recipe source url" }),
-        description: z.string(),
-        image: z.string().url({ message: "Invalid image url" }),
+        serves: z.optional(z.string()),
+        prepTime: z.optional(z.string()),
+        cookTime: z.optional(z.string()),
+        totalTime: z.optional(z.string()),
+        sourceURL: z.optional(
+          z.string().url({ message: "Invalid recipe source url" })
+        ),
+        description: z.optional(z.string()),
+        image: z.optional(z.string().url({ message: "Invalid image url" })),
         ingredientSegments: z.array(
           z.object({
             title: z.string(),
