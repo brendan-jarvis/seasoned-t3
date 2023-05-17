@@ -3,7 +3,12 @@ import Head from "next/head";
 
 import { PageLayout } from "~/components/Layout";
 
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
+import { api } from "~/utils/api";
+
+const CreateRecipe = () => {
+  const { user } = useUser();
+};
 
 const Create: NextPage = () => {
   return (
@@ -29,6 +34,7 @@ const Create: NextPage = () => {
           <p className="text-center text-2xl text-secondary">
             You are signed in!
           </p>
+          <CreateRecipe />
         </SignedIn>
         <SignedOut>
           <p className="text-center text-2xl text-secondary">
