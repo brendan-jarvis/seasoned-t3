@@ -24,18 +24,18 @@ const Create: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <h1 className="p-4 text-center text-4xl font-bold tracking-wide text-secondary">
-          Recipes
-        </h1>
         <SignedIn>
-          <p className="text-center text-2xl text-secondary">
-            You are signed in!
-          </p>
+          <h1 className="p-4 text-center text-4xl font-bold tracking-wide text-secondary">
+            Create a recipe!
+          </h1>
           <CreateRecipe />
         </SignedIn>
         <SignedOut>
+          <h1 className="p-4 text-center text-4xl font-bold tracking-wide text-secondary">
+            Sign in to create a recipe!
+          </h1>
           <p className="text-center text-2xl text-secondary">
-            You are not signed in! Please sign in to create a recipe.
+            Please sign in to create a recipe.
           </p>
         </SignedOut>
       </PageLayout>
