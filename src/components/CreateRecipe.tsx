@@ -14,7 +14,7 @@ type TextInputProps = {
 
 const TextInput = ({ label, placeholder, value, onChange }: TextInputProps) => {
   return (
-    <div className="form-control w-full max-w-md p-2">
+    <div className="form-control mb-2 w-full rounded-md bg-gray-200 p-1 shadow-md">
       <label className="label">
         <span className="label-text font-semibold text-gray-900">{label}</span>
       </label>
@@ -23,7 +23,7 @@ const TextInput = ({ label, placeholder, value, onChange }: TextInputProps) => {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="input-bordered input w-full max-w-md"
+        className="input-bordered input w-full"
       />
     </div>
   );
@@ -84,7 +84,7 @@ export const CreateRecipe = () => {
   if (!user) return null;
 
   return (
-    <div className="flex max-w-md flex-col rounded-md bg-gray-400">
+    <div className="mx-auto flex max-w-md flex-col items-center justify-center">
       <TextInput
         label="Title"
         placeholder="Title"
@@ -213,7 +213,10 @@ export const CreateRecipe = () => {
         ))} */}
 
       {/* <button className="btn-primary btn" onClick={() => mutate(input)}> */}
-      <button className="btn-primary btn" onClick={() => console.log(input)}>
+      <button
+        className="btn-primary btn"
+        onClick={() => toast.success(JSON.stringify(input, null, 2))}
+      >
         Submit
       </button>
       {isPosting && (
