@@ -37,7 +37,7 @@ export const recipesRouter = createTRPCRouter({
         cookTime: z.optional(z.string()),
         totalTime: z.optional(z.string()),
         sourceURL: z.optional(
-          z.string().url({ message: "Invalid recipe source url" })
+          z.union([z.string().url().nullish(), z.literal("")])
         ),
         description: z.optional(z.string()),
         image: z.optional(z.string().url({ message: "Invalid image url" })),
@@ -70,7 +70,7 @@ export const recipesRouter = createTRPCRouter({
           prepTime: input.prepTime,
           cookTime: input.cookTime,
           totalTime: input.totalTime,
-          sourceURL: input.sourceURL,
+          sourceURL: input.sourceURL ? input.sourceURL : "",
           description: input.description,
           image: input.image,
           ingredientSegments: {
@@ -91,14 +91,16 @@ export const recipesRouter = createTRPCRouter({
               content: instruction.content,
             })),
           },
-          tags: {
-            connectOrCreate: input.tags.map(({ name }) => {
-              return {
-                where: { name },
-                create: { name },
-              };
-            }),
-          },
+          tags: input.tags
+            ? {
+                connectOrCreate: input.tags.map(({ name }) => {
+                  return {
+                    where: { name },
+                    create: { name },
+                  };
+                }),
+              }
+            : undefined,
         },
       });
 
