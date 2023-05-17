@@ -9,15 +9,23 @@ type TextInputProps = {
   label: string;
   placeholder: string;
   value: string;
+  required?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const TextInput = ({ label, placeholder, value, onChange }: TextInputProps) => {
+const TextInput = ({
+  label,
+  placeholder,
+  value,
+  required,
+  onChange,
+}: TextInputProps) => {
   return (
     <div className="form-control mb-2 w-full p-1">
       <label className="label">
         <span className="mb-1 block font-serif font-bold text-gray-700">
           {label}
+          {required && <span className="text-red-500"> *</span>}
         </span>
       </label>
       <input
@@ -92,12 +100,14 @@ export const CreateRecipe = () => {
         label="Title"
         placeholder="Enter recipe title"
         value={input.title}
+        required={true}
         onChange={(e) => setInput({ ...input, title: e.target.value })}
       />
       <TextInput
         label="Byline"
         placeholder="Enter author name"
         value={input.byline}
+        required={true}
         onChange={(e) => setInput({ ...input, byline: e.target.value })}
       />
       <TextInput
@@ -140,6 +150,7 @@ export const CreateRecipe = () => {
         label="Image"
         placeholder="Enter image URL"
         value={input.image}
+        required={true}
         onChange={(e) => setInput({ ...input, image: e.target.value })}
       />
       {/* {input.ingredientSegments.length &&
