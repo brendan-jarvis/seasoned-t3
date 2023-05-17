@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 import { PageLayout } from "~/components/Layout";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
@@ -47,6 +48,7 @@ const CreateRecipe = () => {
     image: "",
     ingredientSegments: [
       {
+        title: "",
         ingredients: [
           {
             amount: "",
@@ -61,6 +63,11 @@ const CreateRecipe = () => {
         name: "",
         quantity: "",
         unit: "",
+      },
+    ],
+    tags: [
+      {
+        name: "",
       },
     ],
   });
@@ -81,6 +88,7 @@ const CreateRecipe = () => {
         image: "",
         ingredientSegments: [
           {
+            title: "",
             ingredients: [
               {
                 amount: "",
@@ -97,42 +105,24 @@ const CreateRecipe = () => {
             unit: "",
           },
         ],
+        tags: [
+          {
+            name: "",
+          },
+        ],
       });
       void ctx.recipes.getAll.invalidate();
 
-      return (
-        <div className="toast-end toast toast-top">
-          <div className="alert alert-success">
-            <div>
-              <p>Recipe added successfully!</p>
-            </div>
-          </div>
-        </div>
-      );
+      toast.success("Recipe added successfully!");
     },
     onError: (e) => {
-      const errorMessage = e.data?.zodError?.fieldErrors.content;
+      const errorMessage = e.data?.zodError?.fieldErrors;
+      const errorString = JSON.stringify(errorMessage, null, 4);
 
-      if (errorMessage && errorMessage[0]) {
-        return (
-          <div className="toast-end toast toast-top">
-            <div className="alert alert-error">
-              <div>
-                <p>{errorMessage[0]}</p>
-              </div>
-            </div>
-          </div>
-        );
+      if (errorMessage) {
+        toast.error(errorString);
       } else {
-        return (
-          <div className="toast-end toast toast-top">
-            <div className="alert alert-error">
-              <div>
-                <p>Failed to post! Please try again later.</p>
-              </div>
-            </div>
-          </div>
-        );
+        toast.error("Failed to post! Please try again later.");
       }
     },
   });
@@ -195,28 +185,79 @@ const CreateRecipe = () => {
         value={input.image}
         onChange={(e) => setInput({ ...input, image: e.target.value })}
       />
-      <TextInput
-        label="Ingredients"
-        placeholder="Ingredients"
-        value={input.ingredientSegments}
-        onChange={(e) =>
-          setInput({ ...input, ingredientSegments: e.target.value })
-        }
-      />
-      <TextInput
-        label="Instructions"
-        placeholder="Instructions"
-        value={input.instructions}
-        onChange={(e) => setInput({ ...input, instructions: e.target.value })}
-      />
-      <TextInput
-        label="Tags"
-        placeholder="Tags"
-        value={input.tags}
-        onChange={(e) => setInput({ ...input, tags: e.target.value })}
-      />
+      {input.ingredientSegments.map((segment, i) => (
+        <div key={i}>
+          {segment.ingredients.map((ingredient, j) => (
+            <div key={j}>
+              <TextInput
+                label="Amount"
+                placeholder="Amount"
+                value={ingredient.amount}
+                onChange={(e) =>
+                  setInput({
+                    ...input,
+                    ingredientSegments: [
+                      {
+                        title: "",
+                        ingredients: [
+                          {
+                            ...ingredient,
+                            amount: e.target.value,
+                          },
+                        ],
+                      },
+                    ],
+                  })
+                }
+              />
+              <TextInput
+                label="Unit"
+                placeholder="Unit"
+                value={ingredient.unit}
+                onChange={(e) =>
+                  setInput({
+                    ...input,
+                    ingredientSegments: [
+                      {
+                        title: "",
+                        ingredients: [
+                          {
+                            ...ingredient,
+                            unit: e.target.value,
+                          },
+                        ],
+                      },
+                    ],
+                  })
+                }
+              />
+              <TextInput
+                label="Name"
+                placeholder="Name"
+                value={ingredient.name}
+                onChange={(e) =>
+                  setInput({
+                    ...input,
+                    ingredientSegments: [
+                      {
+                        title: "",
+                        ingredients: [
+                          {
+                            ...ingredient,
+                            name: e.target.value,
+                          },
+                        ],
+                      },
+                    ],
+                  })
+                }
+              />
+            </div>
+          ))}
+        </div>
+      ))}
 
-      <button className="btn-primary btn" onSubmit={void console.log(input)}>
+      <button className="btn-primary btn" onClick={() => mutate(input)}>
         Submit
       </button>
       {isPosting && (
