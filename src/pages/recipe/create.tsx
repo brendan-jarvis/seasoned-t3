@@ -3,6 +3,8 @@ import Head from "next/head";
 
 import { PageLayout } from "~/components/Layout";
 
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+
 const Create: NextPage = () => {
   return (
     <>
@@ -20,13 +22,19 @@ const Create: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <div className="flex min-h-screen flex-col items-center justify-center bg-info">
-          <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-            <h1 className="text-5xl font-extrabold tracking-tight text-primary drop-shadow-md sm:text-[5rem]">
-              Seasoned
-            </h1>
-          </div>
-        </div>
+        <h1 className="p-4 text-center text-4xl font-bold tracking-wide text-secondary">
+          Recipes
+        </h1>
+        <SignedIn>
+          <p className="text-center text-2xl text-secondary">
+            You are signed in!
+          </p>
+        </SignedIn>
+        <SignedOut>
+          <p className="text-center text-2xl text-secondary">
+            You are not signed in! Please sign in to create a recipe.
+          </p>
+        </SignedOut>
       </PageLayout>
     </>
   );
