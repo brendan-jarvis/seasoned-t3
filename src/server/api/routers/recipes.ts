@@ -31,31 +31,41 @@ export const recipesRouter = createTRPCRouter({
   create: privateProcedure
     .input(
       z.object({
-        title: z.string(),
+        title: z.string().min(5).max(100),
         serves: z.optional(z.string()),
         prepTime: z.optional(z.string()),
         cookTime: z.optional(z.string()),
         totalTime: z.optional(z.string()),
         sourceURL: z.optional(
-          z.union([z.string().url().nullish(), z.literal("")])
+          z.union([
+            z.string().url({ message: "Invalid source url" }).nullish(),
+            z.literal(""),
+          ])
         ),
         description: z.optional(z.string()),
-        image: z.optional(z.string().url({ message: "Invalid image url" })),
-        ingredientSegments: z.array(
-          z.object({
-            title: z.string(),
-            ingredients: z.array(
-              z.object({
-                amount: z.string(),
-                unit: z.string(),
-                name: z.string(),
-              })
-            ),
-          })
+        image: z.optional(
+          z.union([
+            z.string().url({ message: "Invalid image url" }).nullish(),
+            z.literal(""),
+          ])
         ),
-        instructions: z.array(
-          z.object({ title: z.string(), content: z.string() })
-        ),
+        ingredientSegments: z
+          .array(
+            z.object({
+              title: z.string(),
+              ingredients: z.array(
+                z.object({
+                  amount: z.string(),
+                  unit: z.string(),
+                  name: z.string(),
+                })
+              ),
+            })
+          )
+          .nonempty(),
+        instructions: z
+          .array(z.object({ title: z.string(), content: z.string() }))
+          .nonempty(),
         tags: z.optional(z.array(z.object({ name: z.string() }))),
       })
     )
@@ -72,7 +82,7 @@ export const recipesRouter = createTRPCRouter({
           totalTime: input.totalTime,
           sourceURL: input.sourceURL ? input.sourceURL : "",
           description: input.description,
-          image: input.image,
+          image: input.image ? input.image : "",
           ingredientSegments: {
             create: input.ingredientSegments.map((segment) => ({
               title: segment.title,
