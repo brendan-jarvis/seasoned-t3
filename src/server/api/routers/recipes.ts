@@ -56,7 +56,7 @@ export const recipesRouter = createTRPCRouter({
         instructions: z.array(
           z.object({ title: z.string(), content: z.string() })
         ),
-        tags: z.array(z.object({ name: z.string() })),
+        tags: z.optional(z.array(z.object({ name: z.string() }))),
       })
     )
     .mutation(async ({ ctx, input }) => {
