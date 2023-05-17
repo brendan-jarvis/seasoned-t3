@@ -14,16 +14,19 @@ type TextInputProps = {
 
 const TextInput = ({ label, placeholder, value, onChange }: TextInputProps) => {
   return (
-    <div className="form-control mb-2 w-full rounded-md bg-gray-200 p-1 shadow-md">
+    <div className="form-control mb-2 w-full p-1">
       <label className="label">
-        <span className="label-text font-semibold text-gray-900">{label}</span>
+        <span className="mb-1 block font-serif font-bold text-gray-700">
+          {label}
+        </span>
       </label>
       <input
         type="text"
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="input-bordered input w-full"
+        // className="input-bordered input w-full"
+        className="focus:shadow-outline w-full rounded-lg px-4 py-3 font-sans font-serif font-medium text-gray-600 shadow-sm focus:outline-none"
       />
     </div>
   );
@@ -84,7 +87,7 @@ export const CreateRecipe = () => {
   if (!user) return null;
 
   return (
-    <div className="mx-auto flex max-w-md flex-col items-center justify-center">
+    <div className="mx-auto flex max-w-lg flex-col items-center justify-center rounded-md bg-gray-100 px-8">
       <TextInput
         label="Title"
         placeholder="Title"
