@@ -8,8 +8,8 @@ export const PageLayout = (props: PropsWithChildren) => {
     <>
       <Nav />
       <Toaster />
-      <main className="flex min-h-screen flex-col items-center justify-center bg-info">
-        <div>{props.children}</div>
+      <main className="min-h-screen items-center justify-center bg-info">
+        {props.children}
       </main>
       <Footer />
     </>
