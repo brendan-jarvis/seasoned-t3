@@ -2,7 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { AvailabilityType, ProduceType } from "@prisma/client";
 
-import { PageLayout } from "../components/Layout";
+import { PageLayout } from "~/components/Layout";
 import { Badge } from "~/components/Badge";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 

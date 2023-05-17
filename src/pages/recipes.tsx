@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import type { RecipeWithIngredients as Recipe } from "~/utils/types";
 import { api } from "~/utils/api";
 
-import { PageLayout } from "../components/Layout";
+import { PageLayout } from "~/components/Layout";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 import { RecipeView } from "~/components/RecipeView";
 
