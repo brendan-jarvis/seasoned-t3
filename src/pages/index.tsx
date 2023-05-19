@@ -60,7 +60,8 @@ const Home: NextPage = () => {
             </p>
             <div>
               <h2 className="text-xl font-bold tracking-tight text-secondary">
-                Seasonal Produce this Month
+                Seasonal Produce this{" "}
+                {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
               </h2>
               <div className="grid max-w-2xl grid-flow-col gap-2 overflow-x-scroll p-2">
                 {isLoading ? (
