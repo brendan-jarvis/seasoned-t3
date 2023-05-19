@@ -31,41 +31,57 @@ const Nav = (props: PropsWithChildren) => {
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* <!-- Navbar --> */}
-        <div className="navbar w-full bg-[#BF572B] text-info drop-shadow-md">
-          <div className="flex-none lg:hidden">
-            <label htmlFor="my-drawer-3" className="btn-ghost btn-square btn">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block h-6 w-6 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </label>
+        <div className="navbar bg-[#BF572B] font-serif text-info drop-shadow-md">
+          <div className="navbar-start">
+            <div className="flex-none lg:hidden">
+              <label htmlFor="my-drawer-3" className="btn-ghost btn-square btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  className="inline-block h-6 w-6 stroke-current"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  ></path>
+                </svg>
+              </label>
+            </div>
           </div>
-          <SeasonedLogo />
-          <div className="hidden flex-none lg:block">
-            <ul className="menu menu-horizontal">
-              {/* <!-- Navbar menu content here --> */}
-              {links.map(({ href, label }, index) => (
-                <li key={index}>
-                  <Link
-                    href={href}
-                    className="font-serif hover:cursor-pointer hover:underline"
-                  >
-                    {label.toUpperCase()}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="navbar-center">
+            <Link
+              href="/"
+              className="btn-ghost btn font-serif text-xl font-light normal-case"
+            >
+              Seasoned
+              <Image
+                src="/images/fa-carrot.svg"
+                width={28}
+                height={28}
+                alt="Orange carrot icon"
+                className="bounce-once ml-1"
+              />
+            </Link>
           </div>
-          <div className="flex-none">
+          <div className="navbar-end">
+            <div className="hidden flex-none lg:block">
+              <ul className="menu menu-horizontal">
+                {/* <!-- Navbar menu content here --> */}
+                {links.map(({ href, label }, index) => (
+                  <li key={index}>
+                    <Link
+                      href={href}
+                      className="font-serif hover:cursor-pointer hover:underline"
+                    >
+                      {label.toUpperCase()}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
             <SignedIn>
               <button className="btn-ghost btn-circle btn">
                 <div className="indicator">
