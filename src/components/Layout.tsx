@@ -27,133 +27,85 @@ const Nav = (props: PropsWithChildren) => {
   ];
 
   return (
-    <div className="drawer">
-      <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col">
-        {/* <!-- Navbar --> */}
-        <div className="navbar bg-[#BF572B] font-serif text-info drop-shadow-md">
-          <div className="navbar-start">
-            <div className="flex-none lg:hidden">
-              <label htmlFor="my-drawer-3" className="btn-ghost btn-square btn">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="inline-block h-6 w-6 stroke-current"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  ></path>
-                </svg>
-              </label>
-            </div>
-          </div>
-          <div className="navbar-center">
-            <Link
-              href="/"
-              className="btn-ghost btn font-serif text-xl font-light normal-case"
-            >
-              Seasoned
-              <Image
-                src="/images/fa-carrot.svg"
-                width={28}
-                height={28}
-                alt="Orange carrot icon"
-                className="bounce-once ml-1"
-              />
-            </Link>
-          </div>
-          <div className="navbar-end">
-            <div className="hidden flex-none lg:block">
-              <ul className="menu menu-horizontal">
-                {/* <!-- Navbar menu content here --> */}
-                {links.map(({ href, label }, index) => (
-                  <li key={index}>
-                    <Link
-                      href={href}
-                      className="font-serif hover:cursor-pointer hover:underline"
-                    >
-                      {label.toUpperCase()}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <SignedIn>
-              <button className="btn-ghost btn-circle btn">
-                <div className="indicator">
-                  <Link href="/favourites">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m12 21.35-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                      />
-                    </svg>
-                  </Link>
-                </div>
-              </button>
-            </SignedIn>
-            <button className="btn-ghost btn-circle btn">
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-              <SignedOut>
-                <SignInButton>
-                  <button className="btn-ghost btn-circle btn" title="Sign in">
-                    <div className="indicator">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M11 7 9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"
-                        />
-                      </svg>
-                    </div>
-                  </button>
-                </SignInButton>
-              </SignedOut>
-            </button>
-          </div>
-        </div>
-        {/* <!-- Page content here --> */}
-        {props.children}
-      </div>
-      <div className="drawer-side">
-        <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-        <ul className="menu w-80 bg-[#BF572B] p-4 text-info">
-          {/* <!-- Sidebar content here --> */}
-          <SeasonedLogo />
+    <div>
+      <div className="flex flex-col">
+        <Link
+          href="/"
+          className="btn-ghost btn font-serif text-xl font-light normal-case"
+        >
+          Seasoned
+          <Image
+            src="/images/fa-carrot.svg"
+            width={28}
+            height={28}
+            alt="Orange carrot icon"
+            className="bounce-once ml-1"
+          />
+        </Link>
+        <ul>
+          {/* <!-- Navbar menu content here --> */}
           {links.map(({ href, label }, index) => (
             <li key={index}>
               <Link
                 href={href}
-                // className="hover:cursor-pointer hover:underline"
-                className="font-serif"
+                className="font-serif hover:cursor-pointer hover:underline"
               >
                 {label.toUpperCase()}
               </Link>
             </li>
           ))}
         </ul>
+        <SignedIn>
+          <button>
+            <div>
+              <Link href="/favourites">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m12 21.35-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </button>
+        </SignedIn>
+        <button>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <SignInButton>
+              <button title="Sign in">
+                <div className="indicator">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M11 7 9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"
+                    />
+                  </svg>
+                </div>
+              </button>
+            </SignInButton>
+          </SignedOut>
+        </button>
       </div>
+      {props.children}
     </div>
   );
 };
@@ -168,7 +120,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="flex w-full items-center justify-center bg-secondary p-8 text-info">
+    <footer className="flex w-full items-center justify-center bg-green-800 p-8 text-slate-700">
       <div className="flex flex-col flex-wrap p-4 text-base sm:flex-row">
         {founders.map(({ href, label }, index) => (
           <a
@@ -198,7 +150,7 @@ export const PageLayout = (props: PropsWithChildren) => {
   return (
     <>
       <Toaster />
-      <main className="min-h-screen items-center justify-center bg-info">
+      <main className="min-h-screen items-center justify-center bg-primary">
         <Nav>{props.children}</Nav>
       </main>
       <Footer />
