@@ -12,7 +12,7 @@ const Nav = () => {
   ];
 
   return (
-    <div className="flex flex-row justify-center gap-2 bg-[#BF572B] py-8 font-serif font-extrabold drop-shadow-lg">
+    <div className="hidden flex-row justify-center bg-[#BF572B] py-8 text-center font-serif font-extrabold drop-shadow-lg lg:flex">
       <Link
         href="/"
         className="font-serif hover:cursor-pointer hover:underline"
