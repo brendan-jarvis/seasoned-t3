@@ -1,63 +1,83 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { PropsWithChildren } from "react";
+import { Button } from "./ui/button";
 import { Toaster } from "react-hot-toast";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "~/components/ui/navigation-menu";
+
 const SeasonedLogo = () => (
-  <Link
-    href="/"
-    className="btn-ghost btn font-serif text-xl font-light normal-case"
-  >
-    Seasoned
-    <Image
-      src="/images/fa-carrot.svg"
-      width={28}
-      height={28}
-      alt="Orange carrot icon"
-      className="bounce-once ml-1"
-    />
+  <Link href="/">
+    <Button variant="ghost">
+      Seasoned
+      <Image
+        src="/images/fa-carrot.svg"
+        width={28}
+        height={28}
+        alt="Orange carrot icon"
+        className="bounce-once ml-1"
+      />
+    </Button>
   </Link>
 );
 
-const Nav = (props: PropsWithChildren) => {
+const Nav = () => {
   const links = [
     { href: "/recipes", label: "Recipes" },
     { href: "/produce", label: "Produce" },
   ];
 
   return (
-    <div>
-      <div className="flex flex-col">
-        <Link
-          href="/"
-          className="btn-ghost btn font-serif text-xl font-light normal-case"
-        >
-          Seasoned
-          <Image
-            src="/images/fa-carrot.svg"
-            width={28}
-            height={28}
-            alt="Orange carrot icon"
-            className="bounce-once ml-1"
-          />
-        </Link>
-        <ul>
-          {/* <!-- Navbar menu content here --> */}
-          {links.map(({ href, label }, index) => (
-            <li key={index}>
+    <NavigationMenu className="gap-2 bg-[#BF572B] py-8 font-serif font-extrabold drop-shadow-lg">
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuLink>
+            <NavigationMenuLink href="/">
               <Link
-                href={href}
+                href="/"
                 className="font-serif hover:cursor-pointer hover:underline"
               >
-                {label.toUpperCase()}
+                <Button variant="ghost">
+                  Seasoned
+                  <Image
+                    src="/images/fa-carrot.svg"
+                    width={28}
+                    height={28}
+                    alt="Orange carrot icon"
+                    className="bounce-once"
+                  />
+                </Button>
               </Link>
-            </li>
-          ))}
-        </ul>
+            </NavigationMenuLink>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        {links.map(({ href, label }, index) => (
+          <NavigationMenuItem key={index}>
+            <NavigationMenuLink href={href}>
+              <Button variant="ghost">
+                <Link
+                  href={href}
+                  className="font-serif hover:cursor-pointer hover:underline"
+                >
+                  {label.toUpperCase()}
+                </Link>
+              </Button>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        ))}
         <SignedIn>
-          <button>
-            <div>
+          <Button variant="ghost">
+            <div className="indicator">
               <Link href="/favourites">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -75,15 +95,15 @@ const Nav = (props: PropsWithChildren) => {
                 </svg>
               </Link>
             </div>
-          </button>
+          </Button>
         </SignedIn>
-        <button>
+        <Button variant="ghost">
           <SignedIn>
             <UserButton />
           </SignedIn>
           <SignedOut>
             <SignInButton>
-              <button title="Sign in">
+              <Button variant="ghost" title="Sign in">
                 <div className="indicator">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -100,13 +120,12 @@ const Nav = (props: PropsWithChildren) => {
                     />
                   </svg>
                 </div>
-              </button>
+              </Button>
             </SignInButton>
           </SignedOut>
-        </button>
-      </div>
-      {props.children}
-    </div>
+        </Button>
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 };
 
@@ -120,7 +139,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="flex w-full items-center justify-center bg-green-800 p-8 text-slate-700">
+    <footer className="text-info flex w-full items-center justify-center bg-lime-800 p-8">
       <div className="flex flex-col flex-wrap p-4 text-base sm:flex-row">
         {founders.map(({ href, label }, index) => (
           <a
@@ -150,8 +169,9 @@ export const PageLayout = (props: PropsWithChildren) => {
   return (
     <>
       <Toaster />
-      <main className="min-h-screen items-center justify-center bg-primary">
-        <Nav>{props.children}</Nav>
+      <Nav />
+      <main className="bg-info min-h-screen items-center justify-center">
+        {props.children}
       </main>
       <Footer />
     </>
