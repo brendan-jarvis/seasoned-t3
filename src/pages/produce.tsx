@@ -3,7 +3,7 @@ import Head from "next/head";
 import { AvailabilityType, ProduceType } from "@prisma/client";
 
 import { PageLayout } from "~/components/Layout";
-import { Badge } from "~/components/Badge";
+import { Badge } from "~/components/ui/badge";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 
 import { api } from "~/utils/api";
@@ -30,10 +30,26 @@ const Produce: NextPage = () => {
     availability: [AvailabilityType.Available],
   });
 
+  const uniqueProduce = data
+    ?.filter(
+      (item, index, self) =>
+        index ===
+        self.findIndex(
+          (t) => t.title.split(" - ")[0] === item.title.split(" - ")[0]
+        )
+    )
+    .sort((a, b) => a.title.localeCompare(b.title))
+    .map((obj) => {
+      return {
+        ...obj,
+        title: obj.title.split(" - ")[0],
+      };
+    });
+
   let fruitInSeason, vegetablesInSeason, otherProduceInSeason;
 
-  if (data) {
-    fruitInSeason = data.filter((item) =>
+  if (uniqueProduce) {
+    fruitInSeason = uniqueProduce.filter((item) =>
       [
         ProduceType.Fruit,
         ProduceType.SpecialtyFruit,
@@ -42,13 +58,13 @@ const Produce: NextPage = () => {
       ].some((type) => item.type === type)
     );
 
-    vegetablesInSeason = data.filter((item) =>
+    vegetablesInSeason = uniqueProduce.filter((item) =>
       [ProduceType.Vegetable, ProduceType.SpecialtyVegetable].some(
         (type) => item.type === type
       )
     );
 
-    otherProduceInSeason = data.filter((item) =>
+    otherProduceInSeason = uniqueProduce.filter((item) =>
       [ProduceType.EdibleFlower, ProduceType.Herb].some(
         (type) => item.type === type
       )
@@ -85,14 +101,17 @@ const Produce: NextPage = () => {
             season.
           </p>
         ) : (
-          <div className="flex flex-wrap gap-4 px-4 pb-8">
+          <div className="flex flex-wrap justify-center gap-4 px-4 pb-8">
             <div>
               <h4 className="text-lg font-bold text-seasoned-green">Fruit</h4>
               <ol className="text-foreground">
                 {fruitInSeason &&
                   fruitInSeason.map((fruit) => (
                     <li key={fruit.id} className="p-1">
-                      <Badge color="red">{fruit.type}</Badge> {fruit.title}
+                      <Badge variant="outline" className="border-rose-500">
+                        {fruit.type}
+                      </Badge>{" "}
+                      {fruit.title}
                     </li>
                   ))}
               </ol>
@@ -105,7 +124,9 @@ const Produce: NextPage = () => {
                 {vegetablesInSeason &&
                   vegetablesInSeason.map((vegetable) => (
                     <li key={vegetable.id} className="p-1">
-                      <Badge color="blue">{vegetable.type}</Badge>{" "}
+                      <Badge variant="outline" className="border-sky-500">
+                        Vegetable
+                      </Badge>{" "}
                       {vegetable.title}
                     </li>
                   ))}
@@ -117,7 +138,14 @@ const Produce: NextPage = () => {
                 {otherProduceInSeason &&
                   otherProduceInSeason.map((item) => (
                     <li key={item.id} className="p-1">
-                      <Badge color="green">{item.type}</Badge> {item.title}
+                      <Badge
+                        variant="outline"
+                        className="border-emerald-500"
+                        color="green"
+                      >
+                        {item.type}
+                      </Badge>{" "}
+                      {item.title}
                     </li>
                   ))}
               </ol>
