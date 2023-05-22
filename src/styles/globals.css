@@ -4,6 +4,9 @@
 
 @layer base {
   :root {
+    --seasoned-orange: 33, 97%, 36%;
+    --seasoned-green: 154, 32%, 31%;
+
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
 
@@ -37,6 +40,9 @@
   }
 
   .dark {
+    --seasoned-orange: 33, 97%, 36%;
+    --seasoned-green: 154, 32%, 31%;
+
     --background: 224 71% 4%;
     --foreground: 213 31% 91%;
 
@@ -70,7 +76,7 @@
   }
 }
 
-@layer base {
+/* @layer base {
   * {
     @apply border-border;
   }
@@ -78,7 +84,7 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-}
+} */
 
 @keyframes custom-bounce {
   0%,

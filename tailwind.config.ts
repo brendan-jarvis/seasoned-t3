@@ -18,6 +18,8 @@ export default {
     },
     extend: {
       colors: {
+        "seasoned-orange": "hsl(var(--seasoned-orange))",
+        "seasoned-green": "hsl(var(--seasoned-green))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
