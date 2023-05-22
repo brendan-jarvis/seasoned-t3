@@ -30,7 +30,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           --font-bree-serif: ${breeSerif.style.fontFamily};
         }
       `}</style>
-      <ThemeProvider enableSystem={true}>
+      <ThemeProvider attribute="class">
         <Component {...pageProps} />
       </ThemeProvider>
     </ClerkProvider>
