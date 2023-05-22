@@ -27,7 +27,7 @@ const Recipes: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <h1 className="p-4 text-center text-4xl font-bold tracking-wide text-secondary">
+        <h1 className="p-4 text-center text-4xl font-bold tracking-wide text-seasoned-green">
           Recipes
         </h1>
 
@@ -35,7 +35,7 @@ const Recipes: NextPage = () => {
           {isLoading ? (
             <LoadingSpinner size={64} />
           ) : !data ? (
-            <p className="text-center text-lg font-semibold text-red-600">
+            <p className="text-center text-lg font-semibold text-destructive">
               Sorry, Seasoned was unable to load recipes.
             </p>
           ) : (

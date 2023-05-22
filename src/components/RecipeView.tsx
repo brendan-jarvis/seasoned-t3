@@ -12,8 +12,10 @@ export const RecipeView = (recipe: Recipe) => {
       <h2 className="text-center text-2xl font-bold tracking-wider text-primary">
         {recipe.title}
       </h2>
-      <p className="text-sm font-thin text-gray-600">By {recipe.byline}</p>
-      <p className="text-sm font-thin text-gray-600">
+      <p className="text-sm font-thin text-gray-600 dark:text-gray-400">
+        By {recipe.byline}
+      </p>
+      <p className="text-sm font-thin text-gray-600 dark:text-gray-400">
         Added {dayjs(recipe.createdAt).fromNow()}
         {recipe.updatedAt !== recipe.createdAt &&
           ` (updated ${dayjs(recipe.updatedAt).fromNow()})`}
@@ -26,32 +28,32 @@ export const RecipeView = (recipe: Recipe) => {
       />
 
       {recipe.prepTime && (
-        <p className="font-thin">
+        <p className="font-thin text-gray-600 dark:text-gray-400">
           Prep time: <span className="font-light">{recipe.prepTime}</span>
         </p>
       )}
       {recipe.cookTime && (
-        <p className="font-thin">
+        <p className="font-thin text-gray-600 dark:text-gray-400">
           Cook time: <span className="font-light">{recipe.cookTime}</span>
         </p>
       )}
       {recipe.totalTime && (
-        <p className="font-thin">
+        <p className="font-thin text-gray-600 dark:text-gray-400">
           Total time: <span className="font-light">{recipe.totalTime}</span>
         </p>
       )}
-      <h3 className="text-lg font-bold tracking-wider text-gray-900">
+      <h3 className="text-lg font-bold tracking-wider text-gray-900 dark:text-gray-300">
         Ingredients
       </h3>
       {recipe.serves && (
-        <p className="font-sans text-sm font-thin text-gray-600">
+        <p className="font-sans text-sm font-thin text-gray-600 dark:text-gray-400">
           Serves: <span className="font-light">{recipe.serves}</span>
         </p>
       )}
-      <ul className="text-black">
+      <ul className="text-foreground">
         {recipe.ingredientSegments.map((segment) => (
           <li key={segment.id}>
-            <h4 className="mb-1 py-2 font-semibold tracking-wider text-gray-900">
+            <h4 className="mb-1 py-2 font-semibold tracking-wider text-gray-900 dark:text-gray-300">
               {segment.title}
             </h4>{" "}
             {segment.ingredients.map((ingredient) => (
@@ -62,18 +64,21 @@ export const RecipeView = (recipe: Recipe) => {
           </li>
         ))}
       </ul>
-      <h3 className="text-lg font-bold tracking-wider text-gray-900">
+      <h3 className="text-lg font-bold tracking-wider text-gray-900 dark:text-gray-300">
         Instructions
       </h3>
       <ol className="mx-auto max-w-4xl px-4 font-sans text-gray-800 sm:px-6 lg:px-8">
         {recipe.instructions.map((instruction, index) => (
           <>
             {instruction.title && (
-              <h4 className="mb-1 p-2 tracking-wider text-gray-950">
+              <h4 className="mb-1 p-2 tracking-wider text-gray-950 dark:text-gray-300">
                 {instruction.title}
               </h4>
             )}
-            <li key={index} className="p-2 text-base leading-relaxed">
+            <li
+              key={index}
+              className="p-2 text-base leading-relaxed text-foreground"
+            >
               {instruction.content}
             </li>
           </>
@@ -84,7 +89,7 @@ export const RecipeView = (recipe: Recipe) => {
           href={recipe.sourceURL}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-4 font-light text-gray-800 underline"
+          className="p-4 font-light text-gray-900 underline dark:text-gray-300"
         >
           View full recipe on{" "}
           {recipe.sourceURL.replace(
