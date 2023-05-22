@@ -6,6 +6,8 @@ import { PageLayout } from "~/components/Layout";
 import { Badge } from "~/components/ui/badge";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 
+import { Flower, Snowflake, Sun, Leaf } from "lucide-react";
+
 import { api } from "~/utils/api";
 
 const Produce: NextPage = () => {
@@ -24,6 +26,18 @@ const Produce: NextPage = () => {
     | "october"
     | "november"
     | "december";
+
+  const currentSeason = (month: string) => {
+    if (month === "december" || month === "january" || month === "february") {
+      return <Sun color="gold" className="inline" />;
+    } else if (month === "march" || month === "april" || month === "may") {
+      return <Leaf color="orange" className="inline" />;
+    } else if (month === "june" || month === "july" || month === "august") {
+      return <Snowflake color="cyan" className="inline" />;
+    } else {
+      return <Flower color="pink" className="inline" />;
+    }
+  };
 
   const { data, isLoading } = api.produce.getAllByMonth.useQuery({
     month: currentMonth,
@@ -89,9 +103,8 @@ const Produce: NextPage = () => {
       <PageLayout>
         <h1 className="py-8 text-center text-4xl font-bold tracking-wide text-seasoned-green">
           Produce in season this{" "}
-          <span className="font-bold text-seasoned-orange">
-            {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
-          </span>
+          {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
+          {currentSeason(currentMonth)}
         </h1>
         {isLoading ? (
           <LoadingSpinner size={64} />
