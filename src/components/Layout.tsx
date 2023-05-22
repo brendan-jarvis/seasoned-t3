@@ -4,8 +4,20 @@ import type { PropsWithChildren } from "react";
 import { Button } from "./ui/button";
 import { Toaster } from "react-hot-toast";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { useTheme } from "next-themes";
+import { Moon, Sun } from "lucide-react";
 
 const Nav = () => {
+  const { theme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    if (theme === "dark") {
+      return <Sun color="white" onClick={() => setTheme("light")} />;
+    }
+
+    return <Moon color="white" onClick={() => setTheme("dark")} />;
+  };
+
   const links = [
     { href: "/recipes", label: "Recipes" },
     { href: "/produce", label: "Produce" },
@@ -86,6 +98,12 @@ const Nav = () => {
             </Button>
           </SignInButton>
         </SignedOut>
+      </Button>
+      <Button
+        variant="ghost"
+        title={`Set theme to ${theme === "dark" ? "light" : "dark"} mode.`}
+      >
+        {toggleTheme()}
       </Button>
     </div>
   );
