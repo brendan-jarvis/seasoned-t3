@@ -50,16 +50,16 @@ const Home: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <div className="flex min-h-screen flex-col items-center justify-center bg-info">
+        <div className="flex min-h-screen flex-col items-center justify-center">
           <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-            <h1 className="text-5xl font-extrabold tracking-tight text-primary drop-shadow-md sm:text-[5rem]">
+            <h1 className="text-5xl font-extrabold tracking-tight text-seasoned-orange drop-shadow-md sm:text-[5rem]">
               Seasoned
             </h1>
-            <p className="font-sans text-sm text-gray-900">
+            <p className="font-sans text-sm text-gray-900 dark:text-gray-500">
               Search ingredients in season to find delicious recipes!
             </p>
             <div>
-              <h2 className="text-xl font-bold tracking-tight text-secondary">
+              <h2 className="text-xl font-bold tracking-tight text-seasoned-green">
                 Seasonal Produce this{" "}
                 {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
               </h2>
@@ -70,7 +70,7 @@ const Home: NextPage = () => {
                   uniqueProduce?.map((title, index) => (
                     <div
                       key={index}
-                      className="w-32 rounded-lg text-gray-950 shadow-xl drop-shadow-lg"
+                      className="w-32 rounded-lg bg-accent text-gray-950 shadow-xl"
                     >
                       <figure>
                         <Image
@@ -82,7 +82,7 @@ const Home: NextPage = () => {
                         />
                       </figure>
                       <div className="">
-                        <h2 className="mt-6 pb-0 text-center font-sans font-medium">
+                        <h2 className="mt-6 pb-0 text-center font-sans font-medium text-foreground">
                           {title}
                         </h2>
                       </div>
