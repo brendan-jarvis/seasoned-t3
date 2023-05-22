@@ -71,9 +71,9 @@ const Produce: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <h1 className="py-8 text-center text-4xl font-bold tracking-wide text-secondary">
+        <h1 className="py-8 text-center text-4xl font-bold tracking-wide text-seasoned-green">
           Produce in season this{" "}
-          <span className="font-bold text-primary">
+          <span className="font-bold text-seasoned-orange">
             {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
           </span>
         </h1>
@@ -87,8 +87,8 @@ const Produce: NextPage = () => {
         ) : (
           <div className="flex flex-wrap gap-4 px-4 pb-8">
             <div>
-              <h4 className="text-lg font-bold text-primary">Fruit</h4>
-              <ol className="text-black">
+              <h4 className="text-lg font-bold text-seasoned-green">Fruit</h4>
+              <ol className="text-foreground">
                 {fruitInSeason &&
                   fruitInSeason.map((fruit) => (
                     <li key={fruit.id} className="p-1">
@@ -98,8 +98,10 @@ const Produce: NextPage = () => {
               </ol>
             </div>
             <div>
-              <h4 className="text-lg font-bold text-primary">Vegetables</h4>
-              <ol className="text-black">
+              <h4 className="text-lg font-bold text-seasoned-green">
+                Vegetables
+              </h4>
+              <ol className="text-foreground">
                 {vegetablesInSeason &&
                   vegetablesInSeason.map((vegetable) => (
                     <li key={vegetable.id} className="p-1">
@@ -110,8 +112,8 @@ const Produce: NextPage = () => {
               </ol>
             </div>
             <div>
-              <h4 className="text-lg font-bold text-primary">Other</h4>
-              <ol className="text-black">
+              <h4 className="text-lg font-bold text-seasoned-green">Other</h4>
+              <ol className="text-foreground">
                 {otherProduceInSeason &&
                   otherProduceInSeason.map((item) => (
                     <li key={item.id} className="p-1">
