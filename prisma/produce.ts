@@ -2502,7 +2502,7 @@ export const produce = [
   },
   {
     authorId: "prismaSeed",
-    title: "Carrots - Purple Table",
+    title: "Carrot - Purple Table",
     type: ProduceType.SpecialtyVegetable,
     seasonality: {
       create: {
@@ -2523,7 +2523,7 @@ export const produce = [
   },
   {
     authorId: "prismaSeed",
-    title: "Carrots - White Table",
+    title: "Carrot - White Table",
     type: ProduceType.SpecialtyVegetable,
     seasonality: {
       create: {
@@ -2544,7 +2544,7 @@ export const produce = [
   },
   {
     authorId: "prismaSeed",
-    title: "Carrots - Yellow Table",
+    title: "Carrot - Yellow Table",
     type: ProduceType.SpecialtyVegetable,
     seasonality: {
       create: {
