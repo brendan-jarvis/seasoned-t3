@@ -28,11 +28,47 @@ const Home: NextPage = () => {
     availability: [AvailabilityType.Available],
   });
 
-  const sortedProduce = data?.sort((a, b) => a.title.localeCompare(b.title));
+  const ProduceCarousel = () => {
+    const sortedProduce = data?.sort((a, b) => a.title.localeCompare(b.title));
 
-  const uniqueProduce = [
-    ...new Set(sortedProduce?.map((item) => item.title.split(" - ")[0])),
-  ];
+    const uniqueProduce = [
+      ...new Set(sortedProduce?.map((item) => item.title.split(" - ")[0])),
+    ];
+
+    return (
+      <div>
+        <h2 className="mb-2 text-xl font-bold tracking-tight text-seasoned-green">
+          Seasonal Produce this{" "}
+          {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
+        </h2>
+        <div className="flex justify-center">
+          <div className="grid h-auto grid-flow-col gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              uniqueProduce?.map((title, index) => (
+                <div
+                  key={index}
+                  className="h-32 w-32 rounded-lg border bg-card text-card-foreground shadow-sm"
+                >
+                  <Image
+                    src="/images/inigo-de-la-maza-s285sDw5Ikc-unsplash.jpg"
+                    width={200}
+                    height={200}
+                    alt={title ? title : "Produce"}
+                    className="rounded-t-lg"
+                  />
+                  <h2 className="justify-center text-center text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    {title}
+                  </h2>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -50,47 +86,17 @@ const Home: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <div className="flex min-h-screen flex-col items-center justify-center">
-          <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-            <h1 className="text-5xl font-extrabold tracking-tight text-seasoned-orange drop-shadow-md sm:text-[5rem]">
+        <div className="flex flex-col items-center justify-center gap-24 py-8 text-center">
+          <div className="container">
+            <h1 className="mb-8 text-5xl font-extrabold tracking-tight text-seasoned-orange drop-shadow-md sm:text-[5rem]">
               Seasoned
             </h1>
             <p className="font-sans text-sm text-gray-900 dark:text-gray-500">
               Search ingredients in season to find delicious recipes!
             </p>
-            <div>
-              <h2 className="text-xl font-bold tracking-tight text-seasoned-green">
-                Seasonal Produce this{" "}
-                {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
-              </h2>
-              <div className="grid max-w-2xl grid-flow-col gap-2 overflow-x-scroll p-2">
-                {isLoading ? (
-                  <p>Loading...</p>
-                ) : (
-                  uniqueProduce?.map((title, index) => (
-                    <div
-                      key={index}
-                      className="w-32 rounded-lg bg-accent text-gray-950 shadow-xl"
-                    >
-                      <figure>
-                        <Image
-                          src="/images/inigo-de-la-maza-s285sDw5Ikc-unsplash.jpg"
-                          width={500}
-                          height={500}
-                          alt={title ? title : "Produce"}
-                          className="rounded-t-lg"
-                        />
-                      </figure>
-                      <div className="">
-                        <h2 className="mt-6 pb-0 text-center font-sans font-medium text-foreground">
-                          {title}
-                        </h2>
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
+          </div>
+          <div className="container">
+            <ProduceCarousel />
           </div>
         </div>
       </PageLayout>
