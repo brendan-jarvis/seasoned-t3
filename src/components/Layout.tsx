@@ -10,14 +10,6 @@ import { Moon, Sun } from "lucide-react";
 const Nav = () => {
   const { theme, setTheme } = useTheme();
 
-  const toggleTheme = () => {
-    if (theme === "dark") {
-      return <Sun color="white" onClick={() => setTheme("light")} />;
-    }
-
-    return <Moon color="white" onClick={() => setTheme("dark")} />;
-  };
-
   const links = [
     { href: "/recipes", label: "Recipes" },
     { href: "/produce", label: "Produce" },
@@ -99,12 +91,23 @@ const Nav = () => {
           </SignInButton>
         </SignedOut>
       </Button>
-      <Button
-        variant="ghost"
-        title={`Set theme to ${theme === "dark" ? "light" : "dark"} mode.`}
-      >
-        {toggleTheme()}
-      </Button>
+      {theme === "dark" ? (
+        <Button
+          variant="ghost"
+          title="Light mode"
+          onClick={() => setTheme("light")}
+        >
+          <Sun />
+        </Button>
+      ) : (
+        <Button
+          variant="ghost"
+          title="Dark mode"
+          onClick={() => setTheme("dark")}
+        >
+          <Moon />
+        </Button>
+      )}
     </div>
   );
 };
@@ -150,7 +153,7 @@ export const PageLayout = (props: PropsWithChildren) => {
     <>
       <Toaster />
       <Nav />
-      <main className="bg-info min-h-screen items-center justify-center">
+      <main className="min-h-screen items-center justify-center bg-background text-foreground dark:bg-background dark:text-foreground">
         {props.children}
       </main>
       <Footer />
