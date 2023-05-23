@@ -33,6 +33,15 @@ const Home: NextPage = () => {
     availability: [AvailabilityType.Available],
   });
 
+  const searchRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (searchRef.current) {
+      console.log(searchRef.current.value);
+    }
+  };
+
   const ProduceCarousel = () => {
     const sortedProduce = data?.sort((a, b) => a.title.localeCompare(b.title));
 
@@ -73,15 +82,6 @@ const Home: NextPage = () => {
         </div>
       </div>
     );
-  };
-
-  const searchRef = useRef<HTMLInputElement>(null);
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (searchRef.current) {
-      console.log(searchRef.current.value);
-    }
   };
 
   return (
