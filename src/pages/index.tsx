@@ -9,6 +9,7 @@ import { LoadingSpinner } from "~/components/LoadingSpinner";
 import { Search } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
+import { useRef } from "react";
 
 const Home: NextPage = () => {
   const currentMonth = new Date()
@@ -74,6 +75,15 @@ const Home: NextPage = () => {
     );
   };
 
+  const searchRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (searchRef.current) {
+      console.log(searchRef.current.value);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -109,12 +119,17 @@ const Home: NextPage = () => {
               Search ingredients in season to find delicious recipes!
             </p>
 
-            <div className="mx-auto flex w-full max-w-sm justify-center space-x-2 pb-8 text-center">
-              <Input type="text" placeholder="Search" />
-              <Button variant="ghost" type="submit">
-                <Search />
-              </Button>
-            </div>
+            <form
+              className="mx-auto flex w-full max-w-sm justify-center space-x-2 pb-8 text-center"
+              onSubmit={handleSubmit}
+            >
+              <div className="flex w-full max-w-sm justify-center space-x-2 text-center">
+                <Input type="text" ref={searchRef} placeholder="Search" />
+                <Button variant="ghost" type="submit">
+                  <Search />
+                </Button>
+              </div>
+            </form>
           </div>
           <div className="container">
             <ProduceCarousel />
