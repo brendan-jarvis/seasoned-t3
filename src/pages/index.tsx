@@ -89,9 +89,19 @@ const Home: NextPage = () => {
       <PageLayout>
         <div className="flex flex-col items-center justify-center gap-24 py-8 text-center">
           <div className="container">
-            <h1 className="mb-8 text-5xl font-extrabold tracking-tight text-seasoned-orange drop-shadow-md sm:text-[5rem]">
-              Seasoned
-            </h1>
+            <div className="flex items-baseline justify-center text-center">
+              <h1 className="my-8 text-2xl font-semibold tracking-tight text-seasoned-green drop-shadow-md sm:text-[5rem]">
+                Seasoned
+              </h1>
+              <Image
+                src="/images/fa-carrot.svg"
+                width={64}
+                height={64}
+                alt="Orange carrot icon"
+                className="bounce-once ml-1"
+              />
+            </div>
+
             <p className="font-sans text-sm text-gray-900 dark:text-gray-500">
               Search ingredients in season to find delicious recipes!
             </p>
