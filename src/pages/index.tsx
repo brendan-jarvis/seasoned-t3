@@ -5,6 +5,7 @@ import Image from "next/image";
 import { PageLayout } from "~/components/Layout";
 import { api } from "~/utils/api";
 import { AvailabilityType } from "@prisma/client";
+import { LoadingSpinner } from "~/components/LoadingSpinner";
 
 const Home: NextPage = () => {
   const currentMonth = new Date()
@@ -44,7 +45,7 @@ const Home: NextPage = () => {
         <div className="flex justify-center">
           <div className="grid h-auto grid-flow-col gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
             {isLoading ? (
-              <p>Loading...</p>
+              <LoadingSpinner />
             ) : (
               uniqueProduce?.map((title, index) => (
                 <div
