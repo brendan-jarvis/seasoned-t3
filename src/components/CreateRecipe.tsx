@@ -4,6 +4,7 @@ import { useUser } from "@clerk/nextjs";
 
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 import { api } from "~/utils/api";
+import { Button } from "./ui/button";
 
 type TextInputProps = {
   label: string;
@@ -228,7 +229,7 @@ export const CreateRecipe = () => {
 
       {/* <button className="btn-primary btn" onClick={() => mutate(input)}> */}
       <Button
-        variant="ghost"
+        className="mb-4 bg-emerald-500 font-serif text-lg"
         onClick={() => toast.success(JSON.stringify(input, null, 2))}
       >
         Submit
