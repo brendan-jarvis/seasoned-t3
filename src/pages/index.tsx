@@ -6,6 +6,9 @@ import { PageLayout } from "~/components/Layout";
 import { api } from "~/utils/api";
 import { AvailabilityType } from "@prisma/client";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
+import { Search } from "lucide-react";
+import { Button } from "~/components/ui/button";
+import { Input } from "~/components/ui/input";
 
 const Home: NextPage = () => {
   const currentMonth = new Date()
@@ -87,7 +90,7 @@ const Home: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <div className="flex flex-col items-center justify-center gap-24 py-8 text-center">
+        <div className="flex flex-col items-center justify-center py-8 text-center">
           <div className="container">
             <div className="flex items-baseline justify-center text-center">
               <h1 className="my-8 text-2xl font-semibold tracking-tight text-seasoned-green drop-shadow-md sm:text-[5rem]">
@@ -102,9 +105,16 @@ const Home: NextPage = () => {
               />
             </div>
 
-            <p className="font-sans text-sm text-gray-900 dark:text-gray-500">
+            <p className="mb-4 font-sans text-sm text-gray-900 dark:text-gray-500">
               Search ingredients in season to find delicious recipes!
             </p>
+
+            <div className="mx-auto flex w-full max-w-sm justify-center space-x-2 pb-8 text-center">
+              <Input type="text" placeholder="Search" />
+              <Button variant="ghost" type="submit">
+                <Search />
+              </Button>
+            </div>
           </div>
           <div className="container">
             <ProduceCarousel />
