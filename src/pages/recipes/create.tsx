@@ -25,16 +25,16 @@ const Create: NextPage = () => {
       </Head>
       <PageLayout>
         <SignedIn>
-          <h1 className="p-4 text-center text-4xl font-bold tracking-wide text-secondary">
+          <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-foreground">
             Create a recipe!
           </h1>
           <CreateRecipe />
         </SignedIn>
         <SignedOut>
-          <h1 className="p-4 text-center text-4xl font-bold tracking-wide text-secondary">
+          <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-foreground">
             Sign in to create a recipe!
           </h1>
-          <p className="text-center text-2xl text-secondary">
+          <p className="text-center text-2xl text-foreground">
             Please sign in to create a recipe.
           </p>
         </SignedOut>

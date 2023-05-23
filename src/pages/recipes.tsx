@@ -27,7 +27,7 @@ const Recipes: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <h1 className="p-4 text-center text-4xl font-bold tracking-wide text-seasoned-green">
+        <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
           Recipes
         </h1>
 
