@@ -1,4 +1,5 @@
 import { type NextPage } from "next";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -12,6 +13,7 @@ import { Input } from "~/components/ui/input";
 import { useRef } from "react";
 
 const Home: NextPage = () => {
+  const router = useRouter();
   const currentMonth = new Date()
     .toLocaleString("default", { month: "long" })
     .toLowerCase() as
@@ -38,7 +40,7 @@ const Home: NextPage = () => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (searchRef.current) {
-      console.log(searchRef.current.value);
+      void router.push(`/search/${searchRef.current.value}`);
     }
   };
 
