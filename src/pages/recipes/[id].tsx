@@ -70,7 +70,6 @@ const ViewRecipe: NextPage = () => {
                 alt={`${recipe.title} photo`}
                 width={300}
                 height={300}
-                placeholder="blur"
               />
 
               {recipe.prepTime && (

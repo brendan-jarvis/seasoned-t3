@@ -75,7 +75,6 @@ const Recipes: NextPage = () => {
                           width={350}
                           height={200}
                           alt={recipe.title}
-                          placeholder="blur"
                           className="rounded-md"
                         />
                       </CardContent>
