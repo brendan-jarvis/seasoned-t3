@@ -53,6 +53,60 @@ export const recipesRouter = createTRPCRouter({
       return recipe;
     }),
 
+  findMany: publicProcedure
+    .input(
+      z.object({
+        query: z.string().min(3),
+        limit: z.optional(z.number()),
+        offset: z.optional(z.number()),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const recipes = await ctx.prisma.recipe.findMany({
+        take: input.limit || 10,
+        skip: input.offset || 0,
+        orderBy: { id: "asc" },
+        where: {
+          OR: [
+            { title: { contains: input.query } },
+            {
+              ingredientSegments: {
+                some: {
+                  ingredients: { some: { content: { contains: input.query } } },
+                },
+              },
+            },
+            {
+              tags: {
+                some: {
+                  name: { contains: input.query },
+                },
+              },
+            },
+          ],
+        },
+        include: {
+          ingredientSegments: {
+            include: {
+              ingredients: { select: { content: true } },
+            },
+          },
+          instructions: { select: { title: true, content: true } },
+
+          tags: true,
+        },
+      });
+
+      if (!recipes) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "No matching recipes found",
+        });
+      }
+
+      return recipes;
+    }),
+
   create: privateProcedure
     .input(
       z.object({
