@@ -23,9 +23,10 @@ import Link from "next/link";
 import { Skeleton } from "~/components/ui/skeleton";
 
 const Recipes: NextPage = () => {
-  const { data, isLoading } = api.recipes.getAll.useQuery();
-
-  console.log(data);
+  const { data, isLoading } = api.recipes.getAll.useQuery() as {
+    data: Recipe[];
+    isLoading: boolean;
+  };
 
   return (
     <>
