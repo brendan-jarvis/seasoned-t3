@@ -6,9 +6,7 @@ export type RecipeWithIngredients = Prisma.RecipeGetPayload<{
       include: {
         ingredients: {
           select: {
-            amount: true;
-            unit: true;
-            name: true;
+            content: true;
           };
         };
       };
