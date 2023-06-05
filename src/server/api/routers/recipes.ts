@@ -17,7 +17,7 @@ export const recipesRouter = createTRPCRouter({
       include: {
         ingredientSegments: {
           include: {
-            ingredients: { select: { amount: true, unit: true, name: true } },
+            ingredients: { select: { content: true } },
           },
         },
         instructions: { select: { title: true, content: true } },
@@ -55,9 +55,7 @@ export const recipesRouter = createTRPCRouter({
               title: z.string(),
               ingredients: z.array(
                 z.object({
-                  amount: z.string(),
-                  unit: z.string(),
-                  name: z.string(),
+                  content: z.string(),
                 })
               ),
             })
@@ -88,9 +86,7 @@ export const recipesRouter = createTRPCRouter({
               title: segment.title,
               ingredients: {
                 create: segment.ingredients.map((ingredient) => ({
-                  amount: ingredient.amount,
-                  unit: ingredient.unit,
-                  name: ingredient.name,
+                  content: ingredient.content,
                 })),
               },
             })),
@@ -103,10 +99,9 @@ export const recipesRouter = createTRPCRouter({
           },
           tags: input.tags
             ? {
-                connectOrCreate: input.tags.map(({ name }) => {
+                create: input.tags.map(({ name }) => {
                   return {
-                    where: { name },
-                    create: { name },
+                    name: name,
                   };
                 }),
               }
