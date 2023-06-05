@@ -78,17 +78,17 @@ const ViewRecipe: NextPage = () => {
                 <Button
                   variant="outline"
                   disabled={offset === 0}
-                  onClick={() =>
-                    router.push({
+                  onClick={() => {
+                    void router.push({
                       query: { query: query, limit, offset: offset - limit },
-                    })
-                  }
+                    });
+                  }}
                 >
                   Previous
                 </Button>
                 <Button
                   onClick={() =>
-                    router.push({
+                    void router.push({
                       query: { query: query, limit, offset: offset + limit },
                     })
                   }
