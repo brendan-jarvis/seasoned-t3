@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import Head from "next/head";
 
 import type { NextPage } from "next";
@@ -6,10 +9,22 @@ import { api } from "~/utils/api";
 
 import { PageLayout } from "~/components/Layout";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
-import { RecipeView } from "~/components/RecipeView";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "~/components/ui/card";
+import { Badge } from "~/components/ui/badge";
+import Image from "next/image";
+import Link from "next/link";
 
 const Recipes: NextPage = () => {
   const { data, isLoading } = api.recipes.getAll.useQuery();
+
+  console.log(data);
 
   return (
     <>
@@ -39,9 +54,49 @@ const Recipes: NextPage = () => {
               Sorry, Seasoned was unable to load recipes.
             </p>
           ) : (
-            data?.map((recipe: Recipe) => (
-              <RecipeView key={recipe.id} {...recipe} />
-            ))
+            <div className="flex flex-grow flex-wrap justify-center">
+              {data.map((recipe: Recipe) => (
+                <Card key={recipe.id} className="w-[350px]">
+                  <Link href={`/recipes/${recipe.id}`}>
+                    <CardHeader>
+                      <CardTitle className="font-serif">
+                        {recipe.title}
+                      </CardTitle>
+                      {recipe.description && (
+                        <CardDescription className="text-sm">
+                          {recipe.description}
+                        </CardDescription>
+                      )}
+                    </CardHeader>
+                    {recipe.byline && (
+                      <CardContent>
+                        <Image
+                          src={recipe.image}
+                          width={350}
+                          height={200}
+                          alt={recipe.title}
+                          placeholder="blur"
+                          className="rounded-md"
+                        />
+                      </CardContent>
+                    )}
+                    {recipe.tags && (
+                      <CardFooter className="flex flex-wrap gap-2">
+                        {recipe.tags.map((tag) => (
+                          <Badge
+                            key={tag.id}
+                            variant="outline"
+                            className="font-serif"
+                          >
+                            {tag.name}
+                          </Badge>
+                        ))}
+                      </CardFooter>
+                    )}
+                  </Link>
+                </Card>
+              ))}
+            </div>
           )}
         </div>
       </PageLayout>
