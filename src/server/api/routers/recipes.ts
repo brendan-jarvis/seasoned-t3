@@ -97,6 +97,28 @@ export const recipesRouter = createTRPCRouter({
         },
       });
 
+      const count = await ctx.prisma.recipe.count({
+        where: {
+          OR: [
+            { title: { contains: input.query } },
+            {
+              ingredientSegments: {
+                some: {
+                  ingredients: { some: { content: { contains: input.query } } },
+                },
+              },
+            },
+            {
+              tags: {
+                some: {
+                  name: { contains: input.query },
+                },
+              },
+            },
+          ],
+        },
+      });
+
       if (!recipes) {
         throw new TRPCError({
           code: "NOT_FOUND",
@@ -104,7 +126,7 @@ export const recipesRouter = createTRPCRouter({
         });
       }
 
-      return recipes;
+      return { recipes, count };
     }),
 
   create: privateProcedure
