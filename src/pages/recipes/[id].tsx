@@ -15,6 +15,7 @@ import Link from "next/link";
 
 import { ExternalLink } from "lucide-react";
 import { Button } from "~/components/ui/button";
+import { Skeleton } from "~/components/ui/skeleton";
 
 const ViewRecipe: NextPage = () => {
   const router = useRouter();
@@ -65,12 +66,16 @@ const ViewRecipe: NextPage = () => {
                 {recipe.updatedAt !== recipe.createdAt &&
                   ` (updated ${dayjs(recipe.updatedAt).toString()})`}
               </p>
-              <Image
-                src={recipe.image}
-                alt={`${recipe.title} photo`}
-                width={300}
-                height={300}
-              />
+              {recipe.image ? (
+                <Image
+                  src={recipe.image}
+                  alt={`${recipe.title} photo`}
+                  width={300}
+                  height={300}
+                />
+              ) : (
+                <Skeleton className="h-[300px] w-[300px]" />
+              )}
 
               {recipe.prepTime && (
                 <p className="font-thin text-gray-600 dark:text-gray-400">

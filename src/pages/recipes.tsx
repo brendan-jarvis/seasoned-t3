@@ -20,6 +20,7 @@ import {
 import { Badge } from "~/components/ui/badge";
 import Image from "next/image";
 import Link from "next/link";
+import { Skeleton } from "~/components/ui/skeleton";
 
 const Recipes: NextPage = () => {
   const { data, isLoading } = api.recipes.getAll.useQuery();
@@ -68,8 +69,8 @@ const Recipes: NextPage = () => {
                         </CardDescription>
                       )}
                     </CardHeader>
-                    {recipe.byline && (
-                      <CardContent>
+                    {recipe.image ? (
+                      <CardContent className="m-h-[200] min-w-[350]">
                         <Image
                           src={recipe.image}
                           width={350}
@@ -77,6 +78,10 @@ const Recipes: NextPage = () => {
                           alt={recipe.title}
                           className="rounded-md"
                         />
+                      </CardContent>
+                    ) : (
+                      <CardContent>
+                        <Skeleton className="h-[200] w-[350]" />
                       </CardContent>
                     )}
                     {recipe.tags && (
