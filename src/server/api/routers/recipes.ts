@@ -28,6 +28,31 @@ export const recipesRouter = createTRPCRouter({
     return allRecipes;
   }),
 
+  getOne: publicProcedure
+    .input(z.object({ id: z.string() }))
+    // convert string to number
+    .query(async ({ ctx, input }) => {
+      const recipe = await ctx.prisma.recipe.findUnique({
+        where: { id: Number(input.id) },
+        include: {
+          ingredientSegments: {
+            include: {
+              ingredients: { select: { content: true } },
+            },
+          },
+          instructions: { select: { title: true, content: true } },
+
+          tags: true,
+        },
+      });
+
+      if (!recipe) {
+        throw new TRPCError({ code: "NOT_FOUND", message: "Recipe not found" });
+      }
+
+      return recipe;
+    }),
+
   create: privateProcedure
     .input(
       z.object({
