@@ -74,7 +74,7 @@ model Recipe {
   cookTime           String              @default("")
   totalTime          String              @default("")
   sourceURL          String              @default("")
-  description        String              @default("")
+  description        String              @default("") @db.Text
   image              String              @default("")
   authorId           String
   ingredientSegments IngredientSegment[]
@@ -96,9 +96,7 @@ model IngredientSegment {
 
 model Ingredient {
   id        Int               @id @default(autoincrement())
-  amount    String
-  unit      String
-  name      String
+  content   String
   segment   IngredientSegment @relation(fields: [segmentId], references: [id])
   segmentId Int
   produce   Produce?          @relation(fields: [produceId], references: [id])
@@ -120,6 +118,6 @@ model Instruction {
 
 model Tag {
   id     Int      @id @default(autoincrement())
-  name   String   @unique
+  name   String
   recipe Recipe[]
 }
