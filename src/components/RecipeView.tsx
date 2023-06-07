@@ -10,26 +10,32 @@ import { ExternalLink } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Skeleton } from "~/components/ui/skeleton";
 
-export const RecipeView = (recipe: Recipe) => {
+export const RecipeView = ({ recipe }: { recipe: Recipe }) => {
   return (
     <div key={recipe.id} className="flex flex-col items-center gap-4">
       <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
         {recipe.title}
       </h1>
-      <p className="text-sm font-thin text-gray-600 dark:text-gray-400">
-        By {recipe.byline}
-      </p>
+      {recipe.byline && (
+        <p className="text-sm font-thin text-gray-600 dark:text-gray-400">
+          By {recipe.byline}
+        </p>
+      )}
       <p className="text-sm font-thin text-gray-600 dark:text-gray-400">
         Added {dayjs(recipe.createdAt).fromNow()}
         {recipe.updatedAt !== recipe.createdAt &&
           ` (updated ${dayjs(recipe.updatedAt).fromNow()})`}
       </p>
-      <Image
-        src={recipe.image}
-        alt={`${recipe.title} photo`}
-        width={300}
-        height={300}
-      />
+      {recipe.image ? (
+        <Image
+          src={recipe.image}
+          alt={`${recipe.title} photo`}
+          width={300}
+          height={300}
+        />
+      ) : (
+        <Skeleton className="h-[300px] w-[300px]" />
+      )}
 
       {recipe.prepTime && (
         <p className="font-thin text-gray-600 dark:text-gray-400">
@@ -51,7 +57,7 @@ export const RecipeView = (recipe: Recipe) => {
       </h3>
       {recipe.serves && (
         <p className="font-sans text-sm font-thin text-gray-600 dark:text-gray-400">
-          Serves: <span className="font-light">{recipe.serves}</span>
+          <span className="font-light">{recipe.serves}</span>
         </p>
       )}
       <ul className="text-foreground">
@@ -66,26 +72,6 @@ export const RecipeView = (recipe: Recipe) => {
           </li>
         ))}
       </ul>
-      <h3 className="text-lg font-bold tracking-wider text-gray-900 dark:text-gray-300">
-        Instructions
-      </h3>
-      <ol className="mx-auto max-w-4xl px-4 font-sans text-gray-800 sm:px-6 lg:px-8">
-        {recipe.instructions.map((instruction, index) => (
-          <>
-            {instruction.title && (
-              <h4 className="mb-1 p-2 tracking-wider text-gray-950 dark:text-gray-300">
-                {instruction.title}
-              </h4>
-            )}
-            <li
-              key={index}
-              className="p-2 text-base leading-relaxed text-foreground"
-            >
-              {instruction.content}
-            </li>
-          </>
-        ))}
-      </ol>
       {recipe.sourceURL && (
         <Button className="mb-4" asChild>
           <a href={recipe.sourceURL} target="_blank" rel="noopener noreferrer">
