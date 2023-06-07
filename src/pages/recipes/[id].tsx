@@ -94,20 +94,17 @@ const ViewRecipe: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
-          Recipes
-        </h1>
         <div key={recipe.id} className="flex flex-col items-center gap-4">
-          <h2 className="text-center font-serif text-2xl font-bold tracking-wider text-primary">
+          <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
             {recipe.title}
-          </h2>
+          </h1>
           <p className="text-sm font-thin text-gray-600 dark:text-gray-400">
             By {recipe.byline}
           </p>
           <p className="text-sm font-thin text-gray-600 dark:text-gray-400">
-            Added {dayjs(recipe.createdAt).toString()}
-            {recipe.updatedAt !== recipe.createdAt &&
-              ` (updated ${dayjs(recipe.updatedAt).toString()})`}
+            Added {dayjs(recipe.createdAt).format("D MMM YYYY")}
+            {/* {recipe.updatedAt !== recipe.createdAt &&
+              ` (updated ${dayjs(recipe.updatedAt).format("D MMM YYYY")})`} */}
           </p>
           {recipe.image ? (
             <Image
