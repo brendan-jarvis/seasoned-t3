@@ -54,7 +54,7 @@ const Home: NextPage = () => {
     return (
       <div>
         <h2 className="mb-2 text-xl font-bold tracking-tight text-seasoned-green">
-          Seasonal Produce this{" "}
+          Produce in season this{" "}
           {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
         </h2>
         <div className="flex justify-center">
