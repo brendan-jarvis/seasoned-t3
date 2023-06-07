@@ -52,35 +52,29 @@ const Home: NextPage = () => {
     ];
 
     return (
-      <div>
-        <h2 className="mb-2 text-xl font-bold tracking-tight text-seasoned-green">
-          Produce in season this{" "}
-          {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
-        </h2>
-        <div className="flex justify-center">
-          <div className="grid h-auto grid-flow-col gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
-            {isLoading ? (
-              <LoadingSpinner />
-            ) : (
-              uniqueProduce?.map((title, index) => (
-                <div
-                  key={index}
-                  className="h-32 w-32 rounded-lg border bg-card text-card-foreground shadow-sm"
-                >
-                  <Image
-                    src="/images/inigo-de-la-maza-s285sDw5Ikc-unsplash.jpg"
-                    width={200}
-                    height={200}
-                    alt={title ? title : "Produce"}
-                    className="rounded-t-lg"
-                  />
-                  <h2 className="justify-center text-center text-sm font-semibold text-gray-700 dark:text-gray-300">
-                    {title}
-                  </h2>
-                </div>
-              ))
-            )}
-          </div>
+      <div className="flex justify-center">
+        <div className="grid h-auto grid-flow-col gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            uniqueProduce?.map((title, index) => (
+              <div
+                key={index}
+                className="h-32 w-32 rounded-lg border bg-card text-card-foreground shadow-sm"
+              >
+                <Image
+                  src="/images/inigo-de-la-maza-s285sDw5Ikc-unsplash.jpg"
+                  width={200}
+                  height={200}
+                  alt={title ? title : "Produce"}
+                  className="rounded-t-lg"
+                />
+                <h2 className="justify-center text-center text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  {title}
+                </h2>
+              </div>
+            ))
+          )}
         </div>
       </div>
     );
@@ -134,7 +128,13 @@ const Home: NextPage = () => {
             </form>
           </div>
           <div className="container">
-            <ProduceCarousel />
+            <div>
+              <h2 className="mb-2 text-xl font-bold tracking-tight text-seasoned-green">
+                Produce in season this{" "}
+                {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
+              </h2>
+              <ProduceCarousel />
+            </div>
           </div>
         </div>
       </PageLayout>
