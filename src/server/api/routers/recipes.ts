@@ -10,23 +10,31 @@ import {
 } from "~/server/api/trpc";
 
 export const recipesRouter = createTRPCRouter({
-  getAll: publicProcedure.query(async ({ ctx }) => {
-    const allRecipes = await ctx.prisma.recipe.findMany({
-      take: 10,
-      orderBy: { id: "asc" },
-      include: {
-        ingredientSegments: {
-          include: {
-            ingredients: { select: { content: true } },
+  getAll: publicProcedure
+    .input(
+      z.object({
+        limit: z.optional(z.number()),
+        offset: z.optional(z.number()),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const allRecipes = await ctx.prisma.recipe.findMany({
+        take: input.limit || 10,
+        skip: input.offset || 0,
+        orderBy: { id: "asc" },
+        include: {
+          ingredientSegments: {
+            include: {
+              ingredients: { select: { content: true } },
+            },
           },
+          instructions: { select: { title: true, content: true } },
+          tags: true,
         },
-        instructions: { select: { title: true, content: true } },
-        tags: true,
-      },
-    });
+      });
 
-    return allRecipes;
-  }),
+      return allRecipes;
+    }),
 
   getOne: publicProcedure
     .input(z.object({ id: z.string() }))
