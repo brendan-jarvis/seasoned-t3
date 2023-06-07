@@ -163,7 +163,7 @@ const Footer = () => {
             className="mr-5 p-2 hover:cursor-pointer hover:underline"
           >
             <div className="flex items-center gap-1">
-              {label}
+              <p className="text-slate-100">{label}</p>
               <Image
                 width={16}
                 height={16}
