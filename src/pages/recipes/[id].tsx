@@ -68,7 +68,7 @@ const ViewRecipe: NextPage = () => {
         </Head>
         <PageLayout>
           <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
-            Unable to fetch that recipe
+            Unable to fetch recipe
           </h1>
           <p className="text-center text-lg font-semibold text-destructive">
             Sorry, Seasoned was unable to load the recipe.
@@ -98,9 +98,11 @@ const ViewRecipe: NextPage = () => {
           <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
             {recipe.title}
           </h1>
-          <p className="text-sm font-thin text-gray-600 dark:text-gray-400">
-            By {recipe.byline}
-          </p>
+          {recipe.byline && (
+            <p className="text-sm font-thin text-gray-600 dark:text-gray-400">
+              By {recipe.byline}
+            </p>
+          )}
           <p className="text-sm font-thin text-gray-600 dark:text-gray-400">
             Added {dayjs(recipe.createdAt).format("D MMM YYYY")}
             {/* {recipe.updatedAt !== recipe.createdAt &&
