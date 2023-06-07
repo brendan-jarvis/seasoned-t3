@@ -1,13 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import Head from "next/head";
 import { useRouter } from "next/router";
 
 import type { NextPage } from "next";
-import type { RecipeWithIngredients as Recipe } from "~/utils/types";
 import { api } from "~/utils/api";
-
+import type { RecipeWithIngredients as Recipe } from "~/utils/types";
 import { PageLayout } from "~/components/Layout";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 import {
@@ -31,10 +27,17 @@ const Recipes: NextPage = () => {
   const { data, isLoading } = api.recipes.getAll.useQuery({
     offset: offset,
     limit: limit,
-  }) as {
-    data: Recipe[];
-    isLoading: boolean;
-  };
+  });
+
+  if (isLoading) {
+    return (
+      <PageLayout>
+        <LoadingSpinner size={64} />
+      </PageLayout>
+    );
+  }
+
+  const { allRecipes, count } = data as { allRecipes: Recipe[]; count: number };
 
   return (
     <>
@@ -55,7 +58,9 @@ const Recipes: NextPage = () => {
         <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
           Recipes
         </h1>
-
+        <h2 className="mb-4 text-center text-sm font-semibold text-gray-500">
+          Viewing {offset + 1} - {offset + limit} of {count} results
+        </h2>
         <div>
           {isLoading ? (
             <LoadingSpinner size={64} />
@@ -66,7 +71,7 @@ const Recipes: NextPage = () => {
           ) : (
             <>
               <div className="mb-4 flex flex-grow flex-wrap justify-center gap-4">
-                {data.map((recipe: Recipe) => (
+                {allRecipes.map((recipe: Recipe) => (
                   <Card key={recipe.id} className="w-[350px]">
                     <Link href={`/recipes/${recipe.id}`}>
                       <CardHeader>

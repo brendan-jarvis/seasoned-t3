@@ -33,7 +33,9 @@ export const recipesRouter = createTRPCRouter({
         },
       });
 
-      return allRecipes;
+      const count = await ctx.prisma.recipe.count();
+
+      return { allRecipes, count };
     }),
 
   getOne: publicProcedure
