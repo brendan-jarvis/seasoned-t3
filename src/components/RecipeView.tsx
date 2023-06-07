@@ -57,9 +57,7 @@ export const RecipeView = (recipe: Recipe) => {
               {segment.title}
             </h4>{" "}
             {segment.ingredients.map((ingredient) => (
-              <p key={ingredient.name}>
-                {ingredient.amount} {ingredient.unit} {ingredient.name}
-              </p>
+              <p key={ingredient.content}>{ingredient.content}</p>
             ))}{" "}
           </li>
         ))}
