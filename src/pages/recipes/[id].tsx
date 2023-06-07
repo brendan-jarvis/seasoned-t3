@@ -16,6 +16,7 @@ import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Skeleton } from "~/components/ui/skeleton";
+import { Badge } from "~/components/ui/badge";
 
 const ViewRecipe: NextPage = () => {
   const router = useRouter();
@@ -98,6 +99,15 @@ const ViewRecipe: NextPage = () => {
           <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
             {recipe.title}
           </h1>
+          {recipe.tags && (
+            <div className="flex flex-wrap gap-2">
+              {recipe.tags.map((tag) => (
+                <Badge key={tag.id} variant="outline" className="font-serif">
+                  {tag.name}
+                </Badge>
+              ))}
+            </div>
+          )}
           {recipe.byline && (
             <p className="text-sm font-thin text-gray-600 dark:text-gray-400">
               By {recipe.byline}
