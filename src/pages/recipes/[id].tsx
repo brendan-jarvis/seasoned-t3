@@ -155,7 +155,7 @@ const ViewRecipe: NextPage = () => {
             ))}
           </ul>
           {recipe.sourceURL && (
-            <Button asChild>
+            <Button className="mb-4" asChild>
               <a
                 href={recipe.sourceURL}
                 target="_blank"
