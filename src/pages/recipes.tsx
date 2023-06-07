@@ -65,28 +65,6 @@ const Recipes: NextPage = () => {
             </p>
           ) : (
             <>
-              <div className="mb-2 flex flex-row justify-center gap-2">
-                <Button
-                  variant="outline"
-                  disabled={offset === 0}
-                  onClick={() => {
-                    void router.push({
-                      query: { limit, offset: offset - limit },
-                    });
-                  }}
-                >
-                  Previous
-                </Button>
-                <Button
-                  onClick={() =>
-                    void router.push({
-                      query: { limit, offset: offset + limit },
-                    })
-                  }
-                >
-                  Next
-                </Button>
-              </div>
               <div className="mb-4 flex flex-grow flex-wrap justify-center gap-4">
                 {data.map((recipe: Recipe) => (
                   <Card key={recipe.id} className="w-[350px]">
@@ -132,6 +110,28 @@ const Recipes: NextPage = () => {
                     </Link>
                   </Card>
                 ))}
+              </div>
+              <div className="mb-2 flex flex-row justify-center gap-2">
+                <Button
+                  variant="outline"
+                  disabled={offset === 0}
+                  onClick={() => {
+                    void router.push({
+                      query: { limit, offset: offset - limit },
+                    });
+                  }}
+                >
+                  Previous
+                </Button>
+                <Button
+                  onClick={() =>
+                    void router.push({
+                      query: { limit, offset: offset + limit },
+                    })
+                  }
+                >
+                  Next
+                </Button>
               </div>
             </>
           )}

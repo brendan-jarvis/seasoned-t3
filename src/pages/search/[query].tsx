@@ -61,7 +61,7 @@ const ViewRecipe: NextPage = () => {
         <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
           &apos;{query}&apos; recipes
         </h1>
-        <h2 className="text-center text-lg font-semibold text-gray-500">
+        <h2 className="mb-4 text-center text-sm font-semibold text-gray-500">
           Viewing {offset + 1} - {offset + limit} of {count} results
         </h2>
 
@@ -74,28 +74,6 @@ const ViewRecipe: NextPage = () => {
             </p>
           ) : (
             <>
-              <div className="mb-2 flex flex-row justify-center gap-2">
-                <Button
-                  variant="outline"
-                  disabled={offset === 0}
-                  onClick={() => {
-                    void router.push({
-                      query: { query: query, limit, offset: offset - limit },
-                    });
-                  }}
-                >
-                  Previous
-                </Button>
-                <Button
-                  onClick={() =>
-                    void router.push({
-                      query: { query: query, limit, offset: offset + limit },
-                    })
-                  }
-                >
-                  Next
-                </Button>
-              </div>
               <div className="flex flex-grow flex-wrap justify-center gap-4">
                 {recipes.map((recipe: Recipe) => (
                   <Card key={recipe.id} className="w-[350px]">
@@ -141,6 +119,28 @@ const ViewRecipe: NextPage = () => {
                     )}
                   </Card>
                 ))}
+              </div>
+              <div className="my-2 flex flex-row justify-center gap-2">
+                <Button
+                  variant="outline"
+                  disabled={offset === 0}
+                  onClick={() => {
+                    void router.push({
+                      query: { query: query, limit, offset: offset - limit },
+                    });
+                  }}
+                >
+                  Previous
+                </Button>
+                <Button
+                  onClick={() =>
+                    void router.push({
+                      query: { query: query, limit, offset: offset + limit },
+                    })
+                  }
+                >
+                  Next
+                </Button>
               </div>
             </>
           )}
