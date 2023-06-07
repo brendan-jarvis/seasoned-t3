@@ -70,7 +70,7 @@ const Recipes: NextPage = () => {
             </p>
           ) : (
             <>
-              <div className="mb-4 flex flex-grow flex-wrap justify-center gap-4">
+              <div className="mb-4 flex flex-wrap justify-center gap-4">
                 {allRecipes.map((recipe: Recipe) => (
                   <Card key={recipe.id} className="w-[350px]">
                     <Link href={`/recipes/${recipe.id}`}>
