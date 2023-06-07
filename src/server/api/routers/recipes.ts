@@ -72,24 +72,30 @@ export const recipesRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
+      const ingredients = input.query.split(/[,\s]+/); // Split query on spaces or commas
+
       const recipes = await ctx.prisma.recipe.findMany({
         take: input.limit || 10,
         skip: input.offset || 0,
         orderBy: { id: "asc" },
         where: {
           OR: [
-            { title: { contains: input.query } },
+            { title: { in: ingredients } },
             {
               ingredientSegments: {
                 some: {
-                  ingredients: { some: { content: { contains: input.query } } },
+                  ingredients: {
+                    some: {
+                      content: { in: ingredients },
+                    },
+                  },
                 },
               },
             },
             {
               tags: {
                 some: {
-                  name: { contains: input.query },
+                  name: { in: ingredients },
                 },
               },
             },
@@ -102,7 +108,6 @@ export const recipesRouter = createTRPCRouter({
             },
           },
           instructions: { select: { title: true, content: true } },
-
           tags: true,
         },
       });
@@ -110,18 +115,22 @@ export const recipesRouter = createTRPCRouter({
       const count = await ctx.prisma.recipe.count({
         where: {
           OR: [
-            { title: { contains: input.query } },
+            { title: { in: ingredients } },
             {
               ingredientSegments: {
                 some: {
-                  ingredients: { some: { content: { contains: input.query } } },
+                  ingredients: {
+                    some: {
+                      content: { in: ingredients },
+                    },
+                  },
                 },
               },
             },
             {
               tags: {
                 some: {
-                  name: { contains: input.query },
+                  name: { in: ingredients },
                 },
               },
             },
