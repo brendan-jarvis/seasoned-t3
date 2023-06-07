@@ -129,6 +129,7 @@ const Recipes: NextPage = () => {
                   Previous
                 </Button>
                 <Button
+                  disabled={offset + limit >= count}
                   onClick={() =>
                     void router.push({
                       query: { limit, offset: offset + limit },
