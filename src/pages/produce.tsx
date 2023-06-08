@@ -3,8 +3,10 @@ import Head from "next/head";
 import { AvailabilityType, ProduceType } from "@prisma/client";
 
 import { PageLayout } from "~/components/Layout";
-import { Badge } from "~/components/Badge";
+import { Badge } from "~/components/ui/badge";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
+
+import { Flower, Snowflake, Sun, Leaf } from "lucide-react";
 
 import { api } from "~/utils/api";
 
@@ -25,15 +27,43 @@ const Produce: NextPage = () => {
     | "november"
     | "december";
 
+  const currentSeason = (month: string) => {
+    if (month === "december" || month === "january" || month === "february") {
+      return <Sun color="gold" className="inline" />;
+    } else if (month === "march" || month === "april" || month === "may") {
+      return <Leaf color="orange" className="inline" />;
+    } else if (month === "june" || month === "july" || month === "august") {
+      return <Snowflake color="cyan" className="inline" />;
+    } else {
+      return <Flower color="pink" className="inline" />;
+    }
+  };
+
   const { data, isLoading } = api.produce.getAllByMonth.useQuery({
     month: currentMonth,
     availability: [AvailabilityType.Available],
   });
 
+  const uniqueProduce = data
+    ?.filter(
+      (item, index, self) =>
+        index ===
+        self.findIndex(
+          (t) => t.title.split(" - ")[0] === item.title.split(" - ")[0]
+        )
+    )
+    .sort((a, b) => a.title.localeCompare(b.title))
+    .map((obj) => {
+      return {
+        ...obj,
+        title: obj.title.split(" - ")[0],
+      };
+    });
+
   let fruitInSeason, vegetablesInSeason, otherProduceInSeason;
 
-  if (data) {
-    fruitInSeason = data.filter((item) =>
+  if (uniqueProduce) {
+    fruitInSeason = uniqueProduce.filter((item) =>
       [
         ProduceType.Fruit,
         ProduceType.SpecialtyFruit,
@@ -42,13 +72,13 @@ const Produce: NextPage = () => {
       ].some((type) => item.type === type)
     );
 
-    vegetablesInSeason = data.filter((item) =>
+    vegetablesInSeason = uniqueProduce.filter((item) =>
       [ProduceType.Vegetable, ProduceType.SpecialtyVegetable].some(
         (type) => item.type === type
       )
     );
 
-    otherProduceInSeason = data.filter((item) =>
+    otherProduceInSeason = uniqueProduce.filter((item) =>
       [ProduceType.EdibleFlower, ProduceType.Herb].some(
         (type) => item.type === type
       )
@@ -71,11 +101,10 @@ const Produce: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <h1 className="py-8 text-center text-4xl font-bold tracking-wide text-secondary">
+        <h1 className="py-8 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
           Produce in season this{" "}
-          <span className="font-bold text-primary">
-            {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
-          </span>
+          {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
+          {currentSeason(currentMonth)}
         </h1>
         {isLoading ? (
           <LoadingSpinner size={64} />
@@ -85,37 +114,55 @@ const Produce: NextPage = () => {
             season.
           </p>
         ) : (
-          <div className="flex flex-wrap gap-4 px-4 pb-8">
+          <div className="flex flex-wrap justify-center gap-4 px-4 pb-8">
             <div>
-              <h4 className="text-lg font-bold text-primary">Fruit</h4>
-              <ol className="text-black">
+              <h2 className="font-serif text-lg font-bold text-seasoned-green">
+                Fruit
+              </h2>
+              <ol className="text-foreground">
                 {fruitInSeason &&
                   fruitInSeason.map((fruit) => (
                     <li key={fruit.id} className="p-1">
-                      <Badge color="red">{fruit.type}</Badge> {fruit.title}
+                      <Badge variant="outline" className="border-rose-500">
+                        {fruit.type}
+                      </Badge>{" "}
+                      {fruit.title}
                     </li>
                   ))}
               </ol>
             </div>
             <div>
-              <h4 className="text-lg font-bold text-primary">Vegetables</h4>
-              <ol className="text-black">
+              <h2 className="font-serif text-lg font-bold text-seasoned-green">
+                Vegetables
+              </h2>
+              <ol className="text-foreground">
                 {vegetablesInSeason &&
                   vegetablesInSeason.map((vegetable) => (
                     <li key={vegetable.id} className="p-1">
-                      <Badge color="blue">{vegetable.type}</Badge>{" "}
+                      <Badge variant="outline" className="border-sky-500">
+                        Vegetable
+                      </Badge>{" "}
                       {vegetable.title}
                     </li>
                   ))}
               </ol>
             </div>
             <div>
-              <h4 className="text-lg font-bold text-primary">Other</h4>
-              <ol className="text-black">
+              <h2 className="font-serif text-lg font-bold text-seasoned-green">
+                Other
+              </h2>
+              <ol className="text-foreground">
                 {otherProduceInSeason &&
                   otherProduceInSeason.map((item) => (
                     <li key={item.id} className="p-1">
-                      <Badge color="green">{item.type}</Badge> {item.title}
+                      <Badge
+                        variant="outline"
+                        className="border-emerald-500"
+                        color="green"
+                      >
+                        {item.type}
+                      </Badge>{" "}
+                      {item.title}
                     </li>
                   ))}
               </ol>

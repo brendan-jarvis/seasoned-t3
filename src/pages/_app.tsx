@@ -1,6 +1,7 @@
 import { type AppType } from "next/app";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Bree_Serif, Nobile } from "@next/font/google";
+import { ThemeProvider } from "next-themes";
 
 import { api } from "~/utils/api";
 
@@ -29,7 +30,9 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           --font-bree-serif: ${breeSerif.style.fontFamily};
         }
       `}</style>
-      <Component {...pageProps} />
+      <ThemeProvider attribute="class">
+        <Component {...pageProps} />
+      </ThemeProvider>
     </ClerkProvider>
   );
 };

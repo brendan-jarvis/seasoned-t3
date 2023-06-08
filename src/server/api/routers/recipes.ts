@@ -10,23 +10,143 @@ import {
 } from "~/server/api/trpc";
 
 export const recipesRouter = createTRPCRouter({
-  getAll: publicProcedure.query(async ({ ctx }) => {
-    const allRecipes = await ctx.prisma.recipe.findMany({
-      take: 10,
-      orderBy: { id: "asc" },
-      include: {
-        ingredientSegments: {
-          include: {
-            ingredients: { select: { amount: true, unit: true, name: true } },
+  getAll: publicProcedure
+    .input(
+      z.object({
+        limit: z.optional(z.number()),
+        offset: z.optional(z.number()),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const allRecipes = await ctx.prisma.recipe.findMany({
+        take: input.limit || 10,
+        skip: input.offset || 0,
+        orderBy: { id: "asc" },
+        include: {
+          ingredientSegments: {
+            include: {
+              ingredients: { select: { content: true } },
+            },
           },
+          instructions: { select: { title: true, content: true } },
+          tags: true,
         },
-        instructions: { select: { title: true, content: true } },
-        tags: true,
-      },
-    });
+      });
 
-    return allRecipes;
-  }),
+      const count = await ctx.prisma.recipe.count();
+
+      return { allRecipes, count };
+    }),
+
+  getOne: publicProcedure
+    .input(z.object({ id: z.string() }))
+    // convert string to number
+    .query(async ({ ctx, input }) => {
+      const recipe = await ctx.prisma.recipe.findUnique({
+        where: { id: Number(input.id) },
+        include: {
+          ingredientSegments: {
+            include: {
+              ingredients: { select: { content: true } },
+            },
+          },
+          instructions: { select: { title: true, content: true } },
+
+          tags: true,
+        },
+      });
+
+      if (!recipe) {
+        throw new TRPCError({ code: "NOT_FOUND", message: "Recipe not found" });
+      }
+
+      return recipe;
+    }),
+
+  findMany: publicProcedure
+    .input(
+      z.object({
+        query: z.string().min(3),
+        limit: z.optional(z.number()),
+        offset: z.optional(z.number()),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const ingredients = input.query.split(/[,\s]+/); // Split query on spaces or commas
+
+      const recipes = await ctx.prisma.recipe.findMany({
+        take: input.limit || 10,
+        skip: input.offset || 0,
+        orderBy: { id: "asc" },
+        where: {
+          OR: [
+            { title: { in: ingredients } },
+            {
+              ingredientSegments: {
+                some: {
+                  ingredients: {
+                    some: {
+                      content: { in: ingredients },
+                    },
+                  },
+                },
+              },
+            },
+            {
+              tags: {
+                some: {
+                  name: { in: ingredients },
+                },
+              },
+            },
+          ],
+        },
+        include: {
+          ingredientSegments: {
+            include: {
+              ingredients: { select: { content: true } },
+            },
+          },
+          instructions: { select: { title: true, content: true } },
+          tags: true,
+        },
+      });
+
+      const count = await ctx.prisma.recipe.count({
+        where: {
+          OR: [
+            { title: { in: ingredients } },
+            {
+              ingredientSegments: {
+                some: {
+                  ingredients: {
+                    some: {
+                      content: { in: ingredients },
+                    },
+                  },
+                },
+              },
+            },
+            {
+              tags: {
+                some: {
+                  name: { in: ingredients },
+                },
+              },
+            },
+          ],
+        },
+      });
+
+      if (!recipes) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "No matching recipes found",
+        });
+      }
+
+      return { recipes, count };
+    }),
 
   create: privateProcedure
     .input(
@@ -55,9 +175,7 @@ export const recipesRouter = createTRPCRouter({
               title: z.string(),
               ingredients: z.array(
                 z.object({
-                  amount: z.string(),
-                  unit: z.string(),
-                  name: z.string(),
+                  content: z.string(),
                 })
               ),
             })
@@ -88,9 +206,7 @@ export const recipesRouter = createTRPCRouter({
               title: segment.title,
               ingredients: {
                 create: segment.ingredients.map((ingredient) => ({
-                  amount: ingredient.amount,
-                  unit: ingredient.unit,
-                  name: ingredient.name,
+                  content: ingredient.content,
                 })),
               },
             })),
@@ -103,10 +219,9 @@ export const recipesRouter = createTRPCRouter({
           },
           tags: input.tags
             ? {
-                connectOrCreate: input.tags.map(({ name }) => {
+                create: input.tags.map(({ name }) => {
                   return {
-                    where: { name },
-                    create: { name },
+                    name: name,
                   };
                 }),
               }

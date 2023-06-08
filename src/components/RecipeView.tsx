@@ -6,92 +6,82 @@ import relativeTime from "dayjs/plugin/relativeTime";
 
 dayjs.extend(relativeTime);
 
-export const RecipeView = (recipe: Recipe) => {
+import { ExternalLink } from "lucide-react";
+import { Button } from "~/components/ui/button";
+import { Skeleton } from "~/components/ui/skeleton";
+
+export const RecipeView = ({ recipe }: { recipe: Recipe }) => {
   return (
     <div key={recipe.id} className="flex flex-col items-center gap-4">
-      <h2 className="text-center text-2xl font-bold tracking-wider text-primary">
+      <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
         {recipe.title}
-      </h2>
-      <p className="text-sm font-thin text-gray-600">By {recipe.byline}</p>
-      <p className="text-sm font-thin text-gray-600">
+      </h1>
+      {recipe.byline && (
+        <p className="text-sm font-thin text-gray-600 dark:text-gray-400">
+          By {recipe.byline}
+        </p>
+      )}
+      <p className="text-sm font-thin text-gray-600 dark:text-gray-400">
         Added {dayjs(recipe.createdAt).fromNow()}
         {recipe.updatedAt !== recipe.createdAt &&
           ` (updated ${dayjs(recipe.updatedAt).fromNow()})`}
       </p>
-      <Image
-        src={recipe.image}
-        alt={`${recipe.title} photo`}
-        width={300}
-        height={300}
-      />
+      {recipe.image ? (
+        <Image
+          src={recipe.image}
+          alt={`${recipe.title} photo`}
+          width={300}
+          height={300}
+        />
+      ) : (
+        <Skeleton className="h-[300px] w-[300px]" />
+      )}
 
       {recipe.prepTime && (
-        <p className="font-thin">
+        <p className="font-thin text-gray-600 dark:text-gray-400">
           Prep time: <span className="font-light">{recipe.prepTime}</span>
         </p>
       )}
       {recipe.cookTime && (
-        <p className="font-thin">
+        <p className="font-thin text-gray-600 dark:text-gray-400">
           Cook time: <span className="font-light">{recipe.cookTime}</span>
         </p>
       )}
       {recipe.totalTime && (
-        <p className="font-thin">
+        <p className="font-thin text-gray-600 dark:text-gray-400">
           Total time: <span className="font-light">{recipe.totalTime}</span>
         </p>
       )}
-      <h3 className="text-lg font-bold tracking-wider text-gray-900">
+      <h3 className="text-lg font-bold tracking-wider text-gray-900 dark:text-gray-300">
         Ingredients
       </h3>
       {recipe.serves && (
-        <p className="font-sans text-sm font-thin text-gray-600">
-          Serves: <span className="font-light">{recipe.serves}</span>
+        <p className="font-sans text-sm font-thin text-gray-600 dark:text-gray-400">
+          <span className="font-light">{recipe.serves}</span>
         </p>
       )}
-      <ul className="text-black">
+      <ul className="text-foreground">
         {recipe.ingredientSegments.map((segment) => (
           <li key={segment.id}>
-            <h4 className="mb-1 py-2 font-semibold tracking-wider text-gray-900">
+            <h4 className="mb-1 py-2 font-semibold tracking-wider text-gray-900 dark:text-gray-300">
               {segment.title}
             </h4>{" "}
             {segment.ingredients.map((ingredient) => (
-              <p key={ingredient.name}>
-                {ingredient.amount} {ingredient.unit} {ingredient.name}
-              </p>
+              <p key={ingredient.content}>{ingredient.content}</p>
             ))}{" "}
           </li>
         ))}
       </ul>
-      <h3 className="text-lg font-bold tracking-wider text-gray-900">
-        Instructions
-      </h3>
-      <ol className="mx-auto max-w-4xl px-4 font-sans text-gray-800 sm:px-6 lg:px-8">
-        {recipe.instructions.map((instruction, index) => (
-          <>
-            {instruction.title && (
-              <h4 className="mb-1 p-2 tracking-wider text-gray-950">
-                {instruction.title}
-              </h4>
-            )}
-            <li key={index} className="p-2 text-base leading-relaxed">
-              {instruction.content}
-            </li>
-          </>
-        ))}
-      </ol>
       {recipe.sourceURL && (
-        <a
-          href={recipe.sourceURL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-4 font-light text-gray-800 underline"
-        >
-          View full recipe on{" "}
-          {recipe.sourceURL.replace(
-            /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+).*/i,
-            "$1"
-          )}
-        </a>
+        <Button className="mb-4" asChild>
+          <a href={recipe.sourceURL} target="_blank" rel="noopener noreferrer">
+            <ExternalLink className="mr-2 h-4 w-4" /> View full recipe on{" "}
+            {recipe.sourceURL.replace(
+              /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+).*/i,
+              "$1"
+            )}
+          </a>
+        </Button>
       )}
     </div>
   );

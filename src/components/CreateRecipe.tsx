@@ -4,6 +4,7 @@ import { useUser } from "@clerk/nextjs";
 
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 import { api } from "~/utils/api";
+import { Button } from "./ui/button";
 
 type TextInputProps = {
   label: string;
@@ -34,7 +35,7 @@ const TextInput = ({
         value={value}
         onChange={onChange}
         // className="input-bordered input w-full"
-        className="focus:shadow-outline w-full rounded-md px-4 py-3 font-serif font-light text-info shadow-sm focus:outline-none"
+        className="focus:shadow-outline text-info w-full rounded-md px-4 py-3 font-serif font-light shadow-sm focus:outline-none"
       />
     </div>
   );
@@ -227,12 +228,12 @@ export const CreateRecipe = () => {
         ))} */}
 
       {/* <button className="btn-primary btn" onClick={() => mutate(input)}> */}
-      <button
-        className="btn-primary btn"
+      <Button
+        className="mb-4 bg-emerald-500 font-serif text-lg"
         onClick={() => toast.success(JSON.stringify(input, null, 2))}
       >
         Submit
-      </button>
+      </Button>
       {isPosting && (
         <div className="flex items-center justify-center">
           <LoadingSpinner size={20} />

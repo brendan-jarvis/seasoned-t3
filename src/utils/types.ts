@@ -6,9 +6,7 @@ export type RecipeWithIngredients = Prisma.RecipeGetPayload<{
       include: {
         ingredients: {
           select: {
-            amount: true;
-            unit: true;
-            name: true;
+            content: true;
           };
         };
       };
@@ -22,3 +20,15 @@ export type RecipeWithIngredients = Prisma.RecipeGetPayload<{
     tags: true;
   };
 }>;
+
+export type IngredientSegmentWithIngredients =
+  Prisma.IngredientSegmentGetPayload<{
+    include: {
+      ingredients: {
+        select: {
+          title: true;
+          content: true;
+        };
+      };
+    };
+  }>;
