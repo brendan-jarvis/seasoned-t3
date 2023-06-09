@@ -80,8 +80,23 @@ model Recipe {
   ingredientSegments IngredientSegment[]
   instructions       Instruction[]
   tags               Tag[]
+  Favourite          Favourite[]
 
   @@index([authorId])
+}
+
+model Favourite {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  recipeId  Int
+  rating    Int?
+  completed Boolean? @default(false)
+
+  recipe Recipe @relation(fields: [recipeId], references: [id])
+
+  @@index([recipeId])
 }
 
 model IngredientSegment {
