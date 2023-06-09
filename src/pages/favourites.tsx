@@ -48,7 +48,9 @@ const Favourites: NextPage = () => {
           {error && (
             <>
               <h2 className="text-center font-serif text-xl text-destructive">
-                Error: not signed in
+                {error.message === "UNAUTHORIZED"
+                  ? "Error: not signed in"
+                  : `Error: ${error.message}`}
               </h2>
               <p className="font-sans text-base ">
                 Please sign in to view your favourites.
