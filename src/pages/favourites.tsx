@@ -8,10 +8,11 @@ import { LoadingSpinner } from "~/components/LoadingSpinner";
 import { api } from "~/utils/api";
 
 const Favourites: NextPage = () => {
-  const { data: favourites, isLoading } = api.favourites.getAll.useQuery() as {
-    data: Favourite[];
-    isLoading: boolean;
-  };
+  const {
+    data: favourites,
+    isLoading,
+    error,
+  } = api.favourites.getAll.useQuery();
 
   if (isLoading) {
     return (
@@ -39,9 +40,22 @@ const Favourites: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <h1 className="py-8 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
-          Favourites
-        </h1>
+        <div className="px-4">
+          <h1 className="py-8 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
+            Favourites
+          </h1>
+
+          {error && (
+            <>
+              <h2 className="text-center font-serif text-xl text-destructive">
+                Error: not signed in
+              </h2>
+              <p className="font-sans text-base ">
+                Please sign in to view your favourites.
+              </p>
+            </>
+          )}
+        </div>
       </PageLayout>
     </>
   );
