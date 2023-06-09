@@ -86,7 +86,6 @@ model Recipe {
 }
 
 model Favourite {
-  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId    String
@@ -96,6 +95,7 @@ model Favourite {
 
   recipe Recipe @relation(fields: [recipeId], references: [id])
 
+  @@id([userId, recipeId])
   @@index([recipeId])
 }
 
