@@ -1,6 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-// import { FavouriteType } from "@prisma/client";
+import type { Favourite } from "@prisma/client";
 
 import { PageLayout } from "~/components/Layout";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
@@ -8,9 +8,20 @@ import { LoadingSpinner } from "~/components/LoadingSpinner";
 import { api } from "~/utils/api";
 
 const Favourites: NextPage = () => {
-  // const { data, isLoading } = api.favourites.getAll.useQuery();
+  const { data: favourites, isLoading } = api.favourites.getAll.useQuery() as {
+    data: Favourite[];
+    isLoading: boolean;
+  };
 
-  // if (isLoading) return <LoadingSpinner />;
+  if (isLoading) {
+    return (
+      <PageLayout>
+        <LoadingSpinner size={64} />
+      </PageLayout>
+    );
+  }
+
+  console.log(favourites);
 
   return (
     <>
