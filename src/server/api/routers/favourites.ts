@@ -28,14 +28,14 @@ export const favouritesRouter = createTRPCRouter({
   addOrUpdateOne: privateProcedure
     .input(
       z.object({
-        recipeId: z.string(),
+        recipeId: z.number(),
         rating: z.number().optional(),
         completed: z.boolean().optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
       const { userId } = ctx;
-      const recipeId = Number(input.recipeId);
+      const recipeId = input.recipeId;
 
       if (!userId) {
         throw new TRPCError({
@@ -74,7 +74,7 @@ export const favouritesRouter = createTRPCRouter({
     }),
 
   deleteOne: privateProcedure
-    .input(z.object({ recipeId: z.string() }))
+    .input(z.object({ recipeId: z.number() }))
     .mutation(async ({ ctx, input }) => {
       const { userId } = ctx;
 
@@ -89,7 +89,7 @@ export const favouritesRouter = createTRPCRouter({
         where: {
           userId_recipeId: {
             userId,
-            recipeId: Number(input.recipeId),
+            recipeId: input.recipeId,
           },
         },
       });
