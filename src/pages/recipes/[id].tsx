@@ -1,5 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useUser } from "@clerk/nextjs";
+import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 import type { NextPage } from "next";
 import type {
@@ -13,12 +16,13 @@ import { PageLayout } from "~/components/Layout";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 import Image from "next/image";
 
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Heart } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Skeleton } from "~/components/ui/skeleton";
 import { Badge } from "~/components/ui/badge";
 
 const ViewRecipe: NextPage = () => {
+  const { isSignedIn } = useUser();
   const router = useRouter();
   const { id } = router.query;
   const { data: recipe, isLoading } = api.recipes.getOne.useQuery({
@@ -99,6 +103,17 @@ const ViewRecipe: NextPage = () => {
           <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
             {recipe.title}
           </h1>
+          {isSignedIn && (
+            <Button
+              variant="outline"
+              className="font-serif"
+              onClick={() => {
+                toast.success(`Added recipe to favourites!`);
+              }}
+            >
+              <Heart className="mr-2 h-4 w-4 text-pink-500" /> Add to Favourites
+            </Button>
+          )}
           {recipe.tags && (
             <div className="flex flex-wrap gap-2">
               {recipe.tags.map((tag) => (
