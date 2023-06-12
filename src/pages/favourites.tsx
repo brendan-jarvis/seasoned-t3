@@ -1,6 +1,5 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import type { Favourite } from "@prisma/client";
 
 import { PageLayout } from "~/components/Layout";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
