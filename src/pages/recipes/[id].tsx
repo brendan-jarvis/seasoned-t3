@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useUser } from "@clerk/nextjs";
-import { useState } from "react";
 import { toast } from "react-hot-toast";
 
 import type { NextPage } from "next";
@@ -28,6 +27,21 @@ const ViewRecipe: NextPage = () => {
   const { data: recipe, isLoading } = api.recipes.getOne.useQuery({
     id: id as string,
   }) as { data: Recipe; isLoading: boolean };
+
+  const { mutate, isLoading: isLoadingFavourite } =
+    api.favourites.create.useMutation({
+      onSuccess: () => {
+        toast.success(`Added recipe ${recipe.id} to favorites!`);
+      },
+      onError: (e) => {
+        const errorMessage = e.data?.zodError?.fieldErrors.content;
+        if (errorMessage && errorMessage[0]) {
+          toast.error(errorMessage[0]);
+        } else {
+          toast.error("Failed to add to favorites! Please try again later.");
+        }
+      },
+    });
 
   const ingredients =
     recipe?.ingredientSegments as IngredientSegmentWithIngredients[];
@@ -107,8 +121,11 @@ const ViewRecipe: NextPage = () => {
             <Button
               variant="outline"
               className="font-serif"
+              disabled={isLoadingFavourite}
               onClick={() => {
-                toast.success(`Added recipe to favourites!`);
+                mutate({
+                  recipeId: recipe.id,
+                });
               }}
             >
               <Heart className="mr-2 h-4 w-4 text-pink-500" /> Add to Favourites
