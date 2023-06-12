@@ -116,9 +116,9 @@ const Favourites: NextPage = () => {
                 <TableRow>
                   <TableHead>Title</TableHead>
                   {/* <TableHead>Rating</TableHead> */}
-                  <TableHead>Completed</TableHead>
+                  {/* <TableHead>Completed</TableHead> */}
                   <TableHead>Added On</TableHead>
-                  <TableHead>Last Updated</TableHead>
+                  {/* <TableHead>Last Updated</TableHead> */}
                   <TableHead>Delete</TableHead>
                 </TableRow>
               </TableHeader>
@@ -136,15 +136,30 @@ const Favourites: NextPage = () => {
                     {/* <TableCell>
                       {favourite.rating ? renderStars(favourite.rating) : null}
                     </TableCell> */}
-                    <TableCell>
-                      {favourite.completed ? <CheckCircle /> : <MinusCircle />}
-                    </TableCell>
+                    {/* <TableCell>
+                      <Button
+                        variant="outline"
+                        // onClick={() => {
+                        //   mutate({
+                        //     recipeId: favourite.recipeId,
+                        //     completed: !favourite.completed,
+                        //   });
+                        // }}
+                        className="px-2"
+                      >
+                        {favourite.completed ? (
+                          <CheckCircle />
+                        ) : (
+                          <MinusCircle />
+                        )}
+                      </Button>
+                    </TableCell> */}
                     <TableCell>
                       {dayjs(favourite.createdAt).format("D MMM YYYY")}
                     </TableCell>
-                    <TableCell>
+                    {/* <TableCell>
                       {dayjs(favourite.updatedAt).format("D MMM YYYY")}
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell>
                       <Button
                         variant="outline"
@@ -153,9 +168,14 @@ const Favourites: NextPage = () => {
                             recipeId: favourite.recipeId,
                           });
                         }}
+                        disabled={isDeletingFavourite}
                         className="px-2"
                       >
-                        <Trash2 />
+                        {isDeletingFavourite ? (
+                          <LoadingSpinner size={18} />
+                        ) : (
+                          <Trash2 />
+                        )}
                       </Button>
                     </TableCell>
                   </TableRow>
