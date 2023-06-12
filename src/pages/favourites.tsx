@@ -27,10 +27,13 @@ const Favourites: NextPage = () => {
     error,
   } = api.favourites.getAll.useQuery();
 
+  const ctx = api.useContext();
+
   const { mutate, isLoading: isDeletingFavourite } =
     api.favourites.deleteOne.useMutation({
       onSuccess: () => {
         toast.success(`Removed recipe from favorites!`);
+        void ctx.favourites.getAll.invalidate();
       },
       onError: (e) => {
         const errorMessage = e.data?.zodError?.fieldErrors.content;
