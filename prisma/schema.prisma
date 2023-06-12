@@ -28,18 +28,18 @@ enum AvailabilityType {
 }
 
 model Produce {
-  id            Int              @id @default(autoincrement())
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
+  id            Int          @id @default(autoincrement())
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
   title         String
   type          ProduceType
-  description   String           @default("")
-  image         String           @default("")
+  description   String       @default("")
+  image         String       @default("")
   authorId      String
-  seasonality   Seasonality      @relation(fields: [seasonalityId], references: [id])
+  seasonality   Seasonality  @relation(fields: [seasonalityId], references: [id])
   seasonalityId Int
   Ingredient    Ingredient[]
-  Prices        FoodPriceIndex[]
+  Prices        Price[]
 
   @@index([authorId])
   @@index([seasonalityId])
@@ -86,7 +86,7 @@ model Recipe {
   @@index([authorId])
 }
 
-model FoodPriceIndex {
+model Price {
   id         Int       @id @default(autoincrement())
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
