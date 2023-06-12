@@ -31,7 +31,7 @@ const ViewRecipe: NextPage = () => {
   const { mutate, isLoading: isLoadingFavourite } =
     api.favourites.addOrUpdateOne.useMutation({
       onSuccess: () => {
-        toast.success(`Added recipe ${recipe.id} to favorites!`);
+        toast.success(`Added ${recipe.title} to favourites!`);
       },
       onError: (e) => {
         const errorMessage = e.data?.zodError?.fieldErrors.content;
