@@ -29,14 +29,18 @@ const ViewRecipe: NextPage = () => {
   }) as { data: Recipe; isLoading: boolean };
 
   const { mutate, isLoading: isLoadingFavourite } =
-    api.favourites.create.useMutation({
+    api.favourites.addOrUpdateOne.useMutation({
       onSuccess: () => {
         toast.success(`Added recipe ${recipe.id} to favorites!`);
       },
       onError: (e) => {
         const errorMessage = e.data?.zodError?.fieldErrors.content;
+        const errorCode = e.data?.code;
         if (errorMessage && errorMessage[0]) {
           toast.error(errorMessage[0]);
+        }
+        if (errorCode === "INTERNAL_SERVER_ERROR") {
+          toast.error("Recipe already in favorites!");
         } else {
           toast.error("Failed to add to favorites! Please try again later.");
         }
