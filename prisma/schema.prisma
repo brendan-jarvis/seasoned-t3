@@ -90,6 +90,7 @@ model Price {
   id         Int       @id @default(autoincrement())
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
+  name       String
   year_month String
   price      Float
   Produce    Produce[]
