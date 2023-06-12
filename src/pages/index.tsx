@@ -33,10 +33,10 @@ const Home: NextPage = () => {
 
   const availabilityTypes = [
     { label: "available", value: AvailabilityType.Available },
-    { label: "unavailable", value: AvailabilityType.Unavailable },
     { label: "availabile (limited)", value: AvailabilityType.Limited },
     { label: "imported", value: AvailabilityType.Imported },
     { label: "imported (limited)", value: AvailabilityType.LimitedImported },
+    { label: "unavailable", value: AvailabilityType.Unavailable },
   ];
 
   const [selectedAvailability, setSelectedAvailability] =
