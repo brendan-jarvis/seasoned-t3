@@ -16,7 +16,7 @@ import {
   TableRow,
 } from "~/components/ui/table";
 import { Button } from "~/components/ui/button";
-import { CheckCircle, MinusCircle, Trash2, Star } from "lucide-react";
+import { CheckCircle, MinusCircle, Trash2, Star, StarHalf } from "lucide-react";
 
 import { api } from "~/utils/api";
 
@@ -47,6 +47,25 @@ const Favourites: NextPage = () => {
         }
       },
     });
+
+  const renderStars = (rating: number) => {
+    const fullStars = Math.floor(rating); // Get the integer part of the rating
+    const hasHalfStar = rating % 1 !== 0; // Check if there is a decimal part
+
+    const stars = [];
+
+    // Render full stars
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<Star key={i} />);
+    }
+
+    // Render half star if necessary
+    if (hasHalfStar) {
+      stars.push(<StarHalf key={fullStars} />);
+    }
+
+    return stars;
+  };
 
   if (isLoading) {
     return (
@@ -93,7 +112,7 @@ const Favourites: NextPage = () => {
               <TableHeader>
                 <TableRow>
                   <TableHead>Title</TableHead>
-                  <TableHead>Rating</TableHead>
+                  {/* <TableHead>Rating</TableHead> */}
                   <TableHead>Completed</TableHead>
                   <TableHead>Added On</TableHead>
                   <TableHead>Last Updated</TableHead>
@@ -111,9 +130,9 @@ const Favourites: NextPage = () => {
                         {favourite.recipe.title}
                       </Link>
                     </TableCell>
-                    <TableCell>
-                      {favourite.rating ? favourite.rating : "No rating yet."}
-                    </TableCell>
+                    {/* <TableCell>
+                      {favourite.rating ? renderStars(favourite.rating) : null}
+                    </TableCell> */}
                     <TableCell>
                       {favourite.completed ? <CheckCircle /> : <MinusCircle />}
                     </TableCell>
