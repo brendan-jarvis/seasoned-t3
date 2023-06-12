@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
 
 import { PageLayout } from "~/components/Layout";
 import { api } from "~/utils/api";
@@ -30,10 +31,28 @@ const Home: NextPage = () => {
     | "november"
     | "december";
 
+  const availabilityTypes = [
+    { label: "available", value: AvailabilityType.Available },
+    { label: "unavailable", value: AvailabilityType.Unavailable },
+    { label: "availabile (limited)", value: AvailabilityType.Limited },
+    { label: "imported", value: AvailabilityType.Imported },
+    { label: "imported (limited)", value: AvailabilityType.LimitedImported },
+  ];
+
+  const [selectedAvailability, setSelectedAvailability] =
+    useState<AvailabilityType>(AvailabilityType.Available);
+
   const { data, isLoading } = api.produce.getAllByMonth.useQuery({
     month: currentMonth,
-    availability: [AvailabilityType.Available],
+    availability: [selectedAvailability],
   });
+
+  const handleAvailabilityChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const selectedValue = event.target.value as AvailabilityType;
+    setSelectedAvailability(selectedValue);
+  };
 
   const searchRef = useRef<HTMLInputElement>(null);
 
@@ -130,7 +149,18 @@ const Home: NextPage = () => {
           <div className="container">
             <div>
               <h2 className="mb-2 text-xl font-bold tracking-tight text-seasoned-green">
-                Produce in season this{" "}
+                Produce{" "}
+                <select
+                  value={selectedAvailability}
+                  onChange={handleAvailabilityChange}
+                >
+                  {availabilityTypes.map((availability) => (
+                    <option key={availability.label} value={availability.value}>
+                      {availability.label}
+                    </option>
+                  ))}
+                </select>{" "}
+                this{" "}
                 {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
               </h2>
               <ProduceCarousel />
