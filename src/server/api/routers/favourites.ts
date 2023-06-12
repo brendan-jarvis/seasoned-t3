@@ -25,40 +25,6 @@ export const favouritesRouter = createTRPCRouter({
     return favourites;
   }),
 
-  create: privateProcedure
-    .input(
-      z.object({
-        recipeId: z.number(),
-      })
-    )
-    .mutation(async ({ ctx, input }) => {
-      const { userId } = ctx;
-      const recipeId = input.recipeId;
-
-      if (!userId) {
-        throw new TRPCError({
-          code: "UNAUTHORIZED",
-          message: "You must be logged in to add or edit a favourite",
-        });
-      }
-
-      if (!recipeId) {
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: "You must provide a recipe id",
-        });
-      }
-
-      const favourite = await ctx.prisma.favourite.create({
-        data: {
-          userId: userId,
-          recipeId: recipeId,
-        },
-      });
-
-      return favourite;
-    }),
-
   addOrUpdateOne: privateProcedure
     .input(
       z.object({
