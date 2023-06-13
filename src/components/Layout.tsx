@@ -114,7 +114,7 @@ const Nav = (props: PropsWithChildren) => {
           onClick={() => setsidebarVisibility(false)}
         >
           <div
-            className={`fixed left-0 top-0 z-20 h-full w-4/5 bg-background p-4 transition-transform duration-300 ${
+            className={`fixed left-0 top-0 z-20 h-full w-4/5 bg-background p-4 transition-transform duration-300 dark:bg-slate-900 ${
               sidebarVisibility ? "translate-x-0" : "translate-x-full"
             }`}
           >
@@ -182,7 +182,7 @@ export const PageLayout = (props: PropsWithChildren) => {
   return (
     <>
       <Toaster />
-      <main className="min-h-screen items-center justify-center bg-background text-foreground dark:bg-background dark:text-foreground">
+      <main className="min-h-screen items-center justify-center bg-background text-foreground dark:bg-slate-900 dark:text-foreground">
         <Nav>{props.children}</Nav>
       </main>
       <Footer />
