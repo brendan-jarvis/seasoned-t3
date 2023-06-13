@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useUser } from "@clerk/nextjs";
 import { toast } from "react-hot-toast";
+import { useState } from "react";
 
 import type { NextPage } from "next";
 import type {
@@ -20,6 +21,45 @@ import { Button } from "~/components/ui/button";
 import { Skeleton } from "~/components/ui/skeleton";
 import { Badge } from "~/components/ui/badge";
 
+const DeleteFavourite = ({ recipeId }: { recipeId: number }) => {
+  const { mutate, isLoading: isDeletingFavourite } =
+    api.favourites.deleteOne.useMutation({
+      onSuccess: () => {
+        toast.success(`Removed recipe from favourites!`);
+      },
+      onError: (e) => {
+        const errorMessage = e.data?.zodError?.fieldErrors.content;
+        const errorCode = e.data?.code;
+        if (errorMessage && errorMessage[0]) {
+          toast.error(errorMessage[0]);
+        }
+        if (errorCode === "INTERNAL_SERVER_ERROR") {
+          toast.error("Recipe already deleted!");
+        } else {
+          toast.error(
+            "Failed to remove recipe from favorites! Please try again later."
+          );
+        }
+      },
+    });
+
+  return (
+    <Button
+      variant="outline"
+      className="font-serif"
+      disabled={isDeletingFavourite}
+      onClick={() => {
+        mutate({
+          recipeId: recipeId,
+        });
+      }}
+    >
+      <Heart className="mr-2 h-4 w-4 fill-pink-500 text-pink-500" /> Added to
+      Favourites
+    </Button>
+  );
+};
+
 const ViewRecipe: NextPage = () => {
   const { isSignedIn } = useUser();
   const router = useRouter();
@@ -27,11 +67,13 @@ const ViewRecipe: NextPage = () => {
   const { data: recipe, isLoading } = api.recipes.getOne.useQuery({
     id: id as string,
   }) as { data: Recipe; isLoading: boolean };
+  const [isFavourite, setIsFavourite] = useState(false);
 
   const { mutate, isLoading: isLoadingFavourite } =
     api.favourites.addOrUpdateOne.useMutation({
       onSuccess: () => {
         toast.success(`Added ${recipe.title} to favourites!`);
+        setIsFavourite(true);
       },
       onError: (e) => {
         const errorMessage = e.data?.zodError?.fieldErrors.content;
@@ -121,11 +163,13 @@ const ViewRecipe: NextPage = () => {
           <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
             {recipe.title}
           </h1>
-          {isSignedIn && (
+          {isSignedIn && isFavourite ? (
+            <DeleteFavourite recipeId={recipe.id} />
+          ) : (
             <Button
               variant="outline"
               className="font-serif"
-              disabled={isLoadingFavourite}
+              disabled={isLoadingFavourite || isFavourite}
               onClick={() => {
                 mutate({
                   recipeId: recipe.id,
