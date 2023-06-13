@@ -32,7 +32,7 @@ const Favourites: NextPage = () => {
   const { mutate, isLoading: isDeletingFavourite } =
     api.favourites.deleteOne.useMutation({
       onSuccess: () => {
-        toast.success(`Removed recipe from favorites!`);
+        toast.success(`Removed recipe from favourites!`);
         void ctx.favourites.getAll.invalidate();
       },
       onError: (e) => {
@@ -45,7 +45,7 @@ const Favourites: NextPage = () => {
           toast.error("Recipe already deleted!");
         } else {
           toast.error(
-            "Failed to remove recipe from favorites! Please try again later."
+            "Failed to remove recipe from favourites! Please try again later."
           );
         }
       },
