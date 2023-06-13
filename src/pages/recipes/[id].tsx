@@ -166,7 +166,7 @@ const ViewRecipe: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <div key={recipe.id} className="flex flex-col items-center gap-4">
+        <div key={recipe.id} className="flex flex-col items-center gap-4 px-4">
           <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
             {recipe.title}
           </h1>
