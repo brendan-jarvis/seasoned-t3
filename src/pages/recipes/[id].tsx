@@ -21,11 +21,20 @@ import { Button } from "~/components/ui/button";
 import { Skeleton } from "~/components/ui/skeleton";
 import { Badge } from "~/components/ui/badge";
 
-const DeleteFavourite = ({ recipeId }: { recipeId: number }) => {
+const DeleteFavourite = ({
+  recipeId,
+  recipeTitle,
+  setIsFavourite,
+}: {
+  recipeId: number;
+  recipeTitle: string;
+  setIsFavourite: () => void;
+}) => {
   const { mutate, isLoading: isDeletingFavourite } =
     api.favourites.deleteOne.useMutation({
       onSuccess: () => {
-        toast.success(`Removed recipe from favourites!`);
+        toast.success(`Removed ${recipeTitle} from favourites!`);
+        setIsFavourite();
       },
       onError: (e) => {
         const errorMessage = e.data?.zodError?.fieldErrors.content;
@@ -37,7 +46,7 @@ const DeleteFavourite = ({ recipeId }: { recipeId: number }) => {
           toast.error("Recipe already deleted!");
         } else {
           toast.error(
-            "Failed to remove recipe from favorites! Please try again later."
+            "Failed to remove recipe from favourites! Please try again later."
           );
         }
       },
@@ -82,9 +91,9 @@ const ViewRecipe: NextPage = () => {
           toast.error(errorMessage[0]);
         }
         if (errorCode === "INTERNAL_SERVER_ERROR") {
-          toast.error("Recipe already in favorites!");
+          toast.error("Recipe already in favourites!");
         } else {
-          toast.error("Failed to add to favorites! Please try again later.");
+          toast.error("Failed to add to favourites! Please try again later.");
         }
       },
     });
@@ -164,7 +173,11 @@ const ViewRecipe: NextPage = () => {
             {recipe.title}
           </h1>
           {isSignedIn && isFavourite ? (
-            <DeleteFavourite recipeId={recipe.id} />
+            <DeleteFavourite
+              recipeId={recipe.id}
+              recipeTitle={recipe.title}
+              setIsFavourite={() => setIsFavourite(false)}
+            />
           ) : (
             <Button
               variant="outline"
