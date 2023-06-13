@@ -43,11 +43,9 @@ const DeleteFavourite = ({
           toast.error(errorMessage[0]);
         }
         if (errorCode === "INTERNAL_SERVER_ERROR") {
-          toast.error("Recipe already deleted!");
+          toast.error("Favourite already deleted!");
         } else {
-          toast.error(
-            "Failed to remove recipe from favourites! Please try again later."
-          );
+          toast.error("Failed to delete favourite! Please try again later.");
         }
       },
     });
