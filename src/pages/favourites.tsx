@@ -20,36 +20,52 @@ import { CheckCircle, MinusCircle, Trash2, Star, StarHalf } from "lucide-react";
 
 import { api } from "~/utils/api";
 
+const DeleteButton: React.FC<{ recipeId: number }> = ({ recipeId }) => {
+  const ctx = api.useContext();
+
+  const { mutate, isLoading } = api.favourites.deleteOne.useMutation({
+    onSuccess: () => {
+      toast.success(`Removed recipe from favourites!`);
+      void ctx.favourites.getAll.invalidate();
+    },
+    onError: (e) => {
+      const errorMessage = e.data?.zodError?.fieldErrors.content;
+      const errorCode = e.data?.code;
+      if (errorMessage && errorMessage[0]) {
+        toast.error(errorMessage[0]);
+      }
+      if (errorCode === "INTERNAL_SERVER_ERROR") {
+        toast.error("Recipe already deleted!");
+      } else {
+        toast.error(
+          "Failed to remove recipe from favourites! Please try again later."
+        );
+      }
+    },
+  });
+
+  return (
+    <Button
+      variant="outline"
+      onClick={() => {
+        mutate({
+          recipeId,
+        });
+      }}
+      disabled={isLoading}
+      className="px-2"
+    >
+      {isLoading ? <LoadingSpinner size={18} /> : <Trash2 />}
+    </Button>
+  );
+};
+
 const Favourites: NextPage = () => {
   const {
     data: favourites,
     isLoading,
     error,
   } = api.favourites.getAll.useQuery();
-
-  const ctx = api.useContext();
-
-  const { mutate, isLoading: isDeletingFavourite } =
-    api.favourites.deleteOne.useMutation({
-      onSuccess: () => {
-        toast.success(`Removed recipe from favourites!`);
-        void ctx.favourites.getAll.invalidate();
-      },
-      onError: (e) => {
-        const errorMessage = e.data?.zodError?.fieldErrors.content;
-        const errorCode = e.data?.code;
-        if (errorMessage && errorMessage[0]) {
-          toast.error(errorMessage[0]);
-        }
-        if (errorCode === "INTERNAL_SERVER_ERROR") {
-          toast.error("Recipe already deleted!");
-        } else {
-          toast.error(
-            "Failed to remove recipe from favourites! Please try again later."
-          );
-        }
-      },
-    });
 
   const renderStars = (rating: number) => {
     const fullStars = Math.floor(rating); // Get the integer part of the rating
@@ -161,22 +177,7 @@ const Favourites: NextPage = () => {
                       {dayjs(favourite.updatedAt).format("D MMM YYYY")}
                     </TableCell> */}
                     <TableCell>
-                      <Button
-                        variant="outline"
-                        onClick={() => {
-                          mutate({
-                            recipeId: favourite.recipeId,
-                          });
-                        }}
-                        disabled={isDeletingFavourite}
-                        className="px-2"
-                      >
-                        {isDeletingFavourite ? (
-                          <LoadingSpinner size={18} />
-                        ) : (
-                          <Trash2 />
-                        )}
-                      </Button>
+                      <DeleteButton recipeId={favourite.recipeId} />
                     </TableCell>
                   </TableRow>
                 ))}
