@@ -20,7 +20,58 @@ import { CheckCircle, MinusCircle, Trash2, Star, StarHalf } from "lucide-react";
 
 import { api } from "~/utils/api";
 
-const DeleteButton: React.FC<{ recipeId: number }> = ({ recipeId }) => {
+const CompletedButton = ({
+  recipeId,
+  completed,
+}: {
+  recipeId: number;
+  completed: boolean;
+}) => {
+  const ctx = api.useContext();
+
+  const { mutate, isLoading } = api.favourites.addOrUpdateOne.useMutation({
+    onSuccess: () => {
+      toast.success(`Marked recipe ${completed ? "incomplete" : "complete"}!`);
+      void ctx.favourites.getAll.invalidate();
+    },
+    onError: (e) => {
+      const errorMessage = e.data?.zodError?.fieldErrors.content;
+      const errorCode = e.data?.code;
+      if (errorMessage && errorMessage[0]) {
+        toast.error(errorMessage[0]);
+      }
+      if (errorCode === "INTERNAL_SERVER_ERROR") {
+        toast.error("Recipe already updated!");
+      } else {
+        toast.error("Failed to update completion! Please try again later.");
+      }
+    },
+  });
+
+  return (
+    <Button
+      variant="outline"
+      onClick={() => {
+        mutate({
+          recipeId,
+          completed: !completed,
+        });
+      }}
+      disabled={isLoading}
+      className="px-2"
+    >
+      {isLoading ? (
+        <LoadingSpinner size={18} />
+      ) : completed ? (
+        <CheckCircle className="text-seasoned-green" />
+      ) : (
+        <MinusCircle className="text-seasoned-orange" />
+      )}
+    </Button>
+  );
+};
+
+const DeleteButton = ({ recipeId }: { recipeId: number }) => {
   const ctx = api.useContext();
 
   const { mutate, isLoading } = api.favourites.deleteOne.useMutation({
@@ -132,7 +183,7 @@ const Favourites: NextPage = () => {
                 <TableRow>
                   <TableHead>Title</TableHead>
                   {/* <TableHead>Rating</TableHead> */}
-                  {/* <TableHead>Completed</TableHead> */}
+                  <TableHead>Completed</TableHead>
                   <TableHead>Added On</TableHead>
                   {/* <TableHead>Last Updated</TableHead> */}
                   <TableHead>Delete</TableHead>
@@ -152,24 +203,12 @@ const Favourites: NextPage = () => {
                     {/* <TableCell>
                       {favourite.rating ? renderStars(favourite.rating) : null}
                     </TableCell> */}
-                    {/* <TableCell>
-                      <Button
-                        variant="outline"
-                        // onClick={() => {
-                        //   mutate({
-                        //     recipeId: favourite.recipeId,
-                        //     completed: !favourite.completed,
-                        //   });
-                        // }}
-                        className="px-2"
-                      >
-                        {favourite.completed ? (
-                          <CheckCircle />
-                        ) : (
-                          <MinusCircle />
-                        )}
-                      </Button>
-                    </TableCell> */}
+                    <TableCell>
+                      <CompletedButton
+                        recipeId={favourite.recipeId}
+                        completed={favourite.completed}
+                      />
+                    </TableCell>
                     <TableCell>
                       {dayjs(favourite.createdAt).format("D MMM YYYY")}
                     </TableCell>
