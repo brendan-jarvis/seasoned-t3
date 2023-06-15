@@ -102,7 +102,7 @@ model Favourite {
   userId    String
   recipeId  Int
   rating    Int?
-  completed Boolean? @default(false)
+  completed Boolean  @default(false)
 
   recipe Recipe @relation(fields: [recipeId], references: [id])
 
