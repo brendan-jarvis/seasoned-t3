@@ -24,10 +24,10 @@ const RecipeCardSkeleton = () => (
   <div className="mb-4 flex flex-wrap justify-center gap-4">
     <div className="flex items-center gap-4">
       <Card className="space-y-2 p-6">
-        <Skeleton className="h-4 w-[200px]" />
+        <Skeleton className="h-4 w-[200px] bg-slate-300" />
         <Skeleton className="h-4 w-[300px]" />
         <Skeleton className="h-4 w-[300px]" />
-        <Skeleton className="h-[350px] w-full" />
+        <Skeleton className="h-[350px] w-full bg-slate-500" />
         <div className="flex flex-wrap gap-2">
           <Skeleton className="h-4 w-20" />
           <Skeleton className="h-4 w-20" />
