@@ -8,10 +8,15 @@ import { PageLayout } from "~/components/Layout";
 import { api } from "~/utils/api";
 import { AvailabilityType } from "@prisma/client";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
-import { Search } from "lucide-react";
+import { Search, PlusCircle } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
-import { useRef } from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "~/components/ui/tooltip";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -54,12 +59,12 @@ const Home: NextPage = () => {
     setSelectedAvailability(selectedValue);
   };
 
-  const searchRef = useRef<HTMLInputElement>(null);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    if (searchRef.current) {
-      void router.push(`/search/${searchRef.current.value}`);
+    if (searchQuery) {
+      void router.push(`/search/${searchQuery}`);
     }
   };
 
@@ -91,6 +96,30 @@ const Home: NextPage = () => {
                 <h2 className="justify-center text-center text-sm font-semibold text-gray-700 dark:text-gray-300">
                   {title}
                 </h2>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        className="h-4 w-4 rounded-full p-0"
+                        onClick={() =>
+                          setSearchQuery(
+                            (prevQuery) =>
+                              `${prevQuery}${prevQuery ? ", " : ""}${
+                                title || ""
+                              }`
+                          )
+                        }
+                      >
+                        <PlusCircle className="h-4 w-4" />
+                        <span className="sr-only">Add</span>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Add {title?.toLowerCase()} to search</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </div>
             ))
           )}
@@ -139,7 +168,12 @@ const Home: NextPage = () => {
               onSubmit={handleSubmit}
             >
               <div className="flex w-full max-w-sm justify-center space-x-2 text-center">
-                <Input type="text" ref={searchRef} placeholder="Search" />
+                <Input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search"
+                />
                 <Button variant="ghost" type="submit">
                   <Search />
                 </Button>
