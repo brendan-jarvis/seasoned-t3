@@ -118,13 +118,13 @@ const Home: NextPage = () => {
         <div className="flex flex-col items-center justify-center py-8 text-center">
           <div className="container">
             <div className="flex items-baseline justify-center text-center">
-              <h1 className="my-8 font-serif text-2xl font-semibold tracking-tight text-seasoned-green drop-shadow-md ">
+              <h1 className="my-8 font-serif text-6xl font-semibold tracking-tight text-seasoned-green drop-shadow-md ">
                 Seasoned
               </h1>
               <Image
                 src="/images/fa-carrot.svg"
-                width={64}
-                height={64}
+                width={46}
+                height={46}
                 alt="Orange carrot icon"
                 className="bounce-once ml-1"
               />
