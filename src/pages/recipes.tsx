@@ -20,6 +20,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { Skeleton } from "~/components/ui/skeleton";
 
+const RecipeCardSkeleton = () => (
+  <div className="mb-4 flex flex-wrap justify-center gap-4">
+    <div className="flex items-center gap-4">
+      <Card className="space-y-2 p-6">
+        <Skeleton className="h-4 w-[200px]" />
+        <Skeleton className="h-4 w-[300px]" />
+        <Skeleton className="h-4 w-[300px]" />
+        <Skeleton className="h-[350px] w-full" />
+        <div className="flex flex-wrap gap-2">
+          <Skeleton className="h-4 w-20" />
+          <Skeleton className="h-4 w-20" />
+          <Skeleton className="h-4 w-20" />
+        </div>
+      </Card>
+    </div>
+  </div>
+);
+
 const Recipes: NextPage = () => {
   const router = useRouter();
   const limit = parseInt(router.query.limit as string) || 10;
@@ -31,9 +49,32 @@ const Recipes: NextPage = () => {
 
   if (isLoading) {
     return (
-      <PageLayout>
-        <LoadingSpinner size={64} />
-      </PageLayout>
+      <>
+        <Head>
+          <title>Seasoned - Recipes</title>
+          <meta
+            name="description"
+            content="Seasoned is a recipe app that allows users to search for recipes based on ingredients that are in season."
+          />
+          <link rel="icon" href="/favicon.ico" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"
+          />
+        </Head>
+        <PageLayout>
+          <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
+            Recipes
+          </h1>
+          <Skeleton className="mx-auto mb-4 h-4 w-[300px] text-center" />
+          <div className="mb-4 flex flex-wrap justify-center gap-4">
+            {Array.from({ length: 10 }).map((_, index) => (
+              <RecipeCardSkeleton key={index} />
+            ))}
+          </div>
+        </PageLayout>
+      </>
     );
   }
 
