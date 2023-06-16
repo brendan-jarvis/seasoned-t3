@@ -235,6 +235,13 @@ const ViewRecipe: NextPage = () => {
               Total time: <span className="font-light">{recipe.totalTime}</span>
             </p>
           )}
+          {recipe.description && (
+            <>
+              <p className="max-w-lg font-sans text-gray-900 dark:text-gray-300">
+                {recipe.description}
+              </p>
+            </>
+          )}
           <h3 className="font-serif text-lg font-bold tracking-wider text-gray-900 dark:text-gray-300">
             Ingredients
           </h3>
@@ -252,7 +259,9 @@ const ViewRecipe: NextPage = () => {
                   </h4>
                 )}
                 {segment.ingredients.map((ingredient) => (
-                  <p key={ingredient.content}>{ingredient.content}</p>
+                  <p key={ingredient.content} className="font-sans">
+                    {ingredient.content}
+                  </p>
                 ))}
               </li>
             ))}
