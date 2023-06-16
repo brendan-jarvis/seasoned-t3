@@ -155,7 +155,11 @@ const Home: NextPage = () => {
                   onChange={handleAvailabilityChange}
                 >
                   {availabilityTypes.map((availability) => (
-                    <option key={availability.label} value={availability.value}>
+                    <option
+                      key={availability.label}
+                      value={availability.value}
+                      selected={selectedAvailability === availability.value}
+                    >
                       {availability.label}
                     </option>
                   ))}
