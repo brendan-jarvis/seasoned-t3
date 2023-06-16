@@ -75,9 +75,32 @@ const Home: NextPage = () => {
       ...new Set(sortedProduce?.map((item) => item.title.split(" - ")[0])),
     ];
 
+    const ImageWithFallback = ({
+      src,
+      title,
+    }: {
+      src: string | undefined;
+      title: string | undefined;
+    }) => {
+      const [imgSrc, setImgSrc] = useState(src);
+
+      return (
+        <Image
+          width={200}
+          height={200}
+          alt={title ? title : "Produce"}
+          src={`/images/produce/${imgSrc ? imgSrc : ""}.jpg`}
+          className="rounded-t-lg"
+          onError={() => {
+            setImgSrc("/images/inigo-de-la-maza-s285sDw5Ikc-unsplash.jpg");
+          }}
+        />
+      );
+    };
+
     return (
-      <div className="flex justify-center">
-        <div className="grid h-auto grid-flow-col gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
+      <div className="flex items-center justify-center">
+        <div className="flex h-auto grid-flow-col flex-wrap gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
           {isLoading ? (
             <LoadingSpinner />
           ) : (
@@ -86,12 +109,9 @@ const Home: NextPage = () => {
                 key={index}
                 className="h-32 w-32 rounded-lg border bg-card text-card-foreground shadow-sm"
               >
-                <Image
-                  src="/images/inigo-de-la-maza-s285sDw5Ikc-unsplash.jpg"
-                  width={200}
-                  height={200}
-                  alt={title ? title : "Produce"}
-                  className="rounded-t-lg"
+                <ImageWithFallback
+                  src={title?.toLowerCase().replaceAll(" ", "-")}
+                  title={title}
                 />
                 <h2 className="justify-center text-center text-sm font-semibold text-gray-700 dark:text-gray-300">
                   {title}
@@ -106,7 +126,7 @@ const Home: NextPage = () => {
                           setSearchQuery(
                             (prevQuery) =>
                               `${prevQuery}${prevQuery ? ", " : ""}${
-                                title || ""
+                                title?.toLowerCase() || ""
                               }`
                           )
                         }
@@ -167,23 +187,31 @@ const Home: NextPage = () => {
               className="mx-auto flex w-full max-w-sm justify-center space-x-2 pb-8 text-center"
               onSubmit={handleSubmit}
             >
-              <div className="flex w-full max-w-sm justify-center space-x-2 text-center">
-                <Input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search"
-                />
-                <Button variant="ghost" type="submit">
-                  <Search />
-                </Button>
+              <div className="items-left grid w-full max-w-sm gap-1.5">
+                <div className="flex w-full max-w-sm items-center space-x-2">
+                  <Input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search"
+                  />
+                  <Button variant="ghost" type="submit">
+                    <Search />
+                  </Button>
+                </div>
+                <p className="pl-2 text-left text-sm text-muted-foreground">
+                  Tip: Enter the ingredients separated by &apos;, &apos;
+                </p>
               </div>
             </form>
           </div>
           <div className="container">
             <div>
-              <h2 className="mb-2 text-xl font-bold tracking-tight text-seasoned-green">
-                Produce{" "}
+              <h2
+                className="mb-2 text-xl font-bold tracking-tight text-seasoned-green"
+                style={{ whiteSpace: "pre-line" }}
+              >
+                Produce{"\n"}
                 <select
                   value={selectedAvailability}
                   onChange={handleAvailabilityChange}
@@ -197,10 +225,12 @@ const Home: NextPage = () => {
                       {availability.label}
                     </option>
                   ))}
-                </select>{" "}
-                this{" "}
+                </select>
+                {"\n"}
+                this{"\n"}
                 {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
               </h2>
+
               <ProduceCarousel />
             </div>
           </div>
