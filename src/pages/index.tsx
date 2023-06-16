@@ -192,7 +192,7 @@ const Home: NextPage = () => {
                     <option
                       key={availability.label}
                       value={availability.value}
-                      selected={selectedAvailability === availability.value}
+                      defaultValue={selectedAvailability}
                     >
                       {availability.label}
                     </option>
