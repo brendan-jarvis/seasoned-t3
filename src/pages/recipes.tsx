@@ -38,6 +38,15 @@ const RecipeCardSkeleton = () => (
   </div>
 );
 
+const truncateDescription = (description: string) => {
+  if (description.length > 100) {
+    const truncatedString = description.slice(0, 100);
+    const lastSpaceIndex = truncatedString.lastIndexOf(" ");
+    return truncatedString.slice(0, lastSpaceIndex) + "...";
+  }
+  return description;
+};
+
 const Recipes: NextPage = () => {
   const router = useRouter();
   const limit = parseInt(router.query.limit as string) || 10;
@@ -121,7 +130,7 @@ const Recipes: NextPage = () => {
                         </CardTitle>
                         {recipe.description && (
                           <CardDescription className="text-sm">
-                            {recipe.description}
+                            {truncateDescription(recipe.description)}
                           </CardDescription>
                         )}
                       </CardHeader>
