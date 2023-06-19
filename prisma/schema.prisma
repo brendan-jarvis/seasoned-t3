@@ -28,24 +28,24 @@ enum AvailabilityType {
 }
 
 model Produce {
-  id            Int          @id @default(autoincrement())
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
-  title         String
-  type          ProduceType
-  description   String       @default("")
-  image         String       @default("")
-  authorId      String
-  seasonality   Seasonality  @relation(fields: [seasonalityId], references: [id])
-  seasonalityId Int
-  Ingredient    Ingredient[]
-  Prices        Price[]
+  id             Int          @id @default(autoincrement())
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  title          String
+  type           ProduceType
+  description    String       @default("")
+  image          String       @default("")
+  authorId       String
+  availability   Availability @relation(fields: [availabilityId], references: [id])
+  availabilityId Int
+  Ingredient     Ingredient[]
+  Prices         Price[]
 
   @@index([authorId])
-  @@index([seasonalityId])
+  @@index([availabilityId])
 }
 
-model Seasonality {
+model Availability {
   id        Int              @id @default(autoincrement())
   createdAt DateTime         @default(now())
   updatedAt DateTime         @updatedAt

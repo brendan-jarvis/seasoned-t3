@@ -64,7 +64,7 @@ export const produceRouter = createTRPCRouter({
     const allProduce = await ctx.prisma.produce.findMany({
       take: 10,
       orderBy: { id: "asc" },
-      include: { seasonality: true },
+      include: { availability: true },
     });
 
     return addUserDataToAllProduce(allProduce);
@@ -93,7 +93,7 @@ export const produceRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const allProduce = await ctx.prisma.produce.findMany({
         where: {
-          seasonality: {
+          availability: {
             [input.month]: {
               in: input.availability,
             },
@@ -121,7 +121,7 @@ export const produceRouter = createTRPCRouter({
         ]),
         description: z.string().optional(),
         image: z.string().optional(),
-        seasonality: z.object({
+        availability: z.object({
           january: availabilityType,
           february: availabilityType,
           march: availabilityType,
@@ -147,8 +147,8 @@ export const produceRouter = createTRPCRouter({
           type: input.type,
           description: input.description,
           image: input.image,
-          seasonality: {
-            create: input.seasonality,
+          availability: {
+            create: input.availability,
           },
         },
       });
