@@ -1,6 +1,6 @@
 import { AvailabilityType, ProduceType } from "@prisma/client";
 
-export const produceAvailability = [
+export const produce = [
   {
     authorId: "prismaSeed",
     title: "Artichoke - Globe",

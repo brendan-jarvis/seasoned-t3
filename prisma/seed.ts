@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { produceAvailability } from "./produce";
+import { produce } from "./produce";
 import { recipes } from "./recipes";
 import { prices } from "./prices";
 
@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   // Add produce
-  for (const item of produceAvailability) {
+  for (const item of produce) {
     await prisma.produce.create({
       data: item,
     });
