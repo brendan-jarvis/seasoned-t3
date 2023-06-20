@@ -40,9 +40,31 @@ model Produce {
   availabilityId Int
   Ingredient     Ingredient[]
   Prices         Price[]
+  Seasonality    Seasonality? @relation(fields: [seasonalityId], references: [id])
+  seasonalityId  Int?
 
   @@index([authorId])
   @@index([availabilityId])
+  @@index([seasonalityId])
+}
+
+model Seasonality {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  january   String
+  february  String
+  march     String
+  april     String
+  may       String
+  june      String
+  july      String
+  august    String
+  september String
+  october   String
+  november  String
+  december  String
+  Produce   Produce[]
 }
 
 model Availability {
