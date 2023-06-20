@@ -167,6 +167,6 @@ model Instruction {
 
 model Tag {
   id     Int      @id @default(autoincrement())
-  name   String
+  name   String   @unique
   recipe Recipe[]
 }
