@@ -40,7 +40,7 @@ model Produce {
   availabilityId Int
   Ingredient     Ingredient[]
   Prices         Price[]
-  Seasonality    Seasonality? @relation(fields: [seasonalityId], references: [id])
+  seasonality    Seasonality? @relation(fields: [seasonalityId], references: [id])
   seasonalityId  Int?
 
   @@index([authorId])
@@ -52,7 +52,7 @@ model Seasonality {
   id        Int       @id @default(autoincrement())
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  name      String
+  name      String    @unique
   january   String
   february  String
   march     String
