@@ -79,9 +79,7 @@ const Produce: NextPage = () => {
     );
 
     otherProduceInSeason = uniqueProduce.filter((item) =>
-      [ProduceType.EdibleFlower, ProduceType.Herb].some(
-        (type) => item.type === type
-      )
+      [ProduceType.Herb].some((type) => item.type === type)
     );
   }
 

@@ -116,7 +116,6 @@ export const produceRouter = createTRPCRouter({
           "Berry",
           "StoneFruit",
           "SpecialtyFruit",
-          "EdibleFlower",
           "Herb",
         ]),
         description: z.string().optional(),
