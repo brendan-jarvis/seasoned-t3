@@ -52,8 +52,19 @@ export const produce = [
       connectOrCreate: {
         where: { name: "Artichoke - Jerusalem" },
         create: {
-          // TODO insert Seasonality data
           name: "Artichoke - Jerusalem",
+          june: "Available",
+          july: "Available",
+          august: "Available",
+          september: "Available",
+          january: "Unavailable",
+          february: "Unavailable",
+          march: "Unavailable",
+          april: "Unavailable",
+          may: "Unavailable",
+          october: "Unavailable",
+          november: "Unavailable",
+          december: "Unavailable",
         },
       },
     },
@@ -85,7 +96,18 @@ export const produce = [
         },
         create: {
           name: "Asparagus",
-          // TODO insert Seasonality data
+          september: "Available",
+          october: "Available",
+          november: "Available",
+          december: "Available",
+          january: "Unavailable",
+          february: "Unavailable",
+          march: "Unavailable",
+          april: "Unavailable",
+          may: "Unavailable",
+          june: "Unavailable",
+          july: "Unavailable",
+          august: "Unavailable",
         },
       },
     },
@@ -113,11 +135,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "beans",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "beans",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            november: "Available",
+            december: "Available",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -145,11 +180,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "beans",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "beans",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            november: "Available",
+            december: "Available",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -177,11 +225,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "beetroot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "beetroot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            november: "Available",
+            december: "Available",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -209,11 +270,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "beetroot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "beetroot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            november: "Available",
+            december: "Available",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -241,11 +315,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "beetroot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "beetroot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            november: "Available",
+            december: "Available",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -273,11 +360,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "bok choy",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "bok choy",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            november: "Available",
+            december: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+          },
         },
       },
     },
@@ -305,11 +405,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "broccoli",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "broccoli",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -337,11 +450,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "broccolini",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "broccolini",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -369,11 +495,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "brussel sprouts",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "brussel sprouts",
+          availability: {
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -401,11 +540,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "cabbage",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "cabbage",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -433,11 +585,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "cabbage",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "cabbage",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -465,11 +630,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "cabbage",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "cabbage",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -497,11 +675,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "capsicum",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "capsicum",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -529,11 +720,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "capsicum",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "capsicum",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -561,11 +765,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "capsicum",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "capsicum",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -593,11 +810,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "capsicum",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "capsicum",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -625,11 +855,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "carrot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "carrot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -657,11 +900,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "carrot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "carrot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -689,11 +945,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "carrot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "carrot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -721,11 +990,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "carrot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "carrot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -753,11 +1035,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "carrot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "carrot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -785,11 +1080,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "carrot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "carrot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -817,11 +1125,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "cauliflower",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "cauliflower",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -849,11 +1170,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "cauliflower",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "cauliflower",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -881,11 +1215,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "celery",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "celery",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -913,11 +1260,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "celeriac",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "celeriac",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -945,11 +1305,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "chilli",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "chilli",
+          availability: {
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -977,11 +1350,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "chilli",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "chilli",
+          availability: {
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -1073,11 +1459,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "courgette",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "courgette",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+          },
         },
       },
     },
@@ -1105,11 +1504,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "courgette",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "courgette",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+          },
         },
       },
     },
@@ -1137,11 +1549,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "cucumber",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "cucumber",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1169,11 +1594,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "cucumber",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "cucumber",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1201,11 +1639,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "cucumber",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "cucumber",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1233,11 +1684,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "eggplant",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "eggplant",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            november: "Available",
+            december: "Available",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -1265,11 +1729,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "eggplant",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "eggplant",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            november: "Available",
+            december: "Available",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -1297,11 +1774,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fennel",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fennel",
+          availability: {
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -1329,11 +1819,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fennel",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fennel",
+          availability: {
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -1356,16 +1859,29 @@ export const produce = [
   },
   {
     authorId: "prismaSeed",
-    title: "Garlic - Nz",
+    title: "Garlic - NZ",
     type: ProduceType.Vegetable,
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "garlic",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "garlic",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1393,11 +1909,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "garlic",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "garlic",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1425,11 +1954,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "garlic",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "garlic",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1457,11 +1999,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "ginger",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "ginger",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1489,11 +2044,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "kale",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "kale",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1521,11 +2089,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "kale",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "kale",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1553,11 +2134,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "kale",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "kale",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1580,16 +2174,29 @@ export const produce = [
   },
   {
     authorId: "prismaSeed",
-    title: "Kholrabi",
+    title: "Kohlrabi",
     type: ProduceType.Vegetable,
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "kohlrabi",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "kohlrabi",
+          availability: {
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -1617,11 +2224,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "kumara",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "kumara",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1649,11 +2269,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "kumara",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "kumara",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1681,11 +2314,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "kumara",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "kumara",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1713,11 +2359,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "leek",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "leek",
+          availability: {
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -1745,11 +2404,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "leek",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "leek",
+          availability: {
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -1777,11 +2449,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "lettuce",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "lettuce",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1809,11 +2494,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "lettuce",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "lettuce",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1841,11 +2539,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "lettuce",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "lettuce",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1873,11 +2584,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "lettuce",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "lettuce",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1905,11 +2629,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "lettuce",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "lettuce",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1937,11 +2674,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "lettuce",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "lettuce",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -1969,11 +2719,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "lettuce",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "lettuce",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2001,11 +2764,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "lettuce",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "lettuce",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2033,11 +2809,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "lettuce",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "lettuce",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2097,11 +2886,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "mushroom",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "mushroom",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2129,11 +2931,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "mushroom",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "mushroom",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2161,11 +2976,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "mushroom",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "mushroom",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2193,11 +3021,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "mushroom",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "mushroom",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2225,11 +3066,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "mushroom",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "mushroom",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2257,11 +3111,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "mushroom",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "mushroom",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2289,11 +3156,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "mushroom",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "mushroom",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2321,11 +3201,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "onion",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "onion",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2353,11 +3246,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "onion",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "onion",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2385,11 +3291,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "onion",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "onion",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2417,11 +3336,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "onion",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "onion",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2513,11 +3445,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "parsnip",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "parsnip",
+          availability: {
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            january: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -2545,11 +3490,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "pea",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "pea",
+          availability: {
+            january: "Available",
+            february: "Available",
+            november: "Available",
+            december: "Available",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -2577,11 +3535,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "potato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "potato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2609,11 +3580,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "potato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "potato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2641,11 +3625,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "potato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "potato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2673,11 +3670,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "potato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "potato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2705,11 +3715,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "potato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "potato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2737,11 +3760,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "potato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "potato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2769,11 +3805,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "potato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "potato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2801,11 +3850,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "potato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "potato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2833,11 +3895,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "potato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "potato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2865,11 +3940,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "pumpkin",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "pumpkin",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2897,11 +3985,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "butternut",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "butternut",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            december: "Available",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+          },
         },
       },
     },
@@ -2929,11 +4030,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "buttercup pumpkin",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "buttercup pumpkin",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            december: "Available",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+          },
         },
       },
     },
@@ -2961,11 +4075,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "radish",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "radish",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -2993,11 +4120,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "silverbeet",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "silverbeet",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3025,11 +4165,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "shallot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "shallot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3057,11 +4210,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "snow pea",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "snow pea",
+          availability: {
+            january: "Available",
+            february: "Available",
+            november: "Available",
+            december: "Available",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -3089,11 +4255,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "spinach",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "spinach",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3121,11 +4300,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "spinach",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "spinach",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3153,11 +4345,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "spring onion",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "spring onion",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3217,11 +4422,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "pea",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "pea",
+          availability: {
+            january: "Available",
+            february: "Available",
+            november: "Available",
+            december: "Available",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -3249,11 +4467,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "swede",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "swede",
+          availability: {
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            january: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -3281,11 +4512,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "corn",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "corn",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -3313,11 +4557,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "corn",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "corn",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -3345,11 +4602,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "taro",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "taro",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3377,11 +4647,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tomato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tomato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3409,11 +4692,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tomato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tomato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3441,11 +4737,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tomato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tomato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3473,11 +4782,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tomato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tomato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3505,11 +4827,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tomato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tomato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3537,11 +4872,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "turnip",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "turnip",
+          availability: {
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -3569,11 +4917,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "turnip",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "turnip",
+          availability: {
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -3601,11 +4962,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "witloof",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "witloof",
+          availability: {
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -3633,11 +5007,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "witloof",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "witloof",
+          availability: {
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -3665,11 +5052,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "yam",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "yam",
+          availability: {
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -3697,11 +5097,22 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "Asparagus",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "Asparagus",
+          september: "Available",
+          october: "Available",
+          november: "Available",
+          december: "Available",
+          january: "Unavailable",
+          february: "Unavailable",
+          march: "Unavailable",
+          april: "Unavailable",
+          may: "Unavailable",
+          june: "Unavailable",
+          july: "Unavailable",
+          august: "Unavailable",
         },
       },
     },
@@ -3729,11 +5140,22 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "Asparagus",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "Asparagus",
+          september: "Available",
+          october: "Available",
+          november: "Available",
+          december: "Available",
+          january: "Unavailable",
+          february: "Unavailable",
+          march: "Unavailable",
+          april: "Unavailable",
+          may: "Unavailable",
+          june: "Unavailable",
+          july: "Unavailable",
+          august: "Unavailable",
         },
       },
     },
@@ -3761,11 +5183,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "beetroot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "beetroot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            november: "Available",
+            december: "Available",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -3793,11 +5228,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "broccoli",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "broccoli",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3825,11 +5273,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "carrot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "carrot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3857,11 +5318,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "carrot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "carrot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3889,11 +5363,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "carrot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "carrot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -3921,11 +5408,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "cauliflower",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "cauliflower",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -4017,11 +5517,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "courgette",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "courgette",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+          },
         },
       },
     },
@@ -4049,11 +5562,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "horseradish",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "horseradish",
+          availability: {
+            january: "Unavailable",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -4113,11 +5639,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "kumara",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "kumara",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -4145,11 +5684,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "kumara",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "kumara",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -4209,11 +5761,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "potato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "potato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -4241,11 +5806,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "apple",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "apple",
+          availability: {
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            january: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -4273,11 +5851,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "apple",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "apple",
+          availability: {
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            january: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -4305,11 +5896,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "apple",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "apple",
+          availability: {
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            january: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -4337,11 +5941,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "apple",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "apple",
+          availability: {
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            january: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -4369,11 +5986,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "apple",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "apple",
+          availability: {
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            january: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -4401,11 +6031,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "apple",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "apple",
+          availability: {
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            january: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -4433,11 +6076,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "apple",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "apple",
+          availability: {
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            january: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -4465,11 +6121,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "avocado",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "avocado",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+            may: "Unavailable",
+            june: "Unavailable",
+          },
         },
       },
     },
@@ -4497,11 +6166,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "banana",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "banana",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -4529,11 +6211,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "cape gooseberry",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "cape gooseberry",
+          availability: {
+            december: "Available",
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Available",
+          },
         },
       },
     },
@@ -4657,11 +6352,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "feijoa",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "feijoa",
+          availability: {
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -4721,11 +6429,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "grapefruit",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "grapefruit",
+          availability: {
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -4748,16 +6469,29 @@ export const produce = [
   },
   {
     authorId: "prismaSeed",
-    title: "Grapefruit - Nz",
+    title: "Grapefruit - NZ",
     type: ProduceType.Fruit,
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "grapefruit",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "grapefruit",
+          availability: {
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -4785,11 +6519,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "grapefruit",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "grapefruit",
+          availability: {
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -4817,11 +6564,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "grapes",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "grapes",
+          availability: {
+            february: "Available",
+            march: "Available",
+            january: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -4849,11 +6609,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "grapes",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "grapes",
+          availability: {
+            february: "Available",
+            march: "Available",
+            january: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -4881,11 +6654,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "grapes",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "grapes",
+          availability: {
+            february: "Available",
+            march: "Available",
+            january: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -4913,11 +6699,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "green kiwifruit",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "green kiwifruit",
+          availability: {
+            january: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+            february: "Unavailable",
+            march: "Unavailable",
+          },
         },
       },
     },
@@ -4945,11 +6744,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "kiwiberry",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "kiwiberry",
+          availability: {
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -4977,11 +6789,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "gold kiwifruit",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "gold kiwifruit",
+          availability: {
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5009,11 +6834,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "lemon",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "lemon",
+          availability: {
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5041,11 +6879,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "lemon",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "lemon",
+          availability: {
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5073,11 +6924,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "lime",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "lime",
+          availability: {
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5105,11 +6969,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "mandarin",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "mandarin",
+          availability: {
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5137,11 +7014,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "mango",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "mango",
+          availability: {
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5169,11 +7059,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "honeydew melon",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "honeydew melon",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5201,11 +7104,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "rock melon",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "rock melon",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5233,11 +7149,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "watermelon",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "watermelon",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            december: "Available",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+          },
         },
       },
     },
@@ -5265,11 +7194,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "orange",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "orange",
+          availability: {
+            january: "Available",
+            february: "Available",
+            november: "Available",
+            december: "Available",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -5297,11 +7239,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "navel orange",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "navel orange",
+          availability: {
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+          },
         },
       },
     },
@@ -5329,11 +7284,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "orange",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "orange",
+          availability: {
+            january: "Available",
+            february: "Available",
+            november: "Available",
+            december: "Available",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -5361,11 +7329,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "orange",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "orange",
+          availability: {
+            january: "Available",
+            february: "Available",
+            november: "Available",
+            december: "Available",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -5393,11 +7374,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "passionfruit",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "passionfruit",
+          availability: {
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            january: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5489,11 +7483,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "pear",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "pear",
+          availability: {
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            january: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5521,11 +7528,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "pear",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "pear",
+          availability: {
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            january: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5553,11 +7573,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "nashi",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "nashi",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5585,11 +7618,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "pear",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "pear",
+          availability: {
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            january: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5617,11 +7663,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "persimmon",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "persimmon",
+          availability: {
+            may: "Available",
+            june: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5644,16 +7703,29 @@ export const produce = [
   },
   {
     authorId: "prismaSeed",
-    title: "Pineapple - Gold",
+    title: "Pineapple",
     type: ProduceType.Fruit,
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "pineapple",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "pineapple",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -5713,11 +7785,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "rhubarb",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "rhubarb",
+          availability: {
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5745,11 +7830,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tamarillo",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tamarillo",
+          availability: {
+            july: "Available",
+            august: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5777,11 +7875,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tamarillo",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tamarillo",
+          availability: {
+            july: "Available",
+            august: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -5809,11 +7920,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tangelo",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tangelo",
+          availability: {
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+          },
         },
       },
     },
@@ -5841,11 +7965,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "blackberries",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "blackberries",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            december: "Available",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+          },
         },
       },
     },
@@ -5873,11 +8010,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "blueberries",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "blueberries",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            november: "Available",
+            december: "Available",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -5905,11 +8055,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "boysenberries",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "boysenberries",
+          availability: {
+            january: "Available",
+            november: "Available",
+            december: "Available",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -5937,11 +8100,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "gooseberries",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "gooseberries",
+          availability: {
+            december: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+          },
         },
       },
     },
@@ -5969,11 +8145,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "raspberries",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "raspberries",
+          availability: {
+            january: "Available",
+            december: "Available",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+          },
         },
       },
     },
@@ -6001,11 +8190,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "strawberries",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "strawberries",
+          availability: {
+            january: "Available",
+            february: "Available",
+            november: "Available",
+            december: "Available",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -6033,11 +8235,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "strawberries",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "strawberries",
+          availability: {
+            january: "Available",
+            february: "Available",
+            november: "Available",
+            december: "Available",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+          },
         },
       },
     },
@@ -6065,11 +8280,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "apricot",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "apricot",
+          availability: {
+            january: "Available",
+            february: "Available",
+            december: "Available",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+          },
         },
       },
     },
@@ -6097,11 +8325,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "cherries",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "cherries",
+          availability: {
+            january: "Available",
+            december: "Available",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+          },
         },
       },
     },
@@ -6129,11 +8370,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "nectarine",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "nectarine",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -6161,11 +8415,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "peach",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "peach",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            december: "Available",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+          },
         },
       },
     },
@@ -6193,11 +8460,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "peach",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "peach",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            december: "Available",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+          },
         },
       },
     },
@@ -6225,11 +8505,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "peach",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "peach",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            december: "Available",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+          },
         },
       },
     },
@@ -6257,11 +8550,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "peach",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "peach",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            december: "Available",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+          },
         },
       },
     },
@@ -6289,11 +8595,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "plum",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "plum",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -6321,11 +8640,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "plum",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "plum",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -6353,11 +8685,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "plum",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "plum",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -6417,11 +8762,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "raspberries",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "raspberries",
+          availability: {
+            january: "Available",
+            december: "Available",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+            may: "Unavailable",
+            june: "Unavailable",
+            july: "Unavailable",
+            august: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+          },
         },
       },
     },
@@ -6449,11 +8807,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tomato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tomato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -6481,11 +8852,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tomato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tomato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -6513,11 +8897,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tomato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tomato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -6545,11 +8942,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tomato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tomato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -6577,11 +8987,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tomato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tomato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -6609,11 +9032,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tomato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tomato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -6641,11 +9077,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tomato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tomato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -6673,11 +9122,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "tomato",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "tomato",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -6764,368 +9226,29 @@ export const produce = [
   },
   {
     authorId: "prismaSeed",
-    title: "Calendula",
-    type: ProduceType.EdibleFlower,
-    seasonality: {
-      connectOrCreate: {
-        where: {
-          // TODO add name
-          name: "",
-        },
-        create: {
-          // TODO insert Seasonality data
-        },
-      },
-    },
-    availability: {
-      create: {
-        january: AvailabilityType.Limited,
-        february: AvailabilityType.Limited,
-        march: AvailabilityType.Limited,
-        april: AvailabilityType.Limited,
-        may: AvailabilityType.Limited,
-        june: AvailabilityType.Limited,
-        july: AvailabilityType.Limited,
-        august: AvailabilityType.Available,
-        september: AvailabilityType.Available,
-        october: AvailabilityType.Available,
-        november: AvailabilityType.Available,
-        december: AvailabilityType.Limited,
-      },
-    },
-  },
-  {
-    authorId: "prismaSeed",
-    title: "Cornflower",
-    type: ProduceType.EdibleFlower,
-    seasonality: {
-      connectOrCreate: {
-        where: {
-          // TODO add name
-          name: "",
-        },
-        create: {
-          // TODO insert Seasonality data
-        },
-      },
-    },
-    availability: {
-      create: {
-        january: AvailabilityType.Limited,
-        february: AvailabilityType.Limited,
-        march: AvailabilityType.Limited,
-        april: AvailabilityType.Limited,
-        may: AvailabilityType.Limited,
-        june: AvailabilityType.Limited,
-        july: AvailabilityType.Limited,
-        august: AvailabilityType.Available,
-        september: AvailabilityType.Available,
-        october: AvailabilityType.Available,
-        november: AvailabilityType.Available,
-        december: AvailabilityType.Limited,
-      },
-    },
-  },
-  {
-    authorId: "prismaSeed",
-    title: "Dianthus",
-    type: ProduceType.EdibleFlower,
-    seasonality: {
-      connectOrCreate: {
-        where: {
-          // TODO add name
-          name: "",
-        },
-        create: {
-          // TODO insert Seasonality data
-        },
-      },
-    },
-    availability: {
-      create: {
-        january: AvailabilityType.Limited,
-        february: AvailabilityType.Limited,
-        march: AvailabilityType.Limited,
-        april: AvailabilityType.Limited,
-        may: AvailabilityType.Limited,
-        june: AvailabilityType.Limited,
-        july: AvailabilityType.Limited,
-        august: AvailabilityType.Available,
-        september: AvailabilityType.Available,
-        october: AvailabilityType.Available,
-        november: AvailabilityType.Available,
-        december: AvailabilityType.Limited,
-      },
-    },
-  },
-  {
-    authorId: "prismaSeed",
-    title: "Fairy Rose",
-    type: ProduceType.EdibleFlower,
-    seasonality: {
-      connectOrCreate: {
-        where: {
-          // TODO add name
-          name: "",
-        },
-        create: {
-          // TODO insert Seasonality data
-        },
-      },
-    },
-    availability: {
-      create: {
-        january: AvailabilityType.Limited,
-        february: AvailabilityType.Limited,
-        march: AvailabilityType.Limited,
-        april: AvailabilityType.Limited,
-        may: AvailabilityType.Limited,
-        june: AvailabilityType.Limited,
-        july: AvailabilityType.Limited,
-        august: AvailabilityType.Available,
-        september: AvailabilityType.Available,
-        october: AvailabilityType.Available,
-        november: AvailabilityType.Available,
-        december: AvailabilityType.Limited,
-      },
-    },
-  },
-  {
-    authorId: "prismaSeed",
-    title: "Garlic/ Onion",
-    type: ProduceType.EdibleFlower,
-    seasonality: {
-      connectOrCreate: {
-        where: {
-          // TODO add name
-          name: "",
-        },
-        create: {
-          // TODO insert Seasonality data
-        },
-      },
-    },
-    availability: {
-      create: {
-        january: AvailabilityType.Limited,
-        february: AvailabilityType.Limited,
-        march: AvailabilityType.Limited,
-        april: AvailabilityType.Limited,
-        may: AvailabilityType.Limited,
-        june: AvailabilityType.Limited,
-        july: AvailabilityType.Limited,
-        august: AvailabilityType.Available,
-        september: AvailabilityType.Available,
-        october: AvailabilityType.Available,
-        november: AvailabilityType.Available,
-        december: AvailabilityType.Limited,
-      },
-    },
-  },
-  {
-    authorId: "prismaSeed",
-    title: "Marigold",
-    type: ProduceType.EdibleFlower,
-    seasonality: {
-      connectOrCreate: {
-        where: {
-          // TODO add name
-          name: "",
-        },
-        create: {
-          // TODO insert Seasonality data
-        },
-      },
-    },
-    availability: {
-      create: {
-        january: AvailabilityType.Limited,
-        february: AvailabilityType.Limited,
-        march: AvailabilityType.Limited,
-        april: AvailabilityType.Limited,
-        may: AvailabilityType.Limited,
-        june: AvailabilityType.Limited,
-        july: AvailabilityType.Limited,
-        august: AvailabilityType.Available,
-        september: AvailabilityType.Available,
-        october: AvailabilityType.Available,
-        november: AvailabilityType.Available,
-        december: AvailabilityType.Limited,
-      },
-    },
-  },
-  {
-    authorId: "prismaSeed",
-    title: "Nasturtium (Flowers Only)",
-    type: ProduceType.EdibleFlower,
-    seasonality: {
-      connectOrCreate: {
-        where: {
-          // TODO add name
-          name: "",
-        },
-        create: {
-          // TODO insert Seasonality data
-        },
-      },
-    },
-    availability: {
-      create: {
-        january: AvailabilityType.Limited,
-        february: AvailabilityType.Limited,
-        march: AvailabilityType.Limited,
-        april: AvailabilityType.Limited,
-        may: AvailabilityType.Limited,
-        june: AvailabilityType.Limited,
-        july: AvailabilityType.Limited,
-        august: AvailabilityType.Available,
-        september: AvailabilityType.Available,
-        october: AvailabilityType.Available,
-        november: AvailabilityType.Available,
-        december: AvailabilityType.Limited,
-      },
-    },
-  },
-  {
-    authorId: "prismaSeed",
-    title: "Nasturtium (Leaves Only)",
-    type: ProduceType.EdibleFlower,
-    seasonality: {
-      connectOrCreate: {
-        where: {
-          // TODO add name
-          name: "",
-        },
-        create: {
-          // TODO insert Seasonality data
-        },
-      },
-    },
-    availability: {
-      create: {
-        january: AvailabilityType.Limited,
-        february: AvailabilityType.Limited,
-        march: AvailabilityType.Limited,
-        april: AvailabilityType.Limited,
-        may: AvailabilityType.Limited,
-        june: AvailabilityType.Limited,
-        july: AvailabilityType.Limited,
-        august: AvailabilityType.Available,
-        september: AvailabilityType.Available,
-        october: AvailabilityType.Available,
-        november: AvailabilityType.Available,
-        december: AvailabilityType.Limited,
-      },
-    },
-  },
-  {
-    authorId: "prismaSeed",
-    title: "Pansy",
-    type: ProduceType.EdibleFlower,
-    seasonality: {
-      connectOrCreate: {
-        where: {
-          // TODO add name
-          name: "",
-        },
-        create: {
-          // TODO insert Seasonality data
-        },
-      },
-    },
-    availability: {
-      create: {
-        january: AvailabilityType.Limited,
-        february: AvailabilityType.Limited,
-        march: AvailabilityType.Limited,
-        april: AvailabilityType.Limited,
-        may: AvailabilityType.Limited,
-        june: AvailabilityType.Limited,
-        july: AvailabilityType.Limited,
-        august: AvailabilityType.Available,
-        september: AvailabilityType.Available,
-        october: AvailabilityType.Available,
-        november: AvailabilityType.Available,
-        december: AvailabilityType.Limited,
-      },
-    },
-  },
-  {
-    authorId: "prismaSeed",
-    title: "Rose Petals",
-    type: ProduceType.EdibleFlower,
-    seasonality: {
-      connectOrCreate: {
-        where: {
-          // TODO add name
-          name: "",
-        },
-        create: {
-          // TODO insert Seasonality data
-        },
-      },
-    },
-    availability: {
-      create: {
-        january: AvailabilityType.Limited,
-        february: AvailabilityType.Limited,
-        march: AvailabilityType.Limited,
-        april: AvailabilityType.Limited,
-        may: AvailabilityType.Limited,
-        june: AvailabilityType.Limited,
-        july: AvailabilityType.Limited,
-        august: AvailabilityType.Available,
-        september: AvailabilityType.Available,
-        october: AvailabilityType.Available,
-        november: AvailabilityType.Available,
-        december: AvailabilityType.Limited,
-      },
-    },
-  },
-  {
-    authorId: "prismaSeed",
-    title: "Viola",
-    type: ProduceType.EdibleFlower,
-    seasonality: {
-      connectOrCreate: {
-        where: {
-          // TODO add name
-          name: "",
-        },
-        create: {
-          // TODO insert Seasonality data
-        },
-      },
-    },
-    availability: {
-      create: {
-        january: AvailabilityType.Limited,
-        february: AvailabilityType.Limited,
-        march: AvailabilityType.Limited,
-        april: AvailabilityType.Limited,
-        may: AvailabilityType.Limited,
-        june: AvailabilityType.Limited,
-        july: AvailabilityType.Limited,
-        august: AvailabilityType.Available,
-        september: AvailabilityType.Available,
-        october: AvailabilityType.Available,
-        november: AvailabilityType.Available,
-        december: AvailabilityType.Limited,
-      },
-    },
-  },
-  {
-    authorId: "prismaSeed",
     title: "Angelica",
     type: ProduceType.Herb,
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7153,11 +9276,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7185,11 +9321,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7217,11 +9366,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7249,11 +9411,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7281,11 +9456,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7313,11 +9501,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7345,11 +9546,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fennel",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fennel",
+          availability: {
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -7377,11 +9591,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7409,11 +9636,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7441,11 +9681,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7473,11 +9726,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7505,11 +9771,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7537,11 +9816,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7569,11 +9861,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7601,11 +9906,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7633,11 +9951,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7665,11 +9996,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7697,11 +10041,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7729,11 +10086,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "watercress",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "watercress",
+          availability: {
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            march: "Unavailable",
+            april: "Unavailable",
+          },
         },
       },
     },
@@ -7761,11 +10131,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "lime",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "lime",
+          availability: {
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            january: "Unavailable",
+            february: "Unavailable",
+            september: "Unavailable",
+            october: "Unavailable",
+            november: "Unavailable",
+            december: "Unavailable",
+          },
         },
       },
     },
@@ -7793,11 +10176,24 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "fresh herbs",
         },
         create: {
-          // TODO insert Seasonality data
+          name: "fresh herbs",
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
@@ -7825,11 +10221,23 @@ export const produce = [
     seasonality: {
       connectOrCreate: {
         where: {
-          // TODO add name
-          name: "",
+          name: "sprouted beans and seeds",
         },
         create: {
-          // TODO insert Seasonality data
+          availability: {
+            january: "Available",
+            february: "Available",
+            march: "Available",
+            april: "Available",
+            may: "Available",
+            june: "Available",
+            july: "Available",
+            august: "Available",
+            september: "Available",
+            october: "Available",
+            november: "Available",
+            december: "Available",
+          },
         },
       },
     },
