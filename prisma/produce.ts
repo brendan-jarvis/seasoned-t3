@@ -1119,7 +1119,7 @@ export const produce = [
   },
   {
     authorId: "prismaSeed",
-    title: "Caulini - Cauliflower Stems",
+    title: "Caulilini - Cauliflower Stems",
     type: ProduceType.Vegetable,
     seasonality: {
       connectOrCreate: {
@@ -9333,7 +9333,7 @@ export const produce = [
   {
     authorId: "prismaSeed",
     title: "Sprouted Beans & Seeds",
-    type: ProduceType.Herb,
+    type: ProduceType.SpecialtyVegetable,
     seasonality: {
       connectOrCreate: {
         where: {
