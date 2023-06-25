@@ -7,24 +7,23 @@ const prisma = new PrismaClient();
 
 async function main() {
   // Add produce
-  // for (const item of produce) {
-  //   await prisma.produce.create({
-  //     data: item,
-  //   });
-  // }
+  for (const item of produce) {
+    await prisma.produce.create({
+      data: item,
+    });
+  }
+
   // Add recipes with createdAt
-  // for (const recipe of recipes) {
-  //   await prisma.recipe.create({
-  //     data: recipe,
-  //   });
-  //   const createdAt = new Date(recipe.createdAt);
-  //   await prisma.recipe.create({
-  //     data: {
-  //       ...recipe,
-  //       createdAt,
-  //     },
-  //   });
-  // }
+  for (const recipe of recipes) {
+    const createdAt = new Date(recipe.createdAt);
+    await prisma.recipe.create({
+      data: {
+        ...recipe,
+        createdAt,
+      },
+    });
+  }
+
   // Add prices
   // for (const price of prices) {
   //   await prisma.price.create({
