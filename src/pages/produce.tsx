@@ -1,6 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { AvailabilityType, ProduceType } from "@prisma/client";
+import { ProduceType } from "@prisma/client";
 
 import { PageLayout } from "~/components/Layout";
 import { Badge } from "~/components/ui/badge";
@@ -41,8 +41,10 @@ const Produce: NextPage = () => {
 
   const { data, isLoading } = api.produce.getAllByMonth.useQuery({
     month: currentMonth,
-    availability: [AvailabilityType.Available],
+    seasonality: "Available",
   });
+
+  console.log(data);
 
   const uniqueProduce = data
     ?.filter(

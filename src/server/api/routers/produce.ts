@@ -87,15 +87,15 @@ export const produceRouter = createTRPCRouter({
           "november",
           "december",
         ]),
-        availability: z.array(availabilityType),
+        seasonality: z.string(),
       })
     )
     .query(async ({ ctx, input }) => {
       const allProduce = await ctx.prisma.produce.findMany({
         where: {
-          availability: {
+          seasonality: {
             [input.month]: {
-              in: input.availability,
+              in: input.seasonality,
             },
           },
         },
@@ -120,6 +120,21 @@ export const produceRouter = createTRPCRouter({
         ]),
         description: z.string().optional(),
         image: z.string().optional(),
+        seasonality: z.object({
+          name: z.string(),
+          january: z.enum(["Available", "Unavailable"]),
+          february: z.enum(["Available", "Unavailable"]),
+          march: z.enum(["Available", "Unavailable"]),
+          april: z.enum(["Available", "Unavailable"]),
+          may: z.enum(["Available", "Unavailable"]),
+          june: z.enum(["Available", "Unavailable"]),
+          july: z.enum(["Available", "Unavailable"]),
+          august: z.enum(["Available", "Unavailable"]),
+          september: z.enum(["Available", "Unavailable"]),
+          october: z.enum(["Available", "Unavailable"]),
+          november: z.enum(["Available", "Unavailable"]),
+          december: z.enum(["Available", "Unavailable"]),
+        }),
         availability: z.object({
           january: availabilityType,
           february: availabilityType,
