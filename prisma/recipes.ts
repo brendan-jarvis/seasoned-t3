@@ -15,12 +15,24 @@ export const recipes = [
           title: "",
           ingredients: {
             create: [
-              { content: "1.3 kilogram whole free-range chicken" },
-              { content: "1 carrot, chopped" },
-              { content: "1 onion, chopped" },
-              { content: "8 whole cloves" },
-              { content: "½ tsp allspice" },
-              { content: "3 bay leaves" },
+              {
+                content: "1.3 kilogram whole free-range chicken",
+              },
+              {
+                content: "1 carrot, chopped",
+              },
+              {
+                content: "1 onion, chopped",
+              },
+              {
+                content: "8 whole cloves",
+              },
+              {
+                content: "½ tsp allspice",
+              },
+              {
+                content: "3 bay leaves",
+              },
             ],
           },
         },
@@ -28,14 +40,30 @@ export const recipes = [
           title: "Filling",
           ingredients: {
             create: [
-              { content: "Filling" },
-              { content: "40 grams butter" },
-              { content: "1 carrot, finely chopped" },
-              { content: "1 onion, finely chopped" },
-              { content: "sea salt and freshly ground black pepper" },
-              { content: "¼ cup plain flour" },
-              { content: "1 ¼ cups chilled stock" },
-              { content: "1 packet chicken noodle soup" },
+              {
+                content: "Filling",
+              },
+              {
+                content: "40 grams butter",
+              },
+              {
+                content: "1 carrot, finely chopped",
+              },
+              {
+                content: "1 onion, finely chopped",
+              },
+              {
+                content: "sea salt and freshly ground black pepper",
+              },
+              {
+                content: "¼ cup plain flour",
+              },
+              {
+                content: "1 ¼ cups chilled stock",
+              },
+              {
+                content: "1 packet chicken noodle soup",
+              },
             ],
           },
         },
@@ -43,10 +71,18 @@ export const recipes = [
           title: "To Assemble",
           ingredients: {
             create: [
-              { content: "To Assemble" },
-              { content: "5 cups breadcrumbs" },
-              { content: "3 eggs" },
-              { content: "5 cups rice bran or other neutral oil" },
+              {
+                content: "To Assemble",
+              },
+              {
+                content: "5 cups breadcrumbs",
+              },
+              {
+                content: "3 eggs",
+              },
+              {
+                content: "5 cups rice bran or other neutral oil",
+              },
             ],
           },
         },
@@ -54,9 +90,15 @@ export const recipes = [
           title: "To Serve",
           ingredients: {
             create: [
-              { content: "To Serve" },
-              { content: "Dijon mustard" },
-              { content: "chopped parsley" },
+              {
+                content: "To Serve",
+              },
+              {
+                content: "Dijon mustard",
+              },
+              {
+                content: "chopped parsley",
+              },
             ],
           },
         },
