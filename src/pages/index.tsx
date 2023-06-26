@@ -56,29 +56,6 @@ const Home: NextPage = () => {
       ...new Set(sortedProduce?.map((item) => item.title.split(" - ")[0])),
     ];
 
-    const ImageWithFallback = ({
-      src,
-      title,
-    }: {
-      src: string | undefined;
-      title: string | undefined;
-    }) => {
-      const [imgSrc, setImgSrc] = useState(src);
-
-      return (
-        <Image
-          width={200}
-          height={200}
-          alt={title ? title : "Produce"}
-          src={`/images/produce/${imgSrc ? imgSrc : ""}.jpg`}
-          className="rounded-t-lg"
-          onError={() => {
-            setImgSrc("/images/inigo-de-la-maza-s285sDw5Ikc-unsplash.jpg");
-          }}
-        />
-      );
-    };
-
     return (
       <div className="flex items-center justify-center">
         <div className="flex h-auto grid-flow-col flex-wrap gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
@@ -90,9 +67,17 @@ const Home: NextPage = () => {
                 key={index}
                 className="h-32 w-32 rounded-lg border bg-card text-card-foreground shadow-sm"
               >
-                <ImageWithFallback
-                  src={title?.toLowerCase().replaceAll(" ", "-")}
-                  title={title}
+                <Image
+                  width={128}
+                  height={64}
+                  alt={title ? title : "Produce"}
+                  src={`/images/produce/${
+                    title
+                      ? title.toLowerCase().replaceAll(" ", "-")
+                      : "/images/inigo-de-la-maza-s285sDw5Ikc-unsplash.jpg"
+                  }.jpg`}
+                  className="rounded-t-lg object-contain"
+                  quality={50}
                 />
                 <h2 className="justify-center text-center text-sm font-semibold text-gray-700 dark:text-gray-300">
                   {title}
