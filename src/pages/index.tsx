@@ -6,7 +6,6 @@ import { useState } from "react";
 
 import { PageLayout } from "~/components/Layout";
 import { api } from "~/utils/api";
-import { AvailabilityType } from "@prisma/client";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 import { Search, PlusCircle } from "lucide-react";
 import { Button } from "~/components/ui/button";
@@ -36,28 +35,10 @@ const Home: NextPage = () => {
     | "november"
     | "december";
 
-  const availabilityTypes = [
-    { label: "available", value: AvailabilityType.Available },
-    { label: "availabile (limited)", value: AvailabilityType.Limited },
-    { label: "imported", value: AvailabilityType.Imported },
-    { label: "imported (limited)", value: AvailabilityType.LimitedImported },
-    { label: "unavailable", value: AvailabilityType.Unavailable },
-  ];
-
-  const [selectedAvailability, setSelectedAvailability] =
-    useState<AvailabilityType>(AvailabilityType.Available);
-
   const { data, isLoading } = api.produce.getAllByMonth.useQuery({
     month: currentMonth,
-    availability: [selectedAvailability],
+    seasonality: "Available",
   });
-
-  const handleAvailabilityChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const selectedValue = event.target.value as AvailabilityType;
-    setSelectedAvailability(selectedValue);
-  };
 
   const [searchQuery, setSearchQuery] = useState<string>("");
 
@@ -211,23 +192,7 @@ const Home: NextPage = () => {
                 className="mb-2 text-xl font-bold tracking-tight text-seasoned-green"
                 style={{ whiteSpace: "pre-line" }}
               >
-                Produce{"\n"}
-                <select
-                  value={selectedAvailability}
-                  onChange={handleAvailabilityChange}
-                >
-                  {availabilityTypes.map((availability) => (
-                    <option
-                      key={availability.label}
-                      value={availability.value}
-                      defaultValue={selectedAvailability}
-                    >
-                      {availability.label}
-                    </option>
-                  ))}
-                </select>
-                {"\n"}
-                this{"\n"}
+                Produce in season this{" "}
                 {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
               </h2>
 
