@@ -69,7 +69,7 @@ const Home: NextPage = () => {
               >
                 <Image
                   width={128}
-                  height={32}
+                  height={16}
                   alt={title ? title : "Produce"}
                   src={`/images/produce/${
                     title
