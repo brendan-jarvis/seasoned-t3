@@ -67,19 +67,18 @@ const Home: NextPage = () => {
                 key={index}
                 className="h-32 w-32 rounded-lg border bg-card text-card-foreground shadow-sm"
               >
-                <div className="relative h-16 w-32">
-                  <Image
-                    fill={true}
-                    alt={title ? title : "Produce"}
-                    src={`/images/produce/${
-                      title
-                        ? title.toLowerCase().replaceAll(" ", "-")
-                        : "/images/inigo-de-la-maza-s285sDw5Ikc-unsplash.jpg"
-                    }.jpg`}
-                    quality={50}
-                    className="rounded-t-lg object-cover object-center"
-                  />
-                </div>
+                <Image
+                  width={128}
+                  height={32}
+                  alt={title ? title : "Produce"}
+                  src={`/images/produce/${
+                    title
+                      ? title.toLowerCase().replaceAll(" ", "-")
+                      : "/images/produce.jpg"
+                  }.jpg`}
+                  quality={50}
+                  className="w-128 h-16 rounded-t-lg object-cover object-center"
+                />
                 <h2 className="justify-center text-center text-sm font-semibold text-gray-700 dark:text-gray-300">
                   {title}
                 </h2>
