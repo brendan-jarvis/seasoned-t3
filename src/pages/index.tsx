@@ -67,7 +67,7 @@ const Home: NextPage = () => {
                 key={index}
                 className="h-32 w-32 rounded-lg border bg-card text-card-foreground shadow-sm"
               >
-                <div className="relative h-16">
+                <div className="relative h-16 w-32">
                   <Image
                     fill={true}
                     alt={title ? title : "Produce"}
