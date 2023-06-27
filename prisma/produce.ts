@@ -8816,7 +8816,7 @@ export const produce = [
   },
   {
     authorId: "prismaSeed",
-    title: "Mint Tips",
+    title: "Mint",
     type: ProduceType.Herb,
     seasonality: {
       connectOrCreate: {
@@ -8988,7 +8988,7 @@ export const produce = [
   },
   {
     authorId: "prismaSeed",
-    title: "Roquette (Baby Rocket)",
+    title: "Roquette",
     type: ProduceType.Herb,
     seasonality: {
       connectOrCreate: {
