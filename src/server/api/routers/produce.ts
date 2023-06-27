@@ -25,39 +25,39 @@ export const filterUserForClient = (user: User) => {
   };
 };
 
-const addUserDataToAllProduce = async (allProduce: Produce[]) => {
-  const userId = allProduce.map((produce) => produce.authorId);
-  const users = (
-    await clerkClient.users.getUserList({
-      userId: userId,
-      limit: 100,
-    })
-  ).map(filterUserForClient);
+// const addUserDataToAllProduce = async (allProduce: Produce[]) => {
+//   const userId = allProduce.map((produce) => produce.authorId);
+//   const users = (
+//     await clerkClient.users.getUserList({
+//       userId: userId,
+//       limit: 100,
+//     })
+//   ).map(filterUserForClient);
 
-  return allProduce.map((produce) => {
-    const author = users.find((user) => user.id === produce.authorId);
+//   return allProduce.map((produce) => {
+//     const author = users.find((user) => user.id === produce.authorId);
 
-    if (!author) {
-      console.error("AUTHOR NOT FOUND", produce);
-      throw new TRPCError({
-        code: "INTERNAL_SERVER_ERROR",
-        message: `Author for produce not found. PRODUCE ID: ${produce.id}, USER ID: ${produce.authorId}`,
-      });
-    }
+//     if (!author) {
+//       console.error("AUTHOR NOT FOUND", produce);
+//       throw new TRPCError({
+//         code: "INTERNAL_SERVER_ERROR",
+//         message: `Author for produce not found. PRODUCE ID: ${produce.id}, USER ID: ${produce.authorId}`,
+//       });
+//     }
 
-    if (!author.username) {
-      author.username = "Seasoned User";
-    }
+//     if (!author.username) {
+//       author.username = "Seasoned User";
+//     }
 
-    return {
-      produce,
-      author: {
-        ...author,
-        username: author.username ?? "Seasoned User",
-      },
-    };
-  });
-};
+//     return {
+//       produce,
+//       author: {
+//         ...author,
+//         username: author.username ?? "Seasoned User",
+//       },
+//     };
+//   });
+// };
 
 export const produceRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
@@ -67,7 +67,7 @@ export const produceRouter = createTRPCRouter({
       include: { seasonality: true, availability: true },
     });
 
-    return addUserDataToAllProduce(allProduce);
+    return allProduce;
   }),
 
   getAllByMonth: publicProcedure
