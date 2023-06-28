@@ -2,7 +2,6 @@ import { type NextPage } from "next";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
 
 import { PageLayout } from "~/components/Layout";
 import { api } from "~/utils/api";
