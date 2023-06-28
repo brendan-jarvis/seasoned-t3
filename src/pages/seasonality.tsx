@@ -9,6 +9,16 @@ import { api } from "~/utils/api";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 import { Button } from "~/components/ui/button";
 
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
+
 const Home: NextPage = () => {
   const router = useRouter();
   const currentMonth = new Date()
@@ -27,7 +37,16 @@ const Home: NextPage = () => {
     | "november"
     | "december";
 
-  const { data, isLoading } = api.seasonality.getAll.useQuery();
+  const { data: allProduce, isLoading } = api.seasonality.getAll.useQuery();
+
+  console.log(allProduce);
+
+  const capitaliseFirstLetters = (string: string) => {
+    return string
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
 
   return (
     <>
@@ -46,39 +65,42 @@ const Home: NextPage = () => {
       </Head>
       <PageLayout>
         <div className="flex flex-col items-center justify-center py-8 text-center">
+          <h2
+            className="mb-2 text-xl font-bold tracking-tight text-seasoned-green"
+            style={{ whiteSpace: "pre-line" }}
+          >
+            Produce
+          </h2>
           <div className="container">
-            <div className="flex items-baseline justify-center text-center">
-              <h1 className="my-8 font-serif text-6xl font-semibold tracking-tight text-seasoned-green drop-shadow-md ">
-                Seasoned
-              </h1>
-              <Image
-                src="/images/fa-carrot.svg"
-                width={46}
-                height={46}
-                alt="Orange carrot icon"
-                className="bounce-once ml-1"
-              />
-            </div>
-
-            <p className="mb-4 font-sans text-sm text-gray-900 dark:text-gray-500">
-              Search ingredients in season to find delicious recipes!
-            </p>
-          </div>
-          <div className="container">
-            <div>
-              <h2
-                className="mb-2 text-xl font-bold tracking-tight text-seasoned-green"
-                style={{ whiteSpace: "pre-line" }}
-              >
-                Produce
-              </h2>
-              <p>
-                {data?.map((produce, index) => (
-                  <div key={index} className="flex items-center">
-                    <div className="h-64 w-64 object-cover object-center">
+            <Table>
+              <TableCaption>
+                A table of produce and the months they are in season.
+              </TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Image</TableHead>
+                  <TableHead>Name</TableHead>
+                  <TableHead>January</TableHead>
+                  <TableHead>February</TableHead>
+                  <TableHead>March</TableHead>
+                  <TableHead>April</TableHead>
+                  <TableHead>May</TableHead>
+                  <TableHead>June</TableHead>
+                  <TableHead>July</TableHead>
+                  <TableHead>August</TableHead>
+                  <TableHead>September</TableHead>
+                  <TableHead>October</TableHead>
+                  <TableHead>November</TableHead>
+                  <TableHead>December</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {allProduce?.map((produce, index) => (
+                  <TableRow key={index}>
+                    <TableCell className="object-cover object-center">
                       <Image
-                        width={128}
-                        height={128}
+                        width={64}
+                        height={64}
                         alt={produce.name ? produce.name : "Produce"}
                         src={`/images/produce/${
                           produce.name
@@ -91,14 +113,122 @@ const Home: NextPage = () => {
                         quality={50}
                         className="rounded-lg"
                       />
-                    </div>
-                    <h2 className="ml-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
-                      {produce.name}
-                    </h2>
-                  </div>
+                    </TableCell>
+                    <TableCell>
+                      {capitaliseFirstLetters(produce.name)}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.january === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.january}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.february === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.february}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.march === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.march}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.april === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.april}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.may === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.may}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.june === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.june}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.july === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.july}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.august === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.august}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.september === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.september}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.october === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.october}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.november === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.november}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.december === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.december}
+                    </TableCell>
+                  </TableRow>
                 ))}
-              </p>
-            </div>
+              </TableBody>
+            </Table>
           </div>
         </div>
       </PageLayout>
