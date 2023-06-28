@@ -15,6 +15,13 @@ const ViewProduce: NextPage = () => {
     name: name as string,
   });
 
+  const capitaliseFirstLetters = (string: string) => {
+    return string
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
   if (isLoading) {
     return (
       <>
@@ -42,7 +49,7 @@ const ViewProduce: NextPage = () => {
     return (
       <>
         <Head>
-          <title>Seasoned - Recipes</title>
+          <title>Seasoned - Produce</title>
           <meta
             name="description"
             content="Seasoned is a recipe app that allows users to search for recipes based on ingredients that are in season."
@@ -56,10 +63,10 @@ const ViewProduce: NextPage = () => {
         </Head>
         <PageLayout>
           <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
-            Unable to fetch recipe
+            Unable to fetch produce
           </h1>
           <p className="text-center text-lg font-semibold text-destructive">
-            Sorry, Seasoned was unable to load the recipe.
+            Sorry, Seasoned was unable to load the produce.
           </p>
         </PageLayout>
       </>
@@ -69,7 +76,7 @@ const ViewProduce: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Seasoned - Recipes</title>
+        <title>Seasoned - Produce</title>
         <meta
           name="description"
           content="Seasoned is a recipe app that allows users to search for recipes based on ingredients that are in season."
@@ -82,11 +89,53 @@ const ViewProduce: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <div key={produce.id} className="flex flex-col items-center gap-4 px-4">
-          <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
-            {produce.name}
-          </h1>
-          <pre>{JSON.stringify(produce, null, 2)}</pre>
+        <div className="container">
+          <div key={produce.id}>
+            <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
+              {capitaliseFirstLetters(produce.name)}
+            </h1>
+            <div className="flex justify-center">
+              <Image
+                width={256}
+                height={256}
+                alt={produce.name ? produce.name : "Produce"}
+                src={`/images/produce/${
+                  produce.name
+                    ? produce.name
+                        .toLowerCase()
+                        .replaceAll(" - ", "-")
+                        .replaceAll(" ", "-")
+                    : "/images/produce.jpg"
+                }.jpg`}
+                quality={50}
+                className="rounded-lg"
+              />
+            </div>
+            <h2>
+              <span className="font-serif text-xl font-semibold">Season</span>
+            </h2>
+            <ul>
+              {Object.entries(produce).map(([month, availability], index) => {
+                if (availability === "Available") {
+                  return <li key={index}>{month}</li>;
+                }
+                return null;
+              })}
+            </ul>
+            <h2>
+              <span className="font-serif text-xl font-semibold">
+                Varieties
+              </span>
+            </h2>
+            <ul>
+              {produce.Produce.map((variety) => (
+                <li key={variety.id}>{variety.title}</li>
+              ))}
+            </ul>
+            <pre className="overflow-scroll">
+              {JSON.stringify(produce, null, 2)}
+            </pre>
+          </div>
         </div>
       </PageLayout>
     </>
