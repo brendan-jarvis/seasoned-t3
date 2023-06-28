@@ -17,4 +17,32 @@ export const seasonalityRouter = createTRPCRouter({
 
     return allProduceSeasonality;
   }),
+
+  getOne: publicProcedure
+    .input(
+      z.object({
+        name: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const { name } = input;
+
+      const seasonality = await ctx.prisma.seasonality.findUnique({
+        where: {
+          name,
+        },
+        include: {
+          Produce: true,
+        },
+      });
+
+      if (!seasonality) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Seasonality not found",
+        });
+      }
+
+      return seasonality;
+    }),
 });
