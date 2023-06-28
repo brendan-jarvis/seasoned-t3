@@ -9332,7 +9332,7 @@ export const produce = [
   },
   {
     authorId: "prismaSeed",
-    title: "Sprouted Beans & Seeds",
+    title: "Sprouted Beans and Seeds",
     type: ProduceType.SpecialtyVegetable,
     seasonality: {
       connectOrCreate: {
