@@ -27,9 +27,11 @@ export const seasonalityRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const { name } = input;
 
+      const formattedName = name.replace(/-/g, " ");
+
       const seasonality = await ctx.prisma.seasonality.findUnique({
         where: {
-          name,
+          name: formattedName,
         },
         include: {
           Produce: {
