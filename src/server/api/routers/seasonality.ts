@@ -32,7 +32,11 @@ export const seasonalityRouter = createTRPCRouter({
           name,
         },
         include: {
-          Produce: true,
+          Produce: {
+            include: {
+              availability: true,
+            },
+          },
         },
       });
 
