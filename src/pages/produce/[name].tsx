@@ -8,6 +8,13 @@ import { PageLayout } from "~/components/Layout";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 import Image from "next/image";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "~/components/ui/accordion";
+
 const ViewProduce: NextPage = () => {
   const router = useRouter();
   const { name } = router.query;
@@ -20,6 +27,18 @@ const ViewProduce: NextPage = () => {
       .split(" ")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
+  };
+
+  const getAvailabilityClassName = (availability: string) => {
+    if (availability === "Available" || availability === "Imported") {
+      return "text-green-500";
+    }
+    if (availability === "Limited") {
+      return "text-yellow-500";
+    }
+    if (availability === "Unavailable") {
+      return "text-red-500";
+    }
   };
 
   if (isLoading) {
@@ -117,7 +136,7 @@ const ViewProduce: NextPage = () => {
             <ul>
               {Object.entries(produce).map(([month, availability], index) => {
                 if (availability === "Available") {
-                  return <li key={index}>{month}</li>;
+                  return <li key={index}>{capitaliseFirstLetters(month)}</li>;
                 }
                 return null;
               })}
@@ -127,14 +146,147 @@ const ViewProduce: NextPage = () => {
                 Varieties
               </span>
             </h2>
-            <ul>
-              {produce.Produce.map((variety) => (
-                <li key={variety.id}>{variety.title}</li>
-              ))}
-            </ul>
-            <pre className="overflow-scroll">
-              {JSON.stringify(produce, null, 2)}
-            </pre>
+            {produce.Produce.map((variety) => (
+              <Accordion
+                key={variety.id}
+                type="single"
+                collapsible
+                className="max-w-md"
+              >
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="font-sans text-base font-semibold">
+                    {variety.title}
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <h3 className="font-sans text-sm font-semibold">
+                      Availability:
+                    </h3>
+                    <ol>
+                      <li className="flex justify-between">
+                        January{" "}
+                        <span
+                          className={getAvailabilityClassName(
+                            variety.availability.january
+                          )}
+                        >
+                          {variety.availability.january}
+                        </span>
+                      </li>
+                      <li className="flex justify-between">
+                        February{" "}
+                        <span
+                          className={getAvailabilityClassName(
+                            variety.availability.february
+                          )}
+                        >
+                          {variety.availability.february}
+                        </span>
+                      </li>
+                      <li className="flex justify-between">
+                        March{" "}
+                        <span
+                          className={getAvailabilityClassName(
+                            variety.availability.march
+                          )}
+                        >
+                          {variety.availability.march}
+                        </span>
+                      </li>
+                      <li className="flex justify-between">
+                        April{" "}
+                        <span
+                          className={getAvailabilityClassName(
+                            variety.availability.april
+                          )}
+                        >
+                          {variety.availability.april}
+                        </span>
+                      </li>
+                      <li className="flex justify-between">
+                        May{" "}
+                        <span
+                          className={getAvailabilityClassName(
+                            variety.availability.may
+                          )}
+                        >
+                          {variety.availability.may}
+                        </span>
+                      </li>
+                      <li className="flex justify-between">
+                        June{" "}
+                        <span
+                          className={getAvailabilityClassName(
+                            variety.availability.june
+                          )}
+                        >
+                          {variety.availability.june}
+                        </span>
+                      </li>
+                      <li className="flex justify-between">
+                        July{" "}
+                        <span
+                          className={getAvailabilityClassName(
+                            variety.availability.july
+                          )}
+                        >
+                          {variety.availability.july}
+                        </span>
+                      </li>
+                      <li className="flex justify-between">
+                        August{" "}
+                        <span
+                          className={getAvailabilityClassName(
+                            variety.availability.august
+                          )}
+                        >
+                          {variety.availability.august}
+                        </span>
+                      </li>
+                      <li className="flex justify-between">
+                        September{" "}
+                        <span
+                          className={getAvailabilityClassName(
+                            variety.availability.september
+                          )}
+                        >
+                          {variety.availability.september}
+                        </span>
+                      </li>
+                      <li className="flex justify-between">
+                        October{" "}
+                        <span
+                          className={getAvailabilityClassName(
+                            variety.availability.october
+                          )}
+                        >
+                          {variety.availability.october}
+                        </span>
+                      </li>
+                      <li className="flex justify-between">
+                        November{" "}
+                        <span
+                          className={getAvailabilityClassName(
+                            variety.availability.november
+                          )}
+                        >
+                          {variety.availability.november}
+                        </span>
+                      </li>
+                      <li className="flex justify-between">
+                        December{" "}
+                        <span
+                          className={getAvailabilityClassName(
+                            variety.availability.december
+                          )}
+                        >
+                          {variety.availability.december}
+                        </span>
+                      </li>
+                    </ol>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            ))}
           </div>
         </div>
       </PageLayout>
