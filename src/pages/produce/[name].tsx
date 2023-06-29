@@ -15,6 +15,8 @@ import {
   AccordionTrigger,
 } from "~/components/ui/accordion";
 
+import { Badge } from "~/components/ui/badge";
+
 const ViewProduce: NextPage = () => {
   const router = useRouter();
   const { name } = router.query;
@@ -33,11 +35,30 @@ const ViewProduce: NextPage = () => {
     if (availability === "Available" || availability === "Imported") {
       return "text-green-500";
     }
-    if (availability === "Limited") {
+    if (availability.includes("Limited") || availability.includes("Imported")) {
       return "text-yellow-500";
     }
     if (availability === "Unavailable") {
       return "text-red-500";
+    }
+  };
+
+  const getBadgeClassName = (type: string) => {
+    // Vegetable
+    // SpecialtyVegetable
+    // Fruit
+    // Berry
+    // StoneFruit
+    // SpecialtyFruit
+    // Herb
+    if (type.includes("Vegetable")) {
+      return "border-sky-500";
+    }
+    if (type.includes("Fruit") || type.includes("Berry")) {
+      return "border-rose-500";
+    }
+    if (type.includes("Herb")) {
+      return "border-emerald-500";
     }
   };
 
@@ -92,6 +113,11 @@ const ViewProduce: NextPage = () => {
     );
   }
 
+  const produceType = produce?.Produce?.[0]?.type
+    .replaceAll("Specialty", "")
+    .split(/(?=[A-Z])/)
+    .join(" ");
+
   return (
     <>
       <Head>
@@ -113,6 +139,12 @@ const ViewProduce: NextPage = () => {
             <h1 className="py-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
               {capitaliseFirstLetters(produce.name)}
             </h1>
+            <Badge
+              variant="outline"
+              className={getBadgeClassName(produceType as string)}
+            >
+              {produceType}
+            </Badge>
             <div className="flex justify-center">
               <Image
                 width={256}
@@ -169,7 +201,9 @@ const ViewProduce: NextPage = () => {
                             variety.availability.january
                           )}
                         >
-                          {variety.availability.january}
+                          {variety.availability.january
+                            .split(/(?=[A-Z])/)
+                            .join(" - ")}
                         </span>
                       </li>
                       <li className="flex justify-between">
@@ -179,7 +213,9 @@ const ViewProduce: NextPage = () => {
                             variety.availability.february
                           )}
                         >
-                          {variety.availability.february}
+                          {variety.availability.february
+                            .split(/(?=[A-Z])/)
+                            .join(" - ")}
                         </span>
                       </li>
                       <li className="flex justify-between">
@@ -189,7 +225,9 @@ const ViewProduce: NextPage = () => {
                             variety.availability.march
                           )}
                         >
-                          {variety.availability.march}
+                          {variety.availability.march
+                            .split(/(?=[A-Z])/)
+                            .join(" - ")}
                         </span>
                       </li>
                       <li className="flex justify-between">
@@ -199,7 +237,9 @@ const ViewProduce: NextPage = () => {
                             variety.availability.april
                           )}
                         >
-                          {variety.availability.april}
+                          {variety.availability.april
+                            .split(/(?=[A-Z])/)
+                            .join(" - ")}
                         </span>
                       </li>
                       <li className="flex justify-between">
@@ -209,7 +249,9 @@ const ViewProduce: NextPage = () => {
                             variety.availability.may
                           )}
                         >
-                          {variety.availability.may}
+                          {variety.availability.may
+                            .split(/(?=[A-Z])/)
+                            .join(" - ")}
                         </span>
                       </li>
                       <li className="flex justify-between">
@@ -219,7 +261,9 @@ const ViewProduce: NextPage = () => {
                             variety.availability.june
                           )}
                         >
-                          {variety.availability.june}
+                          {variety.availability.june
+                            .split(/(?=[A-Z])/)
+                            .join(" - ")}
                         </span>
                       </li>
                       <li className="flex justify-between">
@@ -229,7 +273,9 @@ const ViewProduce: NextPage = () => {
                             variety.availability.july
                           )}
                         >
-                          {variety.availability.july}
+                          {variety.availability.july
+                            .split(/(?=[A-Z])/)
+                            .join(" - ")}
                         </span>
                       </li>
                       <li className="flex justify-between">
@@ -239,7 +285,9 @@ const ViewProduce: NextPage = () => {
                             variety.availability.august
                           )}
                         >
-                          {variety.availability.august}
+                          {variety.availability.august
+                            .split(/(?=[A-Z])/)
+                            .join(" - ")}
                         </span>
                       </li>
                       <li className="flex justify-between">
@@ -249,7 +297,9 @@ const ViewProduce: NextPage = () => {
                             variety.availability.september
                           )}
                         >
-                          {variety.availability.september}
+                          {variety.availability.september
+                            .split(/(?=[A-Z])/)
+                            .join(" - ")}
                         </span>
                       </li>
                       <li className="flex justify-between">
@@ -259,7 +309,9 @@ const ViewProduce: NextPage = () => {
                             variety.availability.october
                           )}
                         >
-                          {variety.availability.october}
+                          {variety.availability.october
+                            .split(/(?=[A-Z])/)
+                            .join(" - ")}
                         </span>
                       </li>
                       <li className="flex justify-between">
@@ -269,7 +321,9 @@ const ViewProduce: NextPage = () => {
                             variety.availability.november
                           )}
                         >
-                          {variety.availability.november}
+                          {variety.availability.november
+                            .split(/(?=[A-Z])/)
+                            .join(" - ")}
                         </span>
                       </li>
                       <li className="flex justify-between">
@@ -279,7 +333,9 @@ const ViewProduce: NextPage = () => {
                             variety.availability.december
                           )}
                         >
-                          {variety.availability.december}
+                          {variety.availability.december
+                            .split(/(?=[A-Z])/)
+                            .join(" - ")}
                         </span>
                       </li>
                     </ol>
