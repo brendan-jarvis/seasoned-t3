@@ -108,9 +108,9 @@ const ViewProduce: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <div className="container">
+        <div className="flex flex-col items-center gap-4 px-4">
           <div key={produce.id}>
-            <h1 className="p-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
+            <h1 className="py-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
               {capitaliseFirstLetters(produce.name)}
             </h1>
             <div className="flex justify-center">
@@ -130,8 +130,8 @@ const ViewProduce: NextPage = () => {
                 className="rounded-lg"
               />
             </div>
-            <h2>
-              <span className="font-serif text-xl font-semibold">Season</span>
+            <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
+              In Season
             </h2>
             <ul>
               {Object.entries(produce).map(([month, availability], index) => {
@@ -141,7 +141,7 @@ const ViewProduce: NextPage = () => {
                 return null;
               })}
             </ul>
-            <h2>
+            <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
               <span className="font-serif text-xl font-semibold">
                 Varieties
               </span>
