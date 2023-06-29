@@ -1,12 +1,9 @@
 import { type NextPage } from "next";
-import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 
 import { PageLayout } from "~/components/Layout";
 import { api } from "~/utils/api";
-import { LoadingSpinner } from "~/components/LoadingSpinner";
-import { Button } from "~/components/ui/button";
 
 import {
   Table,
@@ -18,24 +15,7 @@ import {
   TableRow,
 } from "~/components/ui/table";
 
-const Home: NextPage = () => {
-  const router = useRouter();
-  const currentMonth = new Date()
-    .toLocaleString("default", { month: "long" })
-    .toLowerCase() as
-    | "january"
-    | "february"
-    | "march"
-    | "april"
-    | "may"
-    | "june"
-    | "july"
-    | "august"
-    | "september"
-    | "october"
-    | "november"
-    | "december";
-
+const Seasonality: NextPage = () => {
   const { data: allProduce, isLoading } = api.seasonality.getAll.useQuery();
 
   console.log(allProduce);
@@ -235,4 +215,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Seasonality;
