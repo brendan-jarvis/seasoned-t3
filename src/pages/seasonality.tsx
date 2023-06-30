@@ -18,8 +18,6 @@ import {
 const Seasonality: NextPage = () => {
   const { data: allProduce, isLoading } = api.seasonality.getAll.useQuery();
 
-  console.log(allProduce);
-
   const capitaliseFirstLetters = (string: string) => {
     return string
       .split(" ")
