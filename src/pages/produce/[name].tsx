@@ -150,6 +150,7 @@ const ViewProduce: NextPage = () => {
                 width={256}
                 height={256}
                 alt={produce.name ? produce.name : "Produce"}
+                priority={true}
                 src={`/images/produce/${
                   produce.name
                     ? produce.name
