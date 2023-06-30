@@ -16,6 +16,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 
 import {
@@ -164,20 +165,43 @@ const ViewProduce: NextPage = () => {
       return {
         ...price,
         year_month: formatYearMonth(price.year_month),
+        price: price.price.toFixed(2),
       };
     });
 
     return (
-      <LineChart width={600} height={300} data={formattedPriceHistory}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="year_month" tickFormatter={formatYearMonth} />
-        <YAxis
-          label={{ value: "$ / kg", angle: -90, position: "insideLeft" }}
-        />
-        <Tooltip separator=" $" />
-        <Legend />
-        <Line type="monotone" dataKey="price" stroke="#8884d8" />
-      </LineChart>
+      <div>
+        <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
+          Price History
+        </h2>
+        <ResponsiveContainer width="100%" height={400}>
+          <LineChart
+            width={1000}
+            height={1000}
+            data={formattedPriceHistory}
+            className="font-serif"
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year_month" tickFormatter={formatYearMonth} />
+            <YAxis
+              label={{
+                value: "$ / kg",
+                angle: -90,
+                position: "insideLeft",
+              }}
+            />
+            <Tooltip separator=" $" labelClassName="text-gray-600" />
+            <Line
+              type="monotone"
+              dataKey="price"
+              stroke="#8884d8"
+              strokeWidth={2}
+              dot={{ stroke: "#8884d8", strokeWidth: 2, r: 2 }}
+              activeDot={{ stroke: "#8884d8", strokeWidth: 2, r: 4 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     );
   };
 
@@ -238,9 +262,7 @@ const ViewProduce: NextPage = () => {
               })}
             </ul>
             <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
-              <span className="font-serif text-xl font-semibold">
-                Varieties
-              </span>
+              Varieties
             </h2>
             {produce.Produce.map((variety) => (
               <Accordion
@@ -407,7 +429,9 @@ const ViewProduce: NextPage = () => {
                 </AccordionItem>
               </Accordion>
             ))}
-            <TimeSeriesChart />
+            {priceHistory && priceHistory.length === 0 ? null : (
+              <TimeSeriesChart />
+            )}
           </div>
         </div>
       </PageLayout>
