@@ -38,7 +38,6 @@ model Produce {
   availability   Availability @relation(fields: [availabilityId], references: [id])
   availabilityId Int
   Ingredient     Ingredient[]
-  Prices         Price[]
   seasonality    Seasonality? @relation(fields: [seasonalityId], references: [id])
   seasonalityId  Int?
 
@@ -65,6 +64,7 @@ model Seasonality {
   november  String
   december  String
   Produce   Produce[]
+  Price     Price[]
 }
 
 model Availability {
@@ -109,13 +109,16 @@ model Recipe {
 }
 
 model Price {
-  id         Int       @id @default(autoincrement())
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  name       String
-  year_month String
-  price      Float
-  Produce    Produce[]
+  id            Int         @id @default(autoincrement())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  name          String
+  year_month    String
+  price         Float
+  Seasonality   Seasonality @relation(fields: [seasonalityId], references: [id])
+  seasonalityId Int
+
+  @@index([seasonalityId])
 }
 
 model Favourite {
