@@ -39,6 +39,7 @@ export const seasonalityRouter = createTRPCRouter({
               availability: true,
             },
           },
+          Price: true,
         },
       });
 
