@@ -9,6 +9,16 @@ import { LoadingSpinner } from "~/components/LoadingSpinner";
 import Image from "next/image";
 
 import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
+
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -23,6 +33,8 @@ const ViewProduce: NextPage = () => {
   const { data: produce, isLoading } = api.seasonality.getOne.useQuery({
     name: name as string,
   });
+
+  const priceHistory = produce?.Price;
 
   const capitaliseFirstLetters = (string: string) => {
     return string
@@ -118,6 +130,57 @@ const ViewProduce: NextPage = () => {
     .split(/(?=[A-Z])/)
     .join(" ");
 
+  const TimeSeriesChart = () => {
+    const filteredPriceHistory = priceHistory?.slice(-60);
+
+    const formatYearMonth = (yearMonth: string) => {
+      const year = yearMonth.slice(0, 4);
+      const month = yearMonth.slice(5);
+      const monthNames: string[] = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
+      const monthIndex = parseInt(month) - 1;
+      const formattedMonth = monthNames[monthIndex];
+
+      if (formattedMonth !== undefined) {
+        return `${formattedMonth} ${year}`;
+      } else {
+        return yearMonth;
+      }
+    };
+
+    const formattedPriceHistory = filteredPriceHistory?.map((price) => {
+      return {
+        ...price,
+        year_month: formatYearMonth(price.year_month),
+      };
+    });
+
+    return (
+      <LineChart width={600} height={300} data={formattedPriceHistory}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="year_month" tickFormatter={formatYearMonth} />
+        <YAxis
+          label={{ value: "$ / kg", angle: -90, position: "insideLeft" }}
+        />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="price" stroke="#8884d8" />
+      </LineChart>
+    );
+  };
+
   return (
     <>
       <Head>
@@ -135,7 +198,7 @@ const ViewProduce: NextPage = () => {
       </Head>
       <PageLayout>
         <div className="flex flex-col items-center gap-4 px-4">
-          <div key={produce.id}>
+          <div>
             <h1 className="py-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
               {capitaliseFirstLetters(produce.name)}
             </h1>
@@ -344,6 +407,7 @@ const ViewProduce: NextPage = () => {
                 </AccordionItem>
               </Accordion>
             ))}
+            <TimeSeriesChart />
           </div>
         </div>
       </PageLayout>
