@@ -25,24 +25,24 @@ async function main() {
   }
 
   // Add prices
-  // for (const price of prices) {
-  //   await prisma.price.create({
-  //     data: {
-  //       name: price.name,
-  //       year_month: price.year_month,
-  //       price: price.price,
-  //       produce: {
-  //         connect: {
-  //           where: {
-  //             name: {
-  //               contains: price.name,
-  //             },
-  //           },
-  //         },
-  //       },
-  //     },
-  //   });
-  // }
+  for (const price of prices) {
+    const seasonality = await prisma.seasonality.findUnique({
+      where: { name: price.name },
+    });
+
+    if (seasonality) {
+      await prisma.price.create({
+        data: {
+          name: price.name,
+          year_month: price.year_month,
+          price: price.price,
+          Seasonality: {
+            connect: { id: seasonality.id },
+          },
+        },
+      });
+    }
+  }
 }
 
 main()
