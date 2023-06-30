@@ -174,7 +174,7 @@ const ViewProduce: NextPage = () => {
         <YAxis
           label={{ value: "$ / kg", angle: -90, position: "insideLeft" }}
         />
-        <Tooltip />
+        <Tooltip separator=" $" />
         <Legend />
         <Line type="monotone" dataKey="price" stroke="#8884d8" />
       </LineChart>
