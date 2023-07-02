@@ -50,4 +50,37 @@ export const seasonalityRouter = createTRPCRouter({
 
       return seasonality;
     }),
+
+  getAllByMonth: publicProcedure
+    .input(
+      z.object({
+        month: z.enum([
+          "january",
+          "february",
+          "march",
+          "april",
+          "may",
+          "june",
+          "july",
+          "august",
+          "september",
+          "october",
+          "november",
+          "december",
+        ]),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const allProduce = await ctx.prisma.seasonality.findMany({
+        where: {
+          [input.month]: "Available",
+        },
+        orderBy: { name: "asc" },
+        include: {
+          Produce: true,
+        },
+      });
+
+      return allProduce;
+    }),
 });
