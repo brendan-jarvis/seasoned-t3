@@ -53,18 +53,78 @@ const Produce: NextPage = () => {
                 <TableRow>
                   <TableHead>Image</TableHead>
                   <TableHead>Name</TableHead>
-                  <TableHead>January</TableHead>
-                  <TableHead>February</TableHead>
-                  <TableHead>March</TableHead>
-                  <TableHead>April</TableHead>
-                  <TableHead>May</TableHead>
-                  <TableHead>June</TableHead>
-                  <TableHead>July</TableHead>
-                  <TableHead>August</TableHead>
-                  <TableHead>September</TableHead>
-                  <TableHead>October</TableHead>
-                  <TableHead>November</TableHead>
-                  <TableHead>December</TableHead>
+                  <TableHead>
+                    <Link href={`/produce/january`} className="hover:underline">
+                      January
+                    </Link>
+                  </TableHead>
+                  <TableHead>
+                    <Link
+                      href={`/produce/february`}
+                      className="hover:underline"
+                    >
+                      February
+                    </Link>
+                  </TableHead>
+                  <TableHead>
+                    <Link href={`/produce/march`} className="hover:underline">
+                      March
+                    </Link>
+                  </TableHead>
+                  <TableHead>
+                    <Link href={`/produce/april`} className="hover:underline">
+                      April
+                    </Link>
+                  </TableHead>
+                  <TableHead>
+                    <Link href={`/produce/may`} className="hover:underline">
+                      May
+                    </Link>
+                  </TableHead>
+                  <TableHead>
+                    <Link href={`/produce/june`} className="hover:underline">
+                      June
+                    </Link>
+                  </TableHead>
+                  <TableHead>
+                    <Link href={`/produce/july`} className="hover:underline">
+                      July
+                    </Link>
+                  </TableHead>
+                  <TableHead>
+                    <Link href={`/produce/august`} className="hover:underline">
+                      August
+                    </Link>
+                  </TableHead>
+                  <TableHead>
+                    <Link
+                      href={`/produce/september`}
+                      className="hover:underline"
+                    >
+                      September
+                    </Link>
+                  </TableHead>
+                  <TableHead>
+                    <Link href={`/produce/october`} className="hover:underline">
+                      October
+                    </Link>
+                  </TableHead>
+                  <TableHead>
+                    <Link
+                      href={`/produce/november`}
+                      className="hover:underline"
+                    >
+                      November
+                    </Link>
+                  </TableHead>
+                  <TableHead>
+                    <Link
+                      href={`/produce/december`}
+                      className="hover:underline"
+                    >
+                      December
+                    </Link>
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
