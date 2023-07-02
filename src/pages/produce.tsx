@@ -1,94 +1,30 @@
 import { type NextPage } from "next";
+import Link from "next/link";
 import Head from "next/head";
-import { ProduceType } from "@prisma/client";
+import Image from "next/image";
 
 import { PageLayout } from "~/components/Layout";
-import { Badge } from "~/components/ui/badge";
-import { LoadingSpinner } from "~/components/LoadingSpinner";
-
-import { Flower, Snowflake, Sun, Leaf } from "lucide-react";
-
 import { api } from "~/utils/api";
 
+import { capitaliseFirstLetters } from "~/utils/func";
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
+
 const Produce: NextPage = () => {
-  const currentMonth = new Date()
-    .toLocaleString("default", { month: "long" })
-    .toLowerCase() as
-    | "january"
-    | "february"
-    | "march"
-    | "april"
-    | "may"
-    | "june"
-    | "july"
-    | "august"
-    | "september"
-    | "october"
-    | "november"
-    | "december";
-
-  const currentSeason = (month: string) => {
-    if (month === "december" || month === "january" || month === "february") {
-      return <Sun color="gold" className="inline" />;
-    } else if (month === "march" || month === "april" || month === "may") {
-      return <Leaf color="orange" className="inline" />;
-    } else if (month === "june" || month === "july" || month === "august") {
-      return <Snowflake color="cyan" className="inline" />;
-    } else {
-      return <Flower color="pink" className="inline" />;
-    }
-  };
-
-  const { data, isLoading } = api.produce.getAllByMonth.useQuery({
-    month: currentMonth,
-    seasonality: "Available",
-  });
-
-  console.log(data);
-
-  const uniqueProduce = data
-    ?.filter(
-      (item, index, self) =>
-        index ===
-        self.findIndex(
-          (t) => t.title.split(" - ")[0] === item.title.split(" - ")[0]
-        )
-    )
-    .sort((a, b) => a.title.localeCompare(b.title))
-    .map((obj) => {
-      return {
-        ...obj,
-        title: obj.title.split(" - ")[0],
-      };
-    });
-
-  let fruitInSeason, vegetablesInSeason, otherProduceInSeason;
-
-  if (uniqueProduce) {
-    fruitInSeason = uniqueProduce.filter((item) =>
-      [
-        ProduceType.Fruit,
-        ProduceType.SpecialtyFruit,
-        ProduceType.Berry,
-        ProduceType.StoneFruit,
-      ].some((type) => item.type === type)
-    );
-
-    vegetablesInSeason = uniqueProduce.filter((item) =>
-      [ProduceType.Vegetable, ProduceType.SpecialtyVegetable].some(
-        (type) => item.type === type
-      )
-    );
-
-    otherProduceInSeason = uniqueProduce.filter((item) =>
-      [ProduceType.Herb].some((type) => item.type === type)
-    );
-  }
+  const { data: allProduce, isLoading } = api.seasonality.getAll.useQuery();
 
   return (
     <>
       <Head>
-        <title>Seasoned - Produce</title>
+        <title>Seasoned</title>
         <meta
           name="description"
           content="Seasoned is a recipe app that allows users to search for recipes based on ingredients that are in season."
@@ -101,74 +37,178 @@ const Produce: NextPage = () => {
         />
       </Head>
       <PageLayout>
-        <h1 className="py-8 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
-          Produce in season this{" "}
-          {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
-          {currentSeason(currentMonth)}
-        </h1>
-        {isLoading ? (
-          <LoadingSpinner size={64} />
-        ) : !data ? (
-          <p className="text-center text-lg font-semibold text-red-600">
-            Sorry, Seasoned was unable to load a list of produce that&apos;s in
-            season.
-          </p>
-        ) : (
-          <div className="flex flex-wrap justify-center gap-4 px-4 pb-8">
-            <div>
-              <h2 className="font-serif text-lg font-bold text-seasoned-green">
-                Fruit
-              </h2>
-              <ol className="text-foreground">
-                {fruitInSeason &&
-                  fruitInSeason.map((fruit) => (
-                    <li key={fruit.id} className="p-1">
-                      <Badge variant="outline" className="border-rose-500">
-                        {fruit.type}
-                      </Badge>{" "}
-                      {fruit.title}
-                    </li>
-                  ))}
-              </ol>
-            </div>
-            <div>
-              <h2 className="font-serif text-lg font-bold text-seasoned-green">
-                Vegetables
-              </h2>
-              <ol className="text-foreground">
-                {vegetablesInSeason &&
-                  vegetablesInSeason.map((vegetable) => (
-                    <li key={vegetable.id} className="p-1">
-                      <Badge variant="outline" className="border-sky-500">
-                        Vegetable
-                      </Badge>{" "}
-                      {vegetable.title}
-                    </li>
-                  ))}
-              </ol>
-            </div>
-            <div>
-              <h2 className="font-serif text-lg font-bold text-seasoned-green">
-                Other
-              </h2>
-              <ol className="text-foreground">
-                {otherProduceInSeason &&
-                  otherProduceInSeason.map((item) => (
-                    <li key={item.id} className="p-1">
-                      <Badge
-                        variant="outline"
-                        className="border-emerald-500"
-                        color="green"
+        <div className="flex flex-col items-center justify-center py-8 text-center">
+          <h2
+            className="mb-2 text-xl font-bold tracking-tight text-seasoned-green"
+            style={{ whiteSpace: "pre-line" }}
+          >
+            Produce
+          </h2>
+          <div className="container">
+            <Table>
+              <TableCaption>
+                A table of produce and the months they are in season.
+              </TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Image</TableHead>
+                  <TableHead>Name</TableHead>
+                  <TableHead>January</TableHead>
+                  <TableHead>February</TableHead>
+                  <TableHead>March</TableHead>
+                  <TableHead>April</TableHead>
+                  <TableHead>May</TableHead>
+                  <TableHead>June</TableHead>
+                  <TableHead>July</TableHead>
+                  <TableHead>August</TableHead>
+                  <TableHead>September</TableHead>
+                  <TableHead>October</TableHead>
+                  <TableHead>November</TableHead>
+                  <TableHead>December</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {allProduce?.map((produce, index) => (
+                  <TableRow key={index}>
+                    <TableCell className="object-cover object-center">
+                      <Image
+                        width={64}
+                        height={64}
+                        alt={produce.name ? produce.name : "Produce"}
+                        src={`/images/produce/${
+                          produce.name
+                            ? produce.name
+                                .toLowerCase()
+                                .replaceAll(" - ", "-")
+                                .replaceAll(" ", "-")
+                            : "/images/produce.jpg"
+                        }.jpg`}
+                        quality={50}
+                        className="rounded-lg"
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <Link
+                        href={`/produce/${produce.name}`}
+                        className="block text-sm text-seasoned-green hover:underline"
                       >
-                        {item.type}
-                      </Badge>{" "}
-                      {item.title}
-                    </li>
-                  ))}
-              </ol>
-            </div>
+                        {capitaliseFirstLetters(produce.name)}
+                      </Link>
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.january === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.january}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.february === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.february}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.march === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.march}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.april === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.april}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.may === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.may}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.june === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.june}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.july === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.july}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.august === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.august}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.september === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.september}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.october === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.october}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.november === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.november}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        produce.december === "Available"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }
+                    >
+                      {produce.december}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           </div>
-        )}
+        </div>
       </PageLayout>
     </>
   );
