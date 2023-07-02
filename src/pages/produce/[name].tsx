@@ -8,6 +8,8 @@ import { PageLayout } from "~/components/Layout";
 import { LoadingSpinner } from "~/components/LoadingSpinner";
 import Image from "next/image";
 
+import { capitaliseFirstLetters } from "~/utils/func";
+
 import {
   LineChart,
   Line,
@@ -35,13 +37,6 @@ const ViewProduce: NextPage = () => {
   });
 
   const priceHistory = produce?.Price;
-
-  const capitaliseFirstLetters = (string: string) => {
-    return string
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  };
 
   const getAvailabilityClassName = (availability: string) => {
     if (availability === "Available" || availability === "Imported") {
