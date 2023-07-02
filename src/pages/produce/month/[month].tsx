@@ -35,20 +35,6 @@ const ProduceInSeasonForMonth: NextPage = () => {
     month: monthString,
   });
 
-  const fruitInSeason = data?.filter((produce) =>
-    produce?.Produce[0]?.type.includes("Fruit")
-  );
-
-  const vegetablesInSeason = data?.filter((produce) =>
-    produce?.Produce[0]?.type.includes("Vegetable")
-  );
-
-  const otherProduceInSeason = data?.filter(
-    (produce) =>
-      !produce?.Produce[0]?.type.includes("Fruit") &&
-      !produce?.Produce[0]?.type.includes("Vegetable")
-  );
-
   if (isLoading) {
     return (
       <>
@@ -71,6 +57,20 @@ const ProduceInSeasonForMonth: NextPage = () => {
       </>
     );
   }
+
+  const fruitInSeason = data?.filter((produce) =>
+    produce?.Produce[0]?.type.includes("Fruit")
+  );
+
+  const vegetablesInSeason = data?.filter((produce) =>
+    produce?.Produce[0]?.type.includes("Vegetable")
+  );
+
+  const otherProduceInSeason = data?.filter(
+    (produce) =>
+      !produce?.Produce[0]?.type.includes("Fruit") &&
+      !produce?.Produce[0]?.type.includes("Vegetable")
+  );
 
   return (
     <>
