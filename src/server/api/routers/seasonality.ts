@@ -54,20 +54,7 @@ export const seasonalityRouter = createTRPCRouter({
   getAllByMonth: publicProcedure
     .input(
       z.object({
-        month: z.enum([
-          "january",
-          "february",
-          "march",
-          "april",
-          "may",
-          "june",
-          "july",
-          "august",
-          "september",
-          "october",
-          "november",
-          "december",
-        ]),
+        month: z.string(),
       })
     )
     .query(async ({ ctx, input }) => {
