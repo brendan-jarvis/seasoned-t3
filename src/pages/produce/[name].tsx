@@ -28,6 +28,7 @@ import {
 } from "~/components/ui/accordion";
 
 import { Badge } from "~/components/ui/badge";
+import RecipesByIngredient from "~/components/RecipesByIngredient";
 
 const ViewProduce: NextPage = () => {
   const router = useRouter();
@@ -198,6 +199,12 @@ const ViewProduce: NextPage = () => {
       </div>
     );
   };
+
+  const RecipesSegment = () => (
+    <div className="max-w-xl overflow-x-scroll">
+      <RecipesByIngredient ingredient={produce.name} limit={10} offset={0} />
+    </div>
+  );
 
   return (
     <>
@@ -426,6 +433,10 @@ const ViewProduce: NextPage = () => {
             {priceHistory && priceHistory.length === 0 ? null : (
               <TimeSeriesChart />
             )}
+            <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
+              {`${capitaliseFirstLetters(produce.name)} Recipes`}
+            </h2>
+            <RecipesSegment />
           </div>
         </div>
       </PageLayout>
