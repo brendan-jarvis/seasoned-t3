@@ -69,10 +69,12 @@ export const recipesRouter = createTRPCRouter({
         query: z.string().min(3),
         limit: z.optional(z.number()),
         offset: z.optional(z.number()),
+        searchType: z.optional(z.string()),
       })
     )
     .query(async ({ ctx, input }) => {
-      const ingredients = input.query.split(/[,\s]+/); // Split query on spaces or commas
+      const operator = input.searchType === "all" ? "&" : "|";
+      const ingredients = input.query.split(/[,\s]+/).join(` ${operator} `); // Split query on spaces or commas
 
       const recipes = await ctx.prisma.recipe.findMany({
         take: input.limit || 10,
@@ -80,13 +82,13 @@ export const recipesRouter = createTRPCRouter({
         orderBy: { id: "asc" },
         where: {
           OR: [
-            { title: { in: ingredients } },
+            { title: { search: ingredients } },
             {
               ingredientSegments: {
                 some: {
                   ingredients: {
                     some: {
-                      content: { in: ingredients },
+                      content: { search: ingredients },
                     },
                   },
                 },
@@ -95,7 +97,7 @@ export const recipesRouter = createTRPCRouter({
             {
               tags: {
                 some: {
-                  name: { in: ingredients },
+                  name: { search: ingredients },
                 },
               },
             },
@@ -115,13 +117,13 @@ export const recipesRouter = createTRPCRouter({
       const count = await ctx.prisma.recipe.count({
         where: {
           OR: [
-            { title: { in: ingredients } },
+            { title: { search: ingredients } },
             {
               ingredientSegments: {
                 some: {
                   ingredients: {
                     some: {
-                      content: { in: ingredients },
+                      content: { search: ingredients },
                     },
                   },
                 },
@@ -130,72 +132,11 @@ export const recipesRouter = createTRPCRouter({
             {
               tags: {
                 some: {
-                  name: { in: ingredients },
+                  name: { search: ingredients },
                 },
               },
             },
           ],
-        },
-      });
-
-      if (!recipes) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "No matching recipes found",
-        });
-      }
-
-      return { recipes, count };
-    }),
-
-  findManyByIngredient: publicProcedure
-    .input(
-      z.object({
-        ingredient: z.string().min(3),
-        limit: z.optional(z.number()),
-        offset: z.optional(z.number()),
-      })
-    )
-    .query(async ({ ctx, input }) => {
-      const ingredients = input.ingredient.split(/[,\s]+/);
-
-      const recipes = await ctx.prisma.recipe.findMany({
-        take: input.limit || 10,
-        skip: input.offset || 0,
-        orderBy: { id: "asc" },
-        where: {
-          ingredientSegments: {
-            some: {
-              ingredients: {
-                some: {
-                  content: { in: ingredients },
-                },
-              },
-            },
-          },
-        },
-        include: {
-          ingredientSegments: {
-            include: {
-              ingredients: { select: { content: true } },
-            },
-          },
-          instructions: { select: { title: true, content: true } },
-          tags: true,
-        },
-      });
-
-      const count = await ctx.prisma.recipe.count({
-        where: {
-          ingredientSegments: {
-            some: {
-              ingredients: {
-                some: {
-                  content: { in: ingredients },
-                },
-              },
-            },
-          },
         },
       });
 
