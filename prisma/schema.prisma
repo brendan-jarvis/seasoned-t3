@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
@@ -106,6 +107,7 @@ model Recipe {
   Favourite          Favourite[]
 
   @@index([authorId])
+  @@fulltext([title])
 }
 
 model Price {
@@ -155,6 +157,7 @@ model Ingredient {
 
   @@index([segmentId])
   @@index([produceId])
+  @@fulltext([content])
 }
 
 model Instruction {
@@ -171,4 +174,6 @@ model Tag {
   id     Int      @id @default(autoincrement())
   name   String   @unique
   recipe Recipe[]
+
+  @@fulltext([name])
 }
