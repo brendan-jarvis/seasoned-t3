@@ -58,7 +58,7 @@ const Home: NextPage = () => {
 
     return (
       <div className="flex items-center justify-center">
-        <div className="flex h-auto grid-flow-col flex-wrap gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
+        <div className="grid auto-cols-max grid-flow-col gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
           {isLoading ? (
             <LoadingSpinner />
           ) : (
