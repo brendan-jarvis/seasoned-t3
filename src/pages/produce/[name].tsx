@@ -430,7 +430,7 @@ const ViewProduce: NextPage = () => {
               <TimeSeriesChart />
             )}
             <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
-              {`${capitaliseFirstLetters(produce.name)} Recipes`}
+              Recipes
             </h2>
             <RecipesByIngredient
               ingredient={produce.name}

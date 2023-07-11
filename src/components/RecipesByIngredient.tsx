@@ -71,7 +71,7 @@ const RecipesByIngredient = ({
   const allRecipes = data.recipes;
 
   return (
-    <div className="grid max-w-lg auto-cols-max grid-flow-col gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
+    <div className="mx-auto grid w-[300px] auto-cols-max grid-flow-col gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
       {allRecipes.map((recipe: Recipe) => (
         <Card key={recipe.id} className="w-[250px]">
           <Link href={`/recipes/${recipe.id}`}>
