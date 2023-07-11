@@ -100,7 +100,12 @@ const RecipesByIngredient = ({
                   variant="outline"
                   className="font-serif text-xs"
                 >
-                  <Link href={`/search/${tag.name}`}>{tag.name}</Link>
+                  <Link
+                    href={`/search/${tag.name}`}
+                    className="hover:underline"
+                  >
+                    {tag.name}
+                  </Link>
                 </Badge>
               ))}
             </CardFooter>
