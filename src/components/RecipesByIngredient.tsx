@@ -15,19 +15,15 @@ import { Badge } from "~/components/ui/badge";
 import { Skeleton } from "~/components/ui/skeleton";
 
 const RecipeCardSkeleton = () => (
-  <div className="mb-4 flex flex-wrap justify-center gap-4">
-    <div className="flex items-center gap-4">
-      <Card className="w-[250px] space-y-2 p-6">
-        <Skeleton className="h-4 w-[150px] bg-slate-300" />
-        <Skeleton className="h-[150px] w-full bg-slate-500" />
-        <div className="flex flex-wrap gap-2">
-          <Skeleton className="h-4 w-10" />
-          <Skeleton className="h-4 w-10" />
-          <Skeleton className="h-4 w-10" />
-        </div>
-      </Card>
+  <Card className="w-[250px] space-y-2 p-6">
+    <Skeleton className="h-4 w-[150px] bg-slate-300" />
+    <Skeleton className="h-[150px] w-full bg-slate-500" />
+    <div className="flex flex-wrap gap-2">
+      <Skeleton className="h-4 w-10" />
+      <Skeleton className="h-4 w-10" />
+      <Skeleton className="h-4 w-10" />
     </div>
-  </div>
+  </Card>
 );
 
 const RecipesByIngredient = ({
@@ -47,7 +43,7 @@ const RecipesByIngredient = ({
 
   if (isLoading) {
     return (
-      <div className="flex flex-row gap-2">
+      <div className="mx-auto grid w-[300px] auto-cols-max grid-flow-col gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
         {Array.from({ length: 10 }).map((_, index) => (
           <RecipeCardSkeleton key={index} />
         ))}
