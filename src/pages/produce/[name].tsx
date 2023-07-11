@@ -200,12 +200,6 @@ const ViewProduce: NextPage = () => {
     );
   };
 
-  const RecipesSegment = () => (
-    <div className="max-w-xl overflow-x-scroll">
-      <RecipesByIngredient ingredient={produce.name} limit={10} offset={0} />
-    </div>
-  );
-
   return (
     <>
       <Head>
@@ -438,7 +432,11 @@ const ViewProduce: NextPage = () => {
             <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
               {`${capitaliseFirstLetters(produce.name)} Recipes`}
             </h2>
-            <RecipesSegment />
+            <RecipesByIngredient
+              ingredient={produce.name}
+              limit={10}
+              offset={0}
+            />
           </div>
         </div>
       </PageLayout>

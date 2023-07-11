@@ -17,7 +17,7 @@ import { Skeleton } from "~/components/ui/skeleton";
 const RecipeCardSkeleton = () => (
   <div className="mb-4 flex flex-wrap justify-center gap-4">
     <div className="flex items-center gap-4">
-      <Card className="w-[200px] space-y-2 p-6">
+      <Card className="w-[250px] space-y-2 p-6">
         <Skeleton className="h-4 w-[150px] bg-slate-300" />
         <Skeleton className="h-[150px] w-full bg-slate-500" />
         <div className="flex flex-wrap gap-2">
@@ -71,9 +71,9 @@ const RecipesByIngredient = ({
   const allRecipes = data.recipes;
 
   return (
-    <div className="flex flex-row gap-2">
+    <div className="grid max-w-lg auto-cols-max grid-flow-col gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
       {allRecipes.map((recipe: Recipe) => (
-        <Card key={recipe.id} className="w-[200px]">
+        <Card key={recipe.id} className="w-[250px]">
           <Link href={`/recipes/${recipe.id}`}>
             <CardHeader>
               <CardTitle className="font-serif text-sm">
@@ -81,7 +81,7 @@ const RecipesByIngredient = ({
               </CardTitle>
             </CardHeader>
             {recipe.image ? (
-              <CardContent className="m-h-[100] min-w-[200]">
+              <CardContent className="m-h-[100] min-w-[250]">
                 <Image
                   src={recipe.image}
                   width={128}
@@ -92,7 +92,7 @@ const RecipesByIngredient = ({
               </CardContent>
             ) : (
               <CardContent>
-                <Skeleton className="h-[100] w-[200]" />
+                <Skeleton className="h-[100] w-[250]" />
               </CardContent>
             )}
             {recipe.tags && (
