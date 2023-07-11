@@ -72,7 +72,7 @@ const RecipesByIngredient = ({
         <Card key={recipe.id} className="w-[250px]">
           <Link href={`/recipes/${recipe.id}`}>
             <CardHeader>
-              <CardTitle className="font-serif text-sm">
+              <CardTitle className="font-serif text-sm hover:underline">
                 {recipe.title}
               </CardTitle>
             </CardHeader>
@@ -80,10 +80,10 @@ const RecipesByIngredient = ({
               <CardContent className="m-h-[100] min-w-[250]">
                 <Image
                   src={recipe.image}
-                  width={128}
-                  height={174}
+                  width={160}
+                  height={218}
                   alt={recipe.title}
-                  className="mx-auto rounded-md"
+                  className="mx-auto rounded-md transition-transform duration-200 hover:scale-110"
                 />
               </CardContent>
             ) : (
