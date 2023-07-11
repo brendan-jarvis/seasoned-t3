@@ -180,7 +180,7 @@ const ViewRecipe: NextPage = () => {
             <Button
               variant="outline"
               className="font-serif"
-              disabled={isLoadingFavourite || isFavourite}
+              disabled={isLoadingFavourite || !isSignedIn}
               onClick={() => {
                 mutate({
                   recipeId: recipe.id,
