@@ -57,58 +57,67 @@ const Home: NextPage = () => {
     ];
 
     return (
-      <div className="flex items-center justify-center">
-        <div className="grid auto-cols-max grid-flow-col gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
-          {isLoading ? (
-            <LoadingSpinner />
-          ) : (
-            uniqueProduce?.map((title, index) => (
-              <div
-                key={index}
-                className="h-32 w-32 rounded-lg border bg-card text-card-foreground shadow-sm"
-              >
-                <Image
-                  width={128}
-                  height={16}
-                  alt={title ? title : "Produce"}
-                  src={`/images/produce/${
-                    title
-                      ? title.toLowerCase().replaceAll(" ", "-")
-                      : "/images/produce.jpg"
-                  }.jpg`}
-                  quality={50}
-                  className="w-128 h-16 rounded-t-lg object-cover object-center"
-                />
-                <h2 className="justify-center text-center text-sm font-semibold text-gray-700 dark:text-gray-300">
+      <div className="mx-auto grid max-w-lg auto-cols-max grid-flow-col gap-1 overflow-y-hidden overflow-x-scroll rounded-md">
+        <div className="flex space-x-1">
+          {uniqueProduce?.map((title, index) => (
+            <div
+              key={index}
+              className="h-32 w-32 rounded-lg border bg-card text-card-foreground shadow-sm"
+            >
+              <Image
+                width={128}
+                height={16}
+                alt={title ? title : "Produce"}
+                src={`/images/produce/${
+                  title
+                    ? title.toLowerCase().replaceAll(" ", "-")
+                    : "/images/produce.jpg"
+                }.jpg`}
+                quality={50}
+                className="w-128 h-16 rounded-t-lg object-cover object-center"
+              />
+              <div className="flex cursor-pointer items-center justify-center gap-1 py-2">
+                <h2
+                  className="justify-center text-center text-sm font-semibold text-gray-700 hover:underline dark:text-gray-300"
+                  onClick={() =>
+                    setSearchQuery(
+                      (prevQuery) =>
+                        `${prevQuery}${prevQuery ? ", " : ""}${
+                          title?.toLowerCase() || ""
+                        }`
+                    )
+                  }
+                >
                   {title}
                 </h2>
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        className="h-4 w-4 rounded-full p-0"
-                        onClick={() =>
-                          setSearchQuery(
-                            (prevQuery) =>
-                              `${prevQuery}${prevQuery ? ", " : ""}${
-                                title?.toLowerCase() || ""
-                              }`
-                          )
-                        }
-                      >
-                        <PlusCircle className="h-4 w-4" />
-                        <span className="sr-only">Add</span>
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Add {title?.toLowerCase()} to search</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+                <PlusCircle className="h-4 w-4" />
               </div>
-            ))
-          )}
+              {/* <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="h-4 w-4 rounded-full p-0"
+                      onClick={() =>
+                        setSearchQuery(
+                          (prevQuery) =>
+                            `${prevQuery}${prevQuery ? ", " : ""}${
+                              title?.toLowerCase() || ""
+                            }`
+                        )
+                      }
+                    >
+                      <PlusCircle className="h-4 w-4" />
+                      <span className="sr-only">Add</span>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Add {title?.toLowerCase()} to search</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider> */}
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -172,17 +181,17 @@ const Home: NextPage = () => {
             </form>
           </div>
           <div className="container">
-            <div>
-              <h2
-                className="mb-2 text-xl font-bold tracking-tight text-seasoned-green"
-                style={{ whiteSpace: "pre-line" }}
-              >
-                Produce in season this{" "}
-                {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
-              </h2>
+            <h2
+              className="mb-2 text-xl font-bold tracking-tight text-seasoned-green"
+              style={{ whiteSpace: "pre-line" }}
+            >
+              Produce in season this{" "}
+              {currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)}
+            </h2>
 
-              <ProduceCarousel />
-            </div>
+            <ProduceCarousel />
+
+            {/* <Carousel /> */}
           </div>
         </div>
       </PageLayout>
