@@ -227,12 +227,14 @@ const ViewProduce: NextPage = () => {
             <h1 className="py-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
               {capitaliseFirstLetters(produce.name)}
             </h1>
-            <Badge
-              variant="outline"
-              className={getBadgeClassName(produceType as string)}
-            >
-              {produceType}
-            </Badge>
+            <div className="flex items-center justify-center pb-4">
+              <Badge
+                variant="outline"
+                className={getBadgeClassName(produceType as string)}
+              >
+                {produceType}
+              </Badge>
+            </div>
             <div className="flex justify-center">
               <Image
                 width={256}
