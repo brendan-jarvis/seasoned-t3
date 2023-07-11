@@ -91,20 +91,20 @@ const RecipesByIngredient = ({
                 <Skeleton className="h-[100] w-[250]" />
               </CardContent>
             )}
-            {recipe.tags && (
-              <CardFooter className="flex flex-wrap gap-1">
-                {recipe.tags.map((tag) => (
-                  <Badge
-                    key={tag.id}
-                    variant="outline"
-                    className="font-serif text-xs"
-                  >
-                    {tag.name}
-                  </Badge>
-                ))}
-              </CardFooter>
-            )}
           </Link>
+          {recipe.tags && (
+            <CardFooter className="flex flex-wrap gap-1">
+              {recipe.tags.map((tag) => (
+                <Badge
+                  key={tag.id}
+                  variant="outline"
+                  className="font-serif text-xs"
+                >
+                  <Link href={`/search/${tag.name}`}>{tag.name}</Link>
+                </Badge>
+              ))}
+            </CardFooter>
+          )}
         </Card>
       ))}
     </div>
