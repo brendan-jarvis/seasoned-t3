@@ -2,11 +2,12 @@ import { type NextPage } from "next";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
 
 import { PageLayout } from "~/components/Layout";
 import { api } from "~/utils/api";
 
-import { capitaliseFirstLetters } from "~/utils/func";
+import { capitaliseFirstLetters, getCurrentMonth } from "~/utils/func";
 
 import {
   Table,
@@ -17,9 +18,12 @@ import {
   TableHeader,
   TableRow,
 } from "~/components/ui/table";
+import { Checkbox } from "~/components/ui/checkbox";
 
 const Produce: NextPage = () => {
   const { data: allProduce, isLoading } = api.seasonality.getAll.useQuery();
+  const [filterMonth, setFilterMonth] = useState<boolean>(false);
+  const currentMonth = getCurrentMonth();
 
   return (
     <>
@@ -44,6 +48,21 @@ const Produce: NextPage = () => {
           >
             Produce
           </h2>
+          <div className="items-top flex space-x-2">
+            <Checkbox
+              id="filter-month"
+              checked={filterMonth}
+              onCheckedChange={() => setFilterMonth(!filterMonth)}
+            />
+            <div className="grid gap-1.5 leading-none">
+              <label
+                htmlFor="filter-month"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Only show produce in season this month
+              </label>
+            </div>
+          </div>
           <div className="container">
             <Table>
               <TableCaption>
@@ -57,6 +76,7 @@ const Produce: NextPage = () => {
                     <Link
                       href={`/produce/month/january`}
                       className="hover:underline"
+                      hidden={filterMonth && currentMonth !== "january"}
                     >
                       January
                     </Link>
@@ -65,6 +85,7 @@ const Produce: NextPage = () => {
                     <Link
                       href={`/produce/month/february`}
                       className="hover:underline"
+                      hidden={filterMonth && currentMonth !== "february"}
                     >
                       February
                     </Link>
@@ -73,6 +94,7 @@ const Produce: NextPage = () => {
                     <Link
                       href={`/produce/month/march`}
                       className="hover:underline"
+                      hidden={filterMonth && currentMonth !== "march"}
                     >
                       March
                     </Link>
@@ -81,6 +103,7 @@ const Produce: NextPage = () => {
                     <Link
                       href={`/produce/month/april`}
                       className="hover:underline"
+                      hidden={filterMonth && currentMonth !== "april"}
                     >
                       April
                     </Link>
@@ -89,6 +112,7 @@ const Produce: NextPage = () => {
                     <Link
                       href={`/produce/month/may`}
                       className="hover:underline"
+                      hidden={filterMonth && currentMonth !== "may"}
                     >
                       May
                     </Link>
@@ -97,6 +121,7 @@ const Produce: NextPage = () => {
                     <Link
                       href={`/produce/month/june`}
                       className="hover:underline"
+                      hidden={filterMonth && currentMonth !== "june"}
                     >
                       June
                     </Link>
@@ -105,6 +130,7 @@ const Produce: NextPage = () => {
                     <Link
                       href={`/produce/month/july`}
                       className="hover:underline"
+                      hidden={filterMonth && currentMonth !== "july"}
                     >
                       July
                     </Link>
@@ -113,6 +139,7 @@ const Produce: NextPage = () => {
                     <Link
                       href={`/produce/month/august`}
                       className="hover:underline"
+                      hidden={filterMonth && currentMonth !== "august"}
                     >
                       August
                     </Link>
@@ -121,6 +148,7 @@ const Produce: NextPage = () => {
                     <Link
                       href={`/produce/month/september`}
                       className="hover:underline"
+                      hidden={filterMonth && currentMonth !== "september"}
                     >
                       September
                     </Link>
@@ -129,6 +157,7 @@ const Produce: NextPage = () => {
                     <Link
                       href={`/produce/month/october`}
                       className="hover:underline"
+                      hidden={filterMonth && currentMonth !== "october"}
                     >
                       October
                     </Link>
@@ -137,6 +166,7 @@ const Produce: NextPage = () => {
                     <Link
                       href={`/produce/month/november`}
                       className="hover:underline"
+                      hidden={filterMonth && currentMonth !== "november"}
                     >
                       November
                     </Link>
@@ -145,6 +175,7 @@ const Produce: NextPage = () => {
                     <Link
                       href={`/produce/month/december`}
                       className="hover:underline"
+                      hidden={filterMonth && currentMonth !== "december"}
                     >
                       December
                     </Link>
@@ -185,6 +216,7 @@ const Produce: NextPage = () => {
                           ? "bg-green-100"
                           : "bg-red-100"
                       }
+                      hidden={filterMonth && currentMonth !== "january"}
                     >
                       {produce.january}
                     </TableCell>
@@ -194,6 +226,7 @@ const Produce: NextPage = () => {
                           ? "bg-green-100"
                           : "bg-red-100"
                       }
+                      hidden={filterMonth && currentMonth !== "february"}
                     >
                       {produce.february}
                     </TableCell>
@@ -203,6 +236,7 @@ const Produce: NextPage = () => {
                           ? "bg-green-100"
                           : "bg-red-100"
                       }
+                      hidden={filterMonth && currentMonth !== "march"}
                     >
                       {produce.march}
                     </TableCell>
@@ -212,6 +246,7 @@ const Produce: NextPage = () => {
                           ? "bg-green-100"
                           : "bg-red-100"
                       }
+                      hidden={filterMonth && currentMonth !== "april"}
                     >
                       {produce.april}
                     </TableCell>
@@ -221,6 +256,7 @@ const Produce: NextPage = () => {
                           ? "bg-green-100"
                           : "bg-red-100"
                       }
+                      hidden={filterMonth && currentMonth !== "may"}
                     >
                       {produce.may}
                     </TableCell>
@@ -230,6 +266,7 @@ const Produce: NextPage = () => {
                           ? "bg-green-100"
                           : "bg-red-100"
                       }
+                      hidden={filterMonth && currentMonth !== "june"}
                     >
                       {produce.june}
                     </TableCell>
@@ -239,6 +276,7 @@ const Produce: NextPage = () => {
                           ? "bg-green-100"
                           : "bg-red-100"
                       }
+                      hidden={filterMonth && currentMonth !== "july"}
                     >
                       {produce.july}
                     </TableCell>
@@ -248,6 +286,7 @@ const Produce: NextPage = () => {
                           ? "bg-green-100"
                           : "bg-red-100"
                       }
+                      hidden={filterMonth && currentMonth !== "august"}
                     >
                       {produce.august}
                     </TableCell>
@@ -257,6 +296,7 @@ const Produce: NextPage = () => {
                           ? "bg-green-100"
                           : "bg-red-100"
                       }
+                      hidden={filterMonth && currentMonth !== "september"}
                     >
                       {produce.september}
                     </TableCell>
@@ -266,6 +306,7 @@ const Produce: NextPage = () => {
                           ? "bg-green-100"
                           : "bg-red-100"
                       }
+                      hidden={filterMonth && currentMonth !== "october"}
                     >
                       {produce.october}
                     </TableCell>
@@ -275,6 +316,7 @@ const Produce: NextPage = () => {
                           ? "bg-green-100"
                           : "bg-red-100"
                       }
+                      hidden={filterMonth && currentMonth !== "november"}
                     >
                       {produce.november}
                     </TableCell>
@@ -284,6 +326,7 @@ const Produce: NextPage = () => {
                           ? "bg-green-100"
                           : "bg-red-100"
                       }
+                      hidden={filterMonth && currentMonth !== "december"}
                     >
                       {produce.december}
                     </TableCell>
