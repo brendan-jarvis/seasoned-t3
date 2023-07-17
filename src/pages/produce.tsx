@@ -24,6 +24,19 @@ const Produce: NextPage = () => {
   const { data: allProduce, isLoading } = api.seasonality.getAll.useQuery();
   const [filterMonth, setFilterMonth] = useState<boolean>(false);
   const currentMonth = getCurrentMonth();
+  const months = [
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "november",
+    "december",
+  ];
 
   return (
     <>
@@ -74,114 +87,19 @@ const Produce: NextPage = () => {
                 <TableRow>
                   <TableHead>Image</TableHead>
                   <TableHead>Name</TableHead>
-                  <TableHead>
-                    <Link
-                      href={`/produce/month/january`}
-                      className="hover:underline"
-                      hidden={filterMonth && currentMonth !== "january"}
+                  {months.map((month) => (
+                    <TableHead
+                      key={month}
+                      hidden={filterMonth && currentMonth !== month}
                     >
-                      January
-                    </Link>
-                  </TableHead>
-                  <TableHead>
-                    <Link
-                      href={`/produce/month/february`}
-                      className="hover:underline"
-                      hidden={filterMonth && currentMonth !== "february"}
-                    >
-                      February
-                    </Link>
-                  </TableHead>
-                  <TableHead>
-                    <Link
-                      href={`/produce/month/march`}
-                      className="hover:underline"
-                      hidden={filterMonth && currentMonth !== "march"}
-                    >
-                      March
-                    </Link>
-                  </TableHead>
-                  <TableHead>
-                    <Link
-                      href={`/produce/month/april`}
-                      className="hover:underline"
-                      hidden={filterMonth && currentMonth !== "april"}
-                    >
-                      April
-                    </Link>
-                  </TableHead>
-                  <TableHead>
-                    <Link
-                      href={`/produce/month/may`}
-                      className="hover:underline"
-                      hidden={filterMonth && currentMonth !== "may"}
-                    >
-                      May
-                    </Link>
-                  </TableHead>
-                  <TableHead>
-                    <Link
-                      href={`/produce/month/june`}
-                      className="hover:underline"
-                      hidden={filterMonth && currentMonth !== "june"}
-                    >
-                      June
-                    </Link>
-                  </TableHead>
-                  <TableHead>
-                    <Link
-                      href={`/produce/month/july`}
-                      className="hover:underline"
-                      hidden={filterMonth && currentMonth !== "july"}
-                    >
-                      July
-                    </Link>
-                  </TableHead>
-                  <TableHead>
-                    <Link
-                      href={`/produce/month/august`}
-                      className="hover:underline"
-                      hidden={filterMonth && currentMonth !== "august"}
-                    >
-                      August
-                    </Link>
-                  </TableHead>
-                  <TableHead>
-                    <Link
-                      href={`/produce/month/september`}
-                      className="hover:underline"
-                      hidden={filterMonth && currentMonth !== "september"}
-                    >
-                      September
-                    </Link>
-                  </TableHead>
-                  <TableHead>
-                    <Link
-                      href={`/produce/month/october`}
-                      className="hover:underline"
-                      hidden={filterMonth && currentMonth !== "october"}
-                    >
-                      October
-                    </Link>
-                  </TableHead>
-                  <TableHead>
-                    <Link
-                      href={`/produce/month/november`}
-                      className="hover:underline"
-                      hidden={filterMonth && currentMonth !== "november"}
-                    >
-                      November
-                    </Link>
-                  </TableHead>
-                  <TableHead>
-                    <Link
-                      href={`/produce/month/december`}
-                      className="hover:underline"
-                      hidden={filterMonth && currentMonth !== "december"}
-                    >
-                      December
-                    </Link>
-                  </TableHead>
+                      <Link
+                        href={`/produce/month/${month}`}
+                        className="hover:underline"
+                      >
+                        {capitaliseFirstLetters(month)}
+                      </Link>
+                    </TableHead>
+                  ))}
                 </TableRow>
               </TableHeader>
               <TableBody>
