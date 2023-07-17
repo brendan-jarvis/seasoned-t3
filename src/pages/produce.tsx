@@ -183,155 +183,160 @@ const Produce: NextPage = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {allProduce?.map((produce, index) => (
-                  <TableRow key={index}>
-                    <TableCell className="object-cover object-center">
-                      <Image
-                        width={64}
-                        height={64}
-                        alt={produce.name ? produce.name : "Produce"}
-                        src={`/images/produce/${
-                          produce.name
-                            ? produce.name
-                                .toLowerCase()
-                                .replaceAll(" - ", "-")
-                                .replaceAll(" ", "-")
-                            : "/images/produce.jpg"
-                        }.jpg`}
-                        quality={50}
-                        className="rounded-lg"
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Link
-                        href={`/produce/${produce.name}`}
-                        className="block text-sm text-seasoned-green hover:underline"
+                {allProduce?.map((produce, index) => {
+                  if (produce[currentMonth] === "Unavailable" && filterMonth) {
+                    return null;
+                  }
+                  return (
+                    <TableRow key={index}>
+                      <TableCell className="object-cover object-center">
+                        <Image
+                          width={64}
+                          height={64}
+                          alt={produce.name ? produce.name : "Produce"}
+                          src={`/images/produce/${
+                            produce.name
+                              ? produce.name
+                                  .toLowerCase()
+                                  .replaceAll(" - ", "-")
+                                  .replaceAll(" ", "-")
+                              : "/images/produce.jpg"
+                          }.jpg`}
+                          quality={50}
+                          className="rounded-lg"
+                        />
+                      </TableCell>
+                      <TableCell>
+                        <Link
+                          href={`/produce/${produce.name}`}
+                          className="block text-sm text-seasoned-green hover:underline"
+                        >
+                          {capitaliseFirstLetters(produce.name)}
+                        </Link>
+                      </TableCell>
+                      <TableCell
+                        className={
+                          produce.january === "Available"
+                            ? "bg-green-100"
+                            : "bg-red-100"
+                        }
+                        hidden={filterMonth && currentMonth !== "january"}
                       >
-                        {capitaliseFirstLetters(produce.name)}
-                      </Link>
-                    </TableCell>
-                    <TableCell
-                      className={
-                        produce.january === "Available"
-                          ? "bg-green-100"
-                          : "bg-red-100"
-                      }
-                      hidden={filterMonth && currentMonth !== "january"}
-                    >
-                      {produce.january}
-                    </TableCell>
-                    <TableCell
-                      className={
-                        produce.february === "Available"
-                          ? "bg-green-100"
-                          : "bg-red-100"
-                      }
-                      hidden={filterMonth && currentMonth !== "february"}
-                    >
-                      {produce.february}
-                    </TableCell>
-                    <TableCell
-                      className={
-                        produce.march === "Available"
-                          ? "bg-green-100"
-                          : "bg-red-100"
-                      }
-                      hidden={filterMonth && currentMonth !== "march"}
-                    >
-                      {produce.march}
-                    </TableCell>
-                    <TableCell
-                      className={
-                        produce.april === "Available"
-                          ? "bg-green-100"
-                          : "bg-red-100"
-                      }
-                      hidden={filterMonth && currentMonth !== "april"}
-                    >
-                      {produce.april}
-                    </TableCell>
-                    <TableCell
-                      className={
-                        produce.may === "Available"
-                          ? "bg-green-100"
-                          : "bg-red-100"
-                      }
-                      hidden={filterMonth && currentMonth !== "may"}
-                    >
-                      {produce.may}
-                    </TableCell>
-                    <TableCell
-                      className={
-                        produce.june === "Available"
-                          ? "bg-green-100"
-                          : "bg-red-100"
-                      }
-                      hidden={filterMonth && currentMonth !== "june"}
-                    >
-                      {produce.june}
-                    </TableCell>
-                    <TableCell
-                      className={
-                        produce.july === "Available"
-                          ? "bg-green-100"
-                          : "bg-red-100"
-                      }
-                      hidden={filterMonth && currentMonth !== "july"}
-                    >
-                      {produce.july}
-                    </TableCell>
-                    <TableCell
-                      className={
-                        produce.august === "Available"
-                          ? "bg-green-100"
-                          : "bg-red-100"
-                      }
-                      hidden={filterMonth && currentMonth !== "august"}
-                    >
-                      {produce.august}
-                    </TableCell>
-                    <TableCell
-                      className={
-                        produce.september === "Available"
-                          ? "bg-green-100"
-                          : "bg-red-100"
-                      }
-                      hidden={filterMonth && currentMonth !== "september"}
-                    >
-                      {produce.september}
-                    </TableCell>
-                    <TableCell
-                      className={
-                        produce.october === "Available"
-                          ? "bg-green-100"
-                          : "bg-red-100"
-                      }
-                      hidden={filterMonth && currentMonth !== "october"}
-                    >
-                      {produce.october}
-                    </TableCell>
-                    <TableCell
-                      className={
-                        produce.november === "Available"
-                          ? "bg-green-100"
-                          : "bg-red-100"
-                      }
-                      hidden={filterMonth && currentMonth !== "november"}
-                    >
-                      {produce.november}
-                    </TableCell>
-                    <TableCell
-                      className={
-                        produce.december === "Available"
-                          ? "bg-green-100"
-                          : "bg-red-100"
-                      }
-                      hidden={filterMonth && currentMonth !== "december"}
-                    >
-                      {produce.december}
-                    </TableCell>
-                  </TableRow>
-                ))}
+                        {produce.january}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          produce.february === "Available"
+                            ? "bg-green-100"
+                            : "bg-red-100"
+                        }
+                        hidden={filterMonth && currentMonth !== "february"}
+                      >
+                        {produce.february}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          produce.march === "Available"
+                            ? "bg-green-100"
+                            : "bg-red-100"
+                        }
+                        hidden={filterMonth && currentMonth !== "march"}
+                      >
+                        {produce.march}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          produce.april === "Available"
+                            ? "bg-green-100"
+                            : "bg-red-100"
+                        }
+                        hidden={filterMonth && currentMonth !== "april"}
+                      >
+                        {produce.april}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          produce.may === "Available"
+                            ? "bg-green-100"
+                            : "bg-red-100"
+                        }
+                        hidden={filterMonth && currentMonth !== "may"}
+                      >
+                        {produce.may}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          produce.june === "Available"
+                            ? "bg-green-100"
+                            : "bg-red-100"
+                        }
+                        hidden={filterMonth && currentMonth !== "june"}
+                      >
+                        {produce.june}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          produce.july === "Available"
+                            ? "bg-green-100"
+                            : "bg-red-100"
+                        }
+                        hidden={filterMonth && currentMonth !== "july"}
+                      >
+                        {produce.july}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          produce.august === "Available"
+                            ? "bg-green-100"
+                            : "bg-red-100"
+                        }
+                        hidden={filterMonth && currentMonth !== "august"}
+                      >
+                        {produce.august}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          produce.september === "Available"
+                            ? "bg-green-100"
+                            : "bg-red-100"
+                        }
+                        hidden={filterMonth && currentMonth !== "september"}
+                      >
+                        {produce.september}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          produce.october === "Available"
+                            ? "bg-green-100"
+                            : "bg-red-100"
+                        }
+                        hidden={filterMonth && currentMonth !== "october"}
+                      >
+                        {produce.october}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          produce.november === "Available"
+                            ? "bg-green-100"
+                            : "bg-red-100"
+                        }
+                        hidden={filterMonth && currentMonth !== "november"}
+                      >
+                        {produce.november}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          produce.december === "Available"
+                            ? "bg-green-100"
+                            : "bg-red-100"
+                        }
+                        hidden={filterMonth && currentMonth !== "december"}
+                      >
+                        {produce.december}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
               </TableBody>
             </Table>
           </div>
