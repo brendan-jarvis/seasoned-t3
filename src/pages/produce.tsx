@@ -66,7 +66,9 @@ const Produce: NextPage = () => {
           <div className="container">
             <Table>
               <TableCaption>
-                A table of produce and the months they are in season.
+                {filterMonth
+                  ? "A table of produce in season this month"
+                  : "A table of produce and the months they are in season."}
               </TableCaption>
               <TableHeader>
                 <TableRow>
