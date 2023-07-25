@@ -217,227 +217,225 @@ const ViewProduce: NextPage = () => {
       </Head>
       <PageLayout>
         <div className="flex flex-col items-center gap-4 px-4">
-          <div>
-            <h1 className="py-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
-              {capitaliseFirstLetters(produce.name)}
-            </h1>
-            <div className="flex items-center justify-center pb-4">
-              <Badge
-                variant="outline"
-                className={getBadgeClassName(produceType as string)}
-              >
-                {produceType}
-              </Badge>
-            </div>
-            <div className="flex justify-center">
-              <Image
-                width={256}
-                height={256}
-                alt={produce.name ? produce.name : "Produce"}
-                priority={true}
-                src={`/images/produce/${
-                  produce.name
-                    ? produce.name
-                        .toLowerCase()
-                        .replaceAll(" - ", "-")
-                        .replaceAll(" ", "-")
-                    : "/images/produce.jpg"
-                }.jpg`}
-                quality={50}
-                className="rounded-lg"
-              />
-            </div>
-            <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
-              In Season
-            </h2>
-            <ul>
-              {Object.entries(produce).map(([month, availability], index) => {
-                if (availability === "Available") {
-                  return <li key={index}>{capitaliseFirstLetters(month)}</li>;
-                }
-                return null;
-              })}
-            </ul>
-            <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
-              Varieties
-            </h2>
-            {produce.Produce.map((variety) => (
-              <Accordion
-                key={variety.id}
-                type="single"
-                collapsible
-                className="max-w-md"
-              >
-                <AccordionItem value="item-1">
-                  <AccordionTrigger className="font-sans text-base font-semibold">
-                    {variety.title}
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <h3 className="font-sans text-sm font-semibold">
-                      Availability:
-                    </h3>
-                    <ol>
-                      <li className="flex justify-between">
-                        January{" "}
-                        <span
-                          className={getAvailabilityClassName(
-                            variety.availability.january
-                          )}
-                        >
-                          {variety.availability.january
-                            .split(/(?=[A-Z])/)
-                            .join(" - ")}
-                        </span>
-                      </li>
-                      <li className="flex justify-between">
-                        February{" "}
-                        <span
-                          className={getAvailabilityClassName(
-                            variety.availability.february
-                          )}
-                        >
-                          {variety.availability.february
-                            .split(/(?=[A-Z])/)
-                            .join(" - ")}
-                        </span>
-                      </li>
-                      <li className="flex justify-between">
-                        March{" "}
-                        <span
-                          className={getAvailabilityClassName(
-                            variety.availability.march
-                          )}
-                        >
-                          {variety.availability.march
-                            .split(/(?=[A-Z])/)
-                            .join(" - ")}
-                        </span>
-                      </li>
-                      <li className="flex justify-between">
-                        April{" "}
-                        <span
-                          className={getAvailabilityClassName(
-                            variety.availability.april
-                          )}
-                        >
-                          {variety.availability.april
-                            .split(/(?=[A-Z])/)
-                            .join(" - ")}
-                        </span>
-                      </li>
-                      <li className="flex justify-between">
-                        May{" "}
-                        <span
-                          className={getAvailabilityClassName(
-                            variety.availability.may
-                          )}
-                        >
-                          {variety.availability.may
-                            .split(/(?=[A-Z])/)
-                            .join(" - ")}
-                        </span>
-                      </li>
-                      <li className="flex justify-between">
-                        June{" "}
-                        <span
-                          className={getAvailabilityClassName(
-                            variety.availability.june
-                          )}
-                        >
-                          {variety.availability.june
-                            .split(/(?=[A-Z])/)
-                            .join(" - ")}
-                        </span>
-                      </li>
-                      <li className="flex justify-between">
-                        July{" "}
-                        <span
-                          className={getAvailabilityClassName(
-                            variety.availability.july
-                          )}
-                        >
-                          {variety.availability.july
-                            .split(/(?=[A-Z])/)
-                            .join(" - ")}
-                        </span>
-                      </li>
-                      <li className="flex justify-between">
-                        August{" "}
-                        <span
-                          className={getAvailabilityClassName(
-                            variety.availability.august
-                          )}
-                        >
-                          {variety.availability.august
-                            .split(/(?=[A-Z])/)
-                            .join(" - ")}
-                        </span>
-                      </li>
-                      <li className="flex justify-between">
-                        September{" "}
-                        <span
-                          className={getAvailabilityClassName(
-                            variety.availability.september
-                          )}
-                        >
-                          {variety.availability.september
-                            .split(/(?=[A-Z])/)
-                            .join(" - ")}
-                        </span>
-                      </li>
-                      <li className="flex justify-between">
-                        October{" "}
-                        <span
-                          className={getAvailabilityClassName(
-                            variety.availability.october
-                          )}
-                        >
-                          {variety.availability.october
-                            .split(/(?=[A-Z])/)
-                            .join(" - ")}
-                        </span>
-                      </li>
-                      <li className="flex justify-between">
-                        November{" "}
-                        <span
-                          className={getAvailabilityClassName(
-                            variety.availability.november
-                          )}
-                        >
-                          {variety.availability.november
-                            .split(/(?=[A-Z])/)
-                            .join(" - ")}
-                        </span>
-                      </li>
-                      <li className="flex justify-between">
-                        December{" "}
-                        <span
-                          className={getAvailabilityClassName(
-                            variety.availability.december
-                          )}
-                        >
-                          {variety.availability.december
-                            .split(/(?=[A-Z])/)
-                            .join(" - ")}
-                        </span>
-                      </li>
-                    </ol>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            ))}
-            {priceHistory && priceHistory.length === 0 ? null : (
-              <TimeSeriesChart />
-            )}
-            <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
-              Recipes
-            </h2>
-            <RecipesByIngredient
-              ingredient={produce.name}
-              limit={10}
-              offset={0}
+          <h1 className="py-4 text-center font-serif text-4xl font-bold tracking-wide text-seasoned-green">
+            {capitaliseFirstLetters(produce.name)}
+          </h1>
+          <div className="flex items-center justify-center pb-4">
+            <Badge
+              variant="outline"
+              className={getBadgeClassName(produceType as string)}
+            >
+              {produceType}
+            </Badge>
+          </div>
+          <div className="flex justify-center">
+            <Image
+              width={256}
+              height={256}
+              alt={produce.name ? produce.name : "Produce"}
+              priority={true}
+              src={`/images/produce/${
+                produce.name
+                  ? produce.name
+                      .toLowerCase()
+                      .replaceAll(" - ", "-")
+                      .replaceAll(" ", "-")
+                  : "/images/produce.jpg"
+              }.jpg`}
+              quality={50}
+              className="rounded-lg"
             />
           </div>
+          <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
+            In Season
+          </h2>
+          <ul>
+            {Object.entries(produce).map(([month, availability], index) => {
+              if (availability === "Available") {
+                return <li key={index}>{capitaliseFirstLetters(month)}</li>;
+              }
+              return null;
+            })}
+          </ul>
+          <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
+            Varieties
+          </h2>
+          {produce.Produce.map((variety) => (
+            <Accordion
+              key={variety.id}
+              type="single"
+              collapsible
+              className="max-w-md"
+            >
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="font-sans text-base font-semibold">
+                  {variety.title}
+                </AccordionTrigger>
+                <AccordionContent>
+                  <h3 className="font-sans text-sm font-semibold">
+                    Availability:
+                  </h3>
+                  <ol>
+                    <li className="flex justify-between">
+                      January{" "}
+                      <span
+                        className={getAvailabilityClassName(
+                          variety.availability.january,
+                        )}
+                      >
+                        {variety.availability.january
+                          .split(/(?=[A-Z])/)
+                          .join(" - ")}
+                      </span>
+                    </li>
+                    <li className="flex justify-between">
+                      February{" "}
+                      <span
+                        className={getAvailabilityClassName(
+                          variety.availability.february,
+                        )}
+                      >
+                        {variety.availability.february
+                          .split(/(?=[A-Z])/)
+                          .join(" - ")}
+                      </span>
+                    </li>
+                    <li className="flex justify-between">
+                      March{" "}
+                      <span
+                        className={getAvailabilityClassName(
+                          variety.availability.march,
+                        )}
+                      >
+                        {variety.availability.march
+                          .split(/(?=[A-Z])/)
+                          .join(" - ")}
+                      </span>
+                    </li>
+                    <li className="flex justify-between">
+                      April{" "}
+                      <span
+                        className={getAvailabilityClassName(
+                          variety.availability.april,
+                        )}
+                      >
+                        {variety.availability.april
+                          .split(/(?=[A-Z])/)
+                          .join(" - ")}
+                      </span>
+                    </li>
+                    <li className="flex justify-between">
+                      May{" "}
+                      <span
+                        className={getAvailabilityClassName(
+                          variety.availability.may,
+                        )}
+                      >
+                        {variety.availability.may
+                          .split(/(?=[A-Z])/)
+                          .join(" - ")}
+                      </span>
+                    </li>
+                    <li className="flex justify-between">
+                      June{" "}
+                      <span
+                        className={getAvailabilityClassName(
+                          variety.availability.june,
+                        )}
+                      >
+                        {variety.availability.june
+                          .split(/(?=[A-Z])/)
+                          .join(" - ")}
+                      </span>
+                    </li>
+                    <li className="flex justify-between">
+                      July{" "}
+                      <span
+                        className={getAvailabilityClassName(
+                          variety.availability.july,
+                        )}
+                      >
+                        {variety.availability.july
+                          .split(/(?=[A-Z])/)
+                          .join(" - ")}
+                      </span>
+                    </li>
+                    <li className="flex justify-between">
+                      August{" "}
+                      <span
+                        className={getAvailabilityClassName(
+                          variety.availability.august,
+                        )}
+                      >
+                        {variety.availability.august
+                          .split(/(?=[A-Z])/)
+                          .join(" - ")}
+                      </span>
+                    </li>
+                    <li className="flex justify-between">
+                      September{" "}
+                      <span
+                        className={getAvailabilityClassName(
+                          variety.availability.september,
+                        )}
+                      >
+                        {variety.availability.september
+                          .split(/(?=[A-Z])/)
+                          .join(" - ")}
+                      </span>
+                    </li>
+                    <li className="flex justify-between">
+                      October{" "}
+                      <span
+                        className={getAvailabilityClassName(
+                          variety.availability.october,
+                        )}
+                      >
+                        {variety.availability.october
+                          .split(/(?=[A-Z])/)
+                          .join(" - ")}
+                      </span>
+                    </li>
+                    <li className="flex justify-between">
+                      November{" "}
+                      <span
+                        className={getAvailabilityClassName(
+                          variety.availability.november,
+                        )}
+                      >
+                        {variety.availability.november
+                          .split(/(?=[A-Z])/)
+                          .join(" - ")}
+                      </span>
+                    </li>
+                    <li className="flex justify-between">
+                      December{" "}
+                      <span
+                        className={getAvailabilityClassName(
+                          variety.availability.december,
+                        )}
+                      >
+                        {variety.availability.december
+                          .split(/(?=[A-Z])/)
+                          .join(" - ")}
+                      </span>
+                    </li>
+                  </ol>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          ))}
+          {priceHistory && priceHistory.length === 0 ? null : (
+            <TimeSeriesChart />
+          )}
+          <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
+            Recipes
+          </h2>
+          <RecipesByIngredient
+            ingredient={produce.name}
+            limit={10}
+            offset={0}
+          />
         </div>
       </PageLayout>
     </>
