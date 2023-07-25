@@ -76,18 +76,18 @@ const Home: NextPage = () => {
                 quality={50}
                 className="w-128 h-16 rounded-t-lg object-cover object-center"
               />
-              <div className="flex cursor-pointer items-center justify-center gap-1 py-2">
-                <h2
-                  className="justify-center text-center text-sm font-semibold text-gray-700 hover:underline dark:text-gray-300"
-                  onClick={() =>
-                    setSearchQuery(
-                      (prevQuery) =>
-                        `${prevQuery}${prevQuery ? ", " : ""}${
-                          title?.toLowerCase() || ""
-                        }`
-                    )
-                  }
-                >
+              <div
+                className="flex cursor-pointer items-center justify-center gap-1 py-2"
+                onClick={() =>
+                  setSearchQuery(
+                    (prevQuery) =>
+                      `${prevQuery}${prevQuery ? ", " : ""}${
+                        title?.toLowerCase() || ""
+                      }`,
+                  )
+                }
+              >
+                <h2 className="justify-center text-center text-sm font-semibold text-gray-700 hover:underline dark:text-gray-300">
                   {title}
                 </h2>
                 <PlusCircle className="h-4 w-4" />
