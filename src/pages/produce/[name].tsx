@@ -165,7 +165,7 @@ const ViewProduce: NextPage = () => {
     });
 
     return (
-      <div>
+      <div className="m-auto w-[350px]">
         <h2 className="py-4 text-center font-serif text-xl font-semibold tracking-wide">
           Price History
         </h2>
