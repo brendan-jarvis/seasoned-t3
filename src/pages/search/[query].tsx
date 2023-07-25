@@ -74,7 +74,7 @@ const ViewRecipe: NextPage = () => {
             </p>
           ) : (
             <>
-              <div className="flex flex-grow flex-wrap justify-center gap-4">
+              <div className="mx-auto mb-4 flex max-w-[800px] flex-wrap justify-center gap-4">
                 {recipes.map((recipe: Recipe) => (
                   <Card key={recipe.id} className="w-[350px]">
                     <Link href={`/recipes/${recipe.id}`}>
