@@ -2,6 +2,15 @@ import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { createTRPCRouter, privateProcedure } from "~/server/api/trpc";
 
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
+
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(3, "1 m"),
+  analytics: true,
+});
+
 export const favouritesRouter = createTRPCRouter({
   getAll: privateProcedure.query(async ({ ctx }) => {
     const { userId } = ctx;
@@ -32,6 +41,9 @@ export const favouritesRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       const { userId } = ctx;
       const recipeId = input.recipeId;
+
+      const { success } = await ratelimit.limit(userId);
+      if (!success) throw new TRPCError({ code: "TOO_MANY_REQUESTS" });
 
       if (!userId) {
         throw new TRPCError({
