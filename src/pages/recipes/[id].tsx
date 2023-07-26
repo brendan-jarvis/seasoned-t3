@@ -44,6 +44,9 @@ const DeleteFavourite = ({
         }
         if (errorCode === "INTERNAL_SERVER_ERROR") {
           toast.error("Favourite already deleted!");
+        }
+        if (errorCode === "TOO_MANY_REQUESTS") {
+          toast.error("Too many requests! Please try again later.");
         } else {
           toast.error("Failed to delete favourite! Please try again later.");
         }
@@ -93,8 +96,7 @@ const ViewRecipe: NextPage = () => {
         }
         if (errorCode === "TOO_MANY_REQUESTS") {
           toast.error("Too many requests! Please try again later.");
-        }
-        else {
+        } else {
           toast.error("Failed to add to favourites! Please try again later.");
         }
       },
