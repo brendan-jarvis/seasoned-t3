@@ -7,7 +7,7 @@ import { Redis } from "@upstash/redis";
 
 const ratelimit = new Ratelimit({
   redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(3, "1 m"),
+  limiter: Ratelimit.slidingWindow(10, "30 s"),
   analytics: true,
 });
 
@@ -36,7 +36,7 @@ export const favouritesRouter = createTRPCRouter({
         recipeId: z.number(),
         rating: z.number().optional(),
         completed: z.boolean().optional(),
-      }),
+      })
     )
     .mutation(async ({ ctx, input }) => {
       const { userId } = ctx;
