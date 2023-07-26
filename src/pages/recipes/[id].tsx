@@ -90,7 +90,11 @@ const ViewRecipe: NextPage = () => {
         }
         if (errorCode === "INTERNAL_SERVER_ERROR") {
           toast.error("Recipe already in favourites!");
-        } else {
+        }
+        if (errorCode === "TOO_MANY_REQUESTS") {
+          toast.error("Too many requests! Please try again later.");
+        }
+        else {
           toast.error("Failed to add to favourites! Please try again later.");
         }
       },
