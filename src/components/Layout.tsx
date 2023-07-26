@@ -36,6 +36,7 @@ const Nav = (props: PropsWithChildren) => {
               width={28}
               height={28}
               alt="Orange carrot icon"
+              priority={true}
               className="bounce-once ml-1"
             />
           </Button>
