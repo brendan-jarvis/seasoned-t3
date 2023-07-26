@@ -45,8 +45,7 @@ const CompletedButton = ({
       }
       if (errorCode === "TOO_MANY_REQUESTS") {
         toast.error("Too many requests! Please try again later.");
-      } 
-      else {
+      } else {
         toast.error("Failed to update completion! Please try again later.");
       }
     },
@@ -185,10 +184,10 @@ const Favourites: NextPage = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Title</TableHead>
+                  <TableHead>Recipe</TableHead>
                   {/* <TableHead>Rating</TableHead> */}
-                  <TableHead>Completed</TableHead>
-                  <TableHead>Added On</TableHead>
+                  <TableHead>Done</TableHead>
+                  <TableHead>Added</TableHead>
                   {/* <TableHead>Last Updated</TableHead> */}
                   <TableHead>Delete</TableHead>
                 </TableRow>
