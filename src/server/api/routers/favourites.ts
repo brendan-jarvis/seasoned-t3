@@ -1,10 +1,6 @@
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import {
-  createTRPCRouter,
-  privateProcedure,
-  publicProcedure,
-} from "~/server/api/trpc";
+import { createTRPCRouter, privateProcedure } from "~/server/api/trpc";
 
 export const favouritesRouter = createTRPCRouter({
   getAll: privateProcedure.query(async ({ ctx }) => {
@@ -31,7 +27,7 @@ export const favouritesRouter = createTRPCRouter({
         recipeId: z.number(),
         rating: z.number().optional(),
         completed: z.boolean().optional(),
-      })
+      }),
     )
     .mutation(async ({ ctx, input }) => {
       const { userId } = ctx;

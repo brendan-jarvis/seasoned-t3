@@ -1,7 +1,4 @@
-import clerkClient from "@clerk/clerk-sdk-node";
 import { z } from "zod";
-import type { User } from "@clerk/nextjs/dist/api";
-import type { Recipe } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import {
   createTRPCRouter,
@@ -15,7 +12,7 @@ export const recipesRouter = createTRPCRouter({
       z.object({
         limit: z.optional(z.number()),
         offset: z.optional(z.number()),
-      })
+      }),
     )
     .query(async ({ ctx, input }) => {
       const allRecipes = await ctx.prisma.recipe.findMany({
@@ -70,7 +67,7 @@ export const recipesRouter = createTRPCRouter({
         limit: z.optional(z.number()),
         offset: z.optional(z.number()),
         searchType: z.optional(z.string()),
-      })
+      }),
     )
     .query(async ({ ctx, input }) => {
       const operator = input.searchType === "all" ? "&" : "|";
@@ -162,14 +159,14 @@ export const recipesRouter = createTRPCRouter({
           z.union([
             z.string().url({ message: "Invalid source url" }).nullish(),
             z.literal(""),
-          ])
+          ]),
         ),
         description: z.optional(z.string()),
         image: z.optional(
           z.union([
             z.string().url({ message: "Invalid image url" }).nullish(),
             z.literal(""),
-          ])
+          ]),
         ),
         ingredientSegments: z
           .array(
@@ -178,16 +175,16 @@ export const recipesRouter = createTRPCRouter({
               ingredients: z.array(
                 z.object({
                   content: z.string(),
-                })
+                }),
               ),
-            })
+            }),
           )
           .nonempty(),
         instructions: z
           .array(z.object({ title: z.string(), content: z.string() }))
           .nonempty(),
         tags: z.optional(z.array(z.object({ name: z.string() }))),
-      })
+      }),
     )
     .mutation(async ({ ctx, input }) => {
       const authorId = ctx.userId;
