@@ -6,15 +6,31 @@ import {
   publicProcedure,
 } from "~/server/api/trpc";
 
+import { Redis } from "@upstash/redis";
+
+const redis = Redis.fromEnv();
+
 export const recipesRouter = createTRPCRouter({
   getAll: publicProcedure
     .input(
       z.object({
         limit: z.optional(z.number()),
         offset: z.optional(z.number()),
-      }),
+      })
     )
     .query(async ({ ctx, input }) => {
+      // check if recipes are in cache
+      const cachedRecipes: string | null = await redis.get(
+        `recipes/getAll?limit=${String(input.limit)}&offset=${String(
+          input.offset
+        )}`
+      );
+
+      // return cached recipes if they exist
+      if (cachedRecipes) {
+        return cachedRecipes;
+      }
+
       const allRecipes = await ctx.prisma.recipe.findMany({
         take: input.limit || 10,
         skip: input.offset || 0,
@@ -31,6 +47,15 @@ export const recipesRouter = createTRPCRouter({
       });
 
       const count = await ctx.prisma.recipe.count();
+
+      // cache recipes
+      await redis.set(
+        `recipes/getAll&offset=${String(input.offset)}&limit=${String(
+          input.limit
+        )}`,
+        JSON.stringify({ allRecipes, count }),
+        { ex: 600 }
+      );
 
       return { allRecipes, count };
     }),
@@ -67,7 +92,7 @@ export const recipesRouter = createTRPCRouter({
         limit: z.optional(z.number()),
         offset: z.optional(z.number()),
         searchType: z.optional(z.string()),
-      }),
+      })
     )
     .query(async ({ ctx, input }) => {
       const operator = input.searchType === "all" ? "&" : "|";
@@ -159,14 +184,14 @@ export const recipesRouter = createTRPCRouter({
           z.union([
             z.string().url({ message: "Invalid source url" }).nullish(),
             z.literal(""),
-          ]),
+          ])
         ),
         description: z.optional(z.string()),
         image: z.optional(
           z.union([
             z.string().url({ message: "Invalid image url" }).nullish(),
             z.literal(""),
-          ]),
+          ])
         ),
         ingredientSegments: z
           .array(
@@ -175,16 +200,16 @@ export const recipesRouter = createTRPCRouter({
               ingredients: z.array(
                 z.object({
                   content: z.string(),
-                }),
+                })
               ),
-            }),
+            })
           )
           .nonempty(),
         instructions: z
           .array(z.object({ title: z.string(), content: z.string() }))
           .nonempty(),
         tags: z.optional(z.array(z.object({ name: z.string() }))),
-      }),
+      })
     )
     .mutation(async ({ ctx, input }) => {
       const authorId = ctx.userId;
