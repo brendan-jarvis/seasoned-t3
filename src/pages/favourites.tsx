@@ -107,7 +107,7 @@ const DeleteButton = ({ recipeId }: { recipeId: number }) => {
         });
       }}
       disabled={isLoading}
-      className="px-2"
+      className="px-2 text-destructive"
     >
       {isLoading ? <LoadingSpinner size={18} /> : <Trash2 />}
     </Button>
