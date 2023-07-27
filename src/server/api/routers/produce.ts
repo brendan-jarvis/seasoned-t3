@@ -5,6 +5,8 @@ import {
   publicProcedure,
 } from "~/server/api/trpc";
 
+import { Redis } from "@upstash/redis";
+
 const availabilityType = z.enum([
   "Available",
   "Limited",
@@ -13,12 +15,24 @@ const availabilityType = z.enum([
   "LimitedImported",
 ]);
 
+const redis = Redis.fromEnv();
+
 export const produceRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
+    const cachedAllProduce = await redis.get("produce/getAll");
+
+    if (cachedAllProduce) {
+      return cachedAllProduce;
+    }
+
     const allProduce = await ctx.prisma.produce.findMany({
       take: 10,
       orderBy: { id: "asc" },
       include: { seasonality: true, availability: true },
+    });
+
+    await redis.set("produce/getAll", JSON.stringify(allProduce), {
+      ex: 43200, // 12 hours
     });
 
     return allProduce;
@@ -42,7 +56,7 @@ export const produceRouter = createTRPCRouter({
           "december",
         ]),
         seasonality: z.string(),
-      }),
+      })
     )
     .query(async ({ ctx, input }) => {
       const allProduce = await ctx.prisma.produce.findMany({
@@ -102,7 +116,7 @@ export const produceRouter = createTRPCRouter({
           november: availabilityType,
           december: availabilityType,
         }),
-      }),
+      })
     )
     .mutation(async ({ ctx, input }) => {
       const authorId = ctx.userId;
