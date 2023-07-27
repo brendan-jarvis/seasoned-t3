@@ -77,7 +77,7 @@ const Recipes: NextPage = () => {
             Recipes
           </h1>
           <Skeleton className="mx-auto mb-4 h-4 w-[300px] text-center" />
-          <div className="mb-4 flex flex-wrap justify-center gap-4">
+          <div className="mx-auto mb-4 flex max-w-[800px] flex-wrap justify-center gap-4">
             {Array.from({ length: 10 }).map((_, index) => (
               <RecipeCardSkeleton key={index} />
             ))}
