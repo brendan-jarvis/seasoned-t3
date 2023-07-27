@@ -1,6 +1,6 @@
 import { type AppType } from "next/app";
 import { ClerkProvider } from "@clerk/nextjs";
-import { Bree_Serif, Nobile } from "@next/font/google";
+import { Bree_Serif, Nobile } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 
 import { api } from "~/utils/api";
