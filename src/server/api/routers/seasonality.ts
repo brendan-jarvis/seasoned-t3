@@ -1,18 +1,33 @@
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import {
-  createTRPCRouter,
-  publicProcedure,
-} from "~/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+
+import { Redis } from "@upstash/redis";
+
+const redis = Redis.fromEnv();
 
 export const seasonalityRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
+    const cachedAllProduceSeasonality = await redis.get("seasonality/getAll");
+
+    if (cachedAllProduceSeasonality) {
+      return cachedAllProduceSeasonality;
+    }
+
     const allProduceSeasonality = await ctx.prisma.seasonality.findMany({
       // take: 10,
       orderBy: {
         name: "asc",
       },
     });
+
+    await redis.set(
+      "seasonality/getAll",
+      JSON.stringify(allProduceSeasonality),
+      {
+        ex: 600,
+      }
+    );
 
     return allProduceSeasonality;
   }),
