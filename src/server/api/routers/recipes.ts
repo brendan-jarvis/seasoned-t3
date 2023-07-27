@@ -64,6 +64,14 @@ export const recipesRouter = createTRPCRouter({
     .input(z.object({ id: z.string() }))
     // convert string to number
     .query(async ({ ctx, input }) => {
+      const cachedRecipe: string | null = await redis.get(
+        `recipes/getOne?id=${input.id}`
+      );
+
+      if (cachedRecipe) {
+        return cachedRecipe;
+      }
+
       const recipe = await ctx.prisma.recipe.findUnique({
         where: { id: Number(input.id) },
         include: {
@@ -81,6 +89,10 @@ export const recipesRouter = createTRPCRouter({
       if (!recipe) {
         throw new TRPCError({ code: "NOT_FOUND", message: "Recipe not found" });
       }
+
+      await redis.set(`recipes/getOne?id=${input.id}`, JSON.stringify(recipe), {
+        ex: 43200, // 12 hours
+      });
 
       return recipe;
     }),
