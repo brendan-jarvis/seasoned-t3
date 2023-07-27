@@ -41,6 +41,14 @@ export const seasonalityRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const { name } = input;
 
+      const cachedSeasonality = await redis.get(
+        `seasonality/getOne?name=${name}`
+      );
+
+      if (cachedSeasonality) {
+        return cachedSeasonality;
+      }
+
       const seasonality = await ctx.prisma.seasonality.findUnique({
         where: {
           name: name,
@@ -61,6 +69,14 @@ export const seasonalityRouter = createTRPCRouter({
           message: "Seasonality not found",
         });
       }
+
+      await redis.set(
+        `seasonality/getOne?name=${name}`,
+        JSON.stringify(seasonality),
+        {
+          ex: 43200, // 12 hours
+        }
+      );
 
       return seasonality;
     }),
