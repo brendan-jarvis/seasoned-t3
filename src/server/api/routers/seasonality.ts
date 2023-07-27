@@ -25,7 +25,7 @@ export const seasonalityRouter = createTRPCRouter({
       "seasonality/getAll",
       JSON.stringify(allProduceSeasonality),
       {
-        ex: 600,
+        ex: 43200, // 12 hours
       }
     );
 

@@ -54,7 +54,7 @@ export const recipesRouter = createTRPCRouter({
           input.limit
         )}`,
         JSON.stringify({ allRecipes, count }),
-        { ex: 600 }
+        { ex: 600 } // 10 minutes
       );
 
       return { allRecipes, count };
