@@ -110,6 +110,18 @@ export const recipesRouter = createTRPCRouter({
       const operator = input.searchType === "all" ? "&" : "|";
       const ingredients = input.query.split(/[,\s]+/).join(` ${operator} `); // Split query on spaces or commas
 
+      const cachedRecipes: string | null = await redis.get(
+        `recipes/findMany?query=${input.query}&limit=${String(
+          input.limit
+        )}&offset=${String(input.offset)}&searchType=${String(
+          input.searchType
+        )}`
+      );
+
+      if (cachedRecipes) {
+        return cachedRecipes;
+      }
+
       const recipes = await ctx.prisma.recipe.findMany({
         take: input.limit || 10,
         skip: input.offset || 0,
@@ -180,6 +192,16 @@ export const recipesRouter = createTRPCRouter({
           message: "No matching recipes found",
         });
       }
+
+      await redis.set(
+        `recipes/findMany?query=${input.query}&limit=${String(
+          input.limit
+        )}&offset=${String(input.offset)}&searchType=${String(
+          input.searchType
+        )}`,
+        JSON.stringify({ recipes, count }),
+        { ex: 43200 } // 12 hours
+      );
 
       return { recipes, count };
     }),
