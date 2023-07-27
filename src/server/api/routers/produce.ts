@@ -59,14 +59,6 @@ export const produceRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
-      const cachedAllProduceByMonth = await redis.get(
-        `produce/getAllByMonth?month=${input.month}&seasonality=${input.seasonality}`
-      );
-
-      if (cachedAllProduceByMonth) {
-        return cachedAllProduceByMonth;
-      }
-
       const allProduce = await ctx.prisma.produce.findMany({
         where: {
           seasonality: {
@@ -76,14 +68,6 @@ export const produceRouter = createTRPCRouter({
         orderBy: { type: "asc" },
         include: { seasonality: true, availability: true },
       });
-
-      await redis.set(
-        `produce/getAllByMonth?month=${input.month}&seasonality=${input.seasonality}`,
-        JSON.stringify(allProduce),
-        {
-          ex: 43200, // 12 hours
-        }
-      );
 
       return allProduce;
     }),
