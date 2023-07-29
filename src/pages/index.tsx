@@ -142,6 +142,7 @@ const Home: NextPage = () => {
   }: {
     randomProduce: string;
   }) => {
+    const [showCount, setShowCount] = useState(2);
     const { data: randomRecipes, isLoading: isLoadingRecommendations } =
       api.recipes.findMany.useQuery({
         query: randomProduce,
@@ -158,7 +159,7 @@ const Home: NextPage = () => {
         <>
           <h2 className="text-sm tracking-tight text-slate-500">{`Recipes with any of ${randomProduce}`}</h2>
           <div className="mx-auto my-4 flex max-w-[800px] flex-wrap justify-center gap-4">
-            {randomRecipes.recipes.map((recipe: Recipe) => (
+            {randomRecipes.recipes.slice(0, showCount).map((recipe: Recipe) => (
               <Card key={recipe.id} className="w-[350px]">
                 <Link href={`/recipes/${recipe.id}`}>
                   <CardHeader>
@@ -201,7 +202,14 @@ const Home: NextPage = () => {
               </Card>
             ))}
           </div>
-          {/* Show more button */}
+          {showCount < randomRecipes.recipes.length && (
+            <Button
+              variant="outline"
+              onClick={() => setShowCount(showCount + 2)}
+            >
+              Show More
+            </Button>
+          )}
         </>
       );
     }
