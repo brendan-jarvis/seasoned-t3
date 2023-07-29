@@ -83,7 +83,7 @@ const Home: NextPage = () => {
                     (prevQuery) =>
                       `${prevQuery}${prevQuery ? ", " : ""}${
                         title?.toLowerCase() || ""
-                      }`,
+                      }`
                   )
                 }
               >
@@ -190,8 +190,6 @@ const Home: NextPage = () => {
             </h2>
 
             <ProduceCarousel />
-
-            {/* <Carousel /> */}
           </div>
         </div>
       </PageLayout>
