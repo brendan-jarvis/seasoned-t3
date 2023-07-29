@@ -8,11 +8,11 @@ const redis = Redis.fromEnv();
 
 export const seasonalityRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
-    const cachedAllProduceSeasonality = await redis.get("seasonality/getAll");
+    // const cachedAllProduceSeasonality = await redis.get("seasonality/getAll");
 
-    if (cachedAllProduceSeasonality) {
-      return cachedAllProduceSeasonality;
-    }
+    // if (cachedAllProduceSeasonality) {
+    //   return cachedAllProduceSeasonality;
+    // }
 
     const allProduceSeasonality = await ctx.prisma.seasonality.findMany({
       // take: 10,
@@ -21,13 +21,13 @@ export const seasonalityRouter = createTRPCRouter({
       },
     });
 
-    await redis.set(
-      "seasonality/getAll",
-      JSON.stringify(allProduceSeasonality),
-      {
-        ex: 43200, // 12 hours
-      }
-    );
+    // await redis.set(
+    //   "seasonality/getAll",
+    //   JSON.stringify(allProduceSeasonality),
+    //   {
+    //     ex: 43200, // 12 hours
+    //   }
+    // );
 
     return allProduceSeasonality;
   }),
@@ -41,13 +41,13 @@ export const seasonalityRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const { name } = input;
 
-      const cachedSeasonality = await redis.get(
-        `seasonality/getOne?name=${name}`
-      );
+      // const cachedSeasonality = await redis.get(
+      //   `seasonality/getOne?name=${name}`
+      // );
 
-      if (cachedSeasonality) {
-        return cachedSeasonality;
-      }
+      // if (cachedSeasonality) {
+      //   return cachedSeasonality;
+      // }
 
       const seasonality = await ctx.prisma.seasonality.findUnique({
         where: {
@@ -70,13 +70,13 @@ export const seasonalityRouter = createTRPCRouter({
         });
       }
 
-      await redis.set(
-        `seasonality/getOne?name=${name}`,
-        JSON.stringify(seasonality),
-        {
-          ex: 43200, // 12 hours
-        }
-      );
+      // await redis.set(
+      //   `seasonality/getOne?name=${name}`,
+      //   JSON.stringify(seasonality),
+      //   {
+      //     ex: 43200, // 12 hours
+      //   }
+      // );
 
       return seasonality;
     }),
@@ -88,13 +88,13 @@ export const seasonalityRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
-      const cachedAllProduce = await redis.get(
-        `seasonality/getAllByMonth?month=${input.month}`
-      );
+      // const cachedAllProduce = await redis.get(
+      //   `seasonality/getAllByMonth?month=${input.month}`
+      // );
 
-      if (cachedAllProduce) {
-        return cachedAllProduce;
-      }
+      // if (cachedAllProduce) {
+      //   return cachedAllProduce;
+      // }
 
       const allProduce = await ctx.prisma.seasonality.findMany({
         where: {
@@ -106,13 +106,13 @@ export const seasonalityRouter = createTRPCRouter({
         },
       });
 
-      await redis.set(
-        `seasonality/getAllByMonth?month=${input.month}`,
-        JSON.stringify(allProduce),
-        {
-          ex: 43200, // 12 hours
-        }
-      );
+      // await redis.set(
+      //   `seasonality/getAllByMonth?month=${input.month}`,
+      //   JSON.stringify(allProduce),
+      //   {
+      //     ex: 43200, // 12 hours
+      //   }
+      // );
 
       return allProduce;
     }),

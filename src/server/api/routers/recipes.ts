@@ -19,17 +19,15 @@ export const recipesRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
-      // check if recipes are in cache
-      const cachedRecipes: string | null = await redis.get(
-        `recipes/getAll?limit=${String(input.limit)}&offset=${String(
-          input.offset
-        )}`
-      );
+      // const cachedRecipes: string | null = await redis.get(
+      //   `recipes/getAll?limit=${String(input.limit)}&offset=${String(
+      //     input.offset
+      //   )}`
+      // );
 
-      // return cached recipes if they exist
-      if (cachedRecipes) {
-        return cachedRecipes;
-      }
+      // if (cachedRecipes) {
+      //   return cachedRecipes;
+      // }
 
       const allRecipes = await ctx.prisma.recipe.findMany({
         take: input.limit || 10,
@@ -48,14 +46,13 @@ export const recipesRouter = createTRPCRouter({
 
       const count = await ctx.prisma.recipe.count();
 
-      // cache recipes
-      await redis.set(
-        `recipes/getAll&offset=${String(input.offset)}&limit=${String(
-          input.limit
-        )}`,
-        JSON.stringify({ allRecipes, count }),
-        { ex: 600 } // 10 minutes
-      );
+      // await redis.set(
+      //   `recipes/getAll&offset=${String(input.offset)}&limit=${String(
+      //     input.limit
+      //   )}`,
+      //   JSON.stringify({ allRecipes, count }),
+      //   { ex: 600 } // 10 minutes
+      // );
 
       return { allRecipes, count };
     }),
@@ -64,13 +61,13 @@ export const recipesRouter = createTRPCRouter({
     .input(z.object({ id: z.string() }))
     // convert string to number
     .query(async ({ ctx, input }) => {
-      const cachedRecipe: string | null = await redis.get(
-        `recipes/getOne?id=${input.id}`
-      );
+      // const cachedRecipe: string | null = await redis.get(
+      //   `recipes/getOne?id=${input.id}`
+      // );
 
-      if (cachedRecipe) {
-        return cachedRecipe;
-      }
+      // if (cachedRecipe) {
+      //   return cachedRecipe;
+      // }
 
       const recipe = await ctx.prisma.recipe.findUnique({
         where: { id: Number(input.id) },
@@ -90,9 +87,9 @@ export const recipesRouter = createTRPCRouter({
         throw new TRPCError({ code: "NOT_FOUND", message: "Recipe not found" });
       }
 
-      await redis.set(`recipes/getOne?id=${input.id}`, JSON.stringify(recipe), {
-        ex: 43200, // 12 hours
-      });
+      // await redis.set(`recipes/getOne?id=${input.id}`, JSON.stringify(recipe), {
+      //   ex: 43200, // 12 hours
+      // });
 
       return recipe;
     }),
@@ -110,17 +107,17 @@ export const recipesRouter = createTRPCRouter({
       const operator = input.searchType === "all" ? "&" : "|";
       const ingredients = input.query.split(/[,\s]+/).join(` ${operator} `); // Split query on spaces or commas
 
-      const cachedRecipes: string | null = await redis.get(
-        `recipes/findMany?query=${input.query}&limit=${String(
-          input.limit
-        )}&offset=${String(input.offset)}&searchType=${String(
-          input.searchType
-        )}`
-      );
+      // const cachedRecipes: string | null = await redis.get(
+      //   `recipes/findMany?query=${input.query}&limit=${String(
+      //     input.limit
+      //   )}&offset=${String(input.offset)}&searchType=${String(
+      //     input.searchType
+      //   )}`
+      // );
 
-      if (cachedRecipes) {
-        return cachedRecipes;
-      }
+      // if (cachedRecipes) {
+      //   return cachedRecipes;
+      // }
 
       const recipes = await ctx.prisma.recipe.findMany({
         take: input.limit || 10,
@@ -193,15 +190,15 @@ export const recipesRouter = createTRPCRouter({
         });
       }
 
-      await redis.set(
-        `recipes/findMany?query=${input.query}&limit=${String(
-          input.limit
-        )}&offset=${String(input.offset)}&searchType=${String(
-          input.searchType
-        )}`,
-        JSON.stringify({ recipes, count }),
-        { ex: 43200 } // 12 hours
-      );
+      // await redis.set(
+      //   `recipes/findMany?query=${input.query}&limit=${String(
+      //     input.limit
+      //   )}&offset=${String(input.offset)}&searchType=${String(
+      //     input.searchType
+      //   )}`,
+      //   JSON.stringify({ recipes, count }),
+      //   { ex: 43200 } // 12 hours
+      // );
 
       return { recipes, count };
     }),
