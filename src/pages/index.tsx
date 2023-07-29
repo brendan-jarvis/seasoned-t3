@@ -10,12 +10,26 @@ import { LoadingSpinner } from "~/components/LoadingSpinner";
 import { Search, PlusCircle } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
+// import {
+//   Tooltip,
+//   TooltipContent,
+//   TooltipProvider,
+//   TooltipTrigger,
+// } from "~/components/ui/tooltip";
+
+// Recipe recommendations imports
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "~/components/ui/tooltip";
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "~/components/ui/card";
+import { Badge } from "~/components/ui/badge";
+import { Skeleton } from "~/components/ui/skeleton";
+import type { RecipeWithIngredients as Recipe } from "~/utils/types";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -123,6 +137,76 @@ const Home: NextPage = () => {
     );
   };
 
+  const RecipeRecommendations = ({
+    randomProduce,
+  }: {
+    randomProduce: string;
+  }) => {
+    const { data: randomRecipes, isLoading: isLoadingRecommendations } =
+      api.recipes.findMany.useQuery({
+        query: randomProduce,
+        offset: 0,
+        limit: 10,
+      });
+
+    if (isLoadingRecommendations) {
+      return <LoadingSpinner />;
+    }
+
+    if (randomRecipes) {
+      return (
+        <>
+          <h2 className="text-sm tracking-tight text-slate-500">{`Recipes with any of ${randomProduce}`}</h2>
+          <div className="mx-auto my-4 flex max-w-[800px] flex-wrap justify-center gap-4">
+            {randomRecipes.recipes.map((recipe: Recipe) => (
+              <Card key={recipe.id} className="w-[350px]">
+                <Link href={`/recipes/${recipe.id}`}>
+                  <CardHeader>
+                    <CardTitle className="font-serif">{recipe.title}</CardTitle>
+                    {recipe.description && (
+                      <CardDescription className="text-sm">
+                        {recipe.description}
+                      </CardDescription>
+                    )}
+                  </CardHeader>
+                  {recipe.image ? (
+                    <CardContent className="m-h-[200] min-w-[350]">
+                      <Image
+                        src={recipe.image}
+                        width={350}
+                        height={200}
+                        alt={recipe.title}
+                        className="rounded-md"
+                      />
+                    </CardContent>
+                  ) : (
+                    <CardContent>
+                      <Skeleton className="h-[200] w-[350]" />
+                    </CardContent>
+                  )}
+                </Link>
+                {recipe.tags && (
+                  <CardFooter className="flex flex-wrap gap-2">
+                    {recipe.tags.map((tag) => (
+                      <Badge
+                        key={tag.id}
+                        variant="outline"
+                        className="font-serif"
+                      >
+                        <Link href={`/search/${tag.name}`}>{tag.name}</Link>
+                      </Badge>
+                    ))}
+                  </CardFooter>
+                )}
+              </Card>
+            ))}
+          </div>
+          {/* Show more button */}
+        </>
+      );
+    }
+  };
+
   return (
     <>
       <Head>
@@ -190,6 +274,19 @@ const Home: NextPage = () => {
             </h2>
 
             <ProduceCarousel />
+          </div>
+          <div className="min-h-full">
+            <h1 className="mt-16 text-2xl font-bold tracking-tight text-seasoned-orange">
+              Recipe recommendations
+            </h1>
+            <RecipeRecommendations
+              randomProduce={[
+                ...new Set(data?.map((item) => item.title.split(" - ")[0])),
+              ]
+                ?.sort(() => Math.random() - Math.random())
+                .slice(0, 3)
+                .join(", ")}
+            />
           </div>
         </div>
       </PageLayout>
