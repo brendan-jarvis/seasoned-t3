@@ -155,9 +155,18 @@ const Home: NextPage = () => {
     }
 
     if (randomRecipes) {
+      const produceArray = randomProduce.split(", ");
+      // const joinedProduce = `${produceArray
+      //   .slice(0, -1)
+      //   .join(", ")}, or ${String(produceArray.slice(-1))}`;
+      const joinedProduce =
+        produceArray.slice(0, -1).join(", ") +
+        ", or " +
+        String(produceArray.slice(-1));
+
       return (
         <>
-          <h2 className="text-sm tracking-tight text-slate-500">{`Recipes with any of ${randomProduce}`}</h2>
+          <h2 className="text-sm tracking-tight text-slate-500">{`Recipes with any of ${joinedProduce}`}</h2>
           <div className="mx-auto my-4 flex max-w-[800px] flex-wrap justify-center gap-4">
             {randomRecipes.recipes.slice(0, showCount).map((recipe: Recipe) => (
               <Card key={recipe.id} className="w-[350px]">
