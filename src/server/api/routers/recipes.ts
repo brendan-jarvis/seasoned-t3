@@ -101,6 +101,7 @@ export const recipesRouter = createTRPCRouter({
         limit: z.optional(z.number()),
         offset: z.optional(z.number()),
         searchType: z.optional(z.string()),
+        unsorted: z.optional(z.boolean()),
       })
     )
     .query(async ({ ctx, input }) => {
@@ -122,7 +123,8 @@ export const recipesRouter = createTRPCRouter({
       const recipes = await ctx.prisma.recipe.findMany({
         take: input.limit || 10,
         skip: input.offset || 0,
-        orderBy: { id: "asc" },
+        // orderBy: { id: "asc" },
+        orderBy: input.unsorted ? undefined : { id: "asc" },
         where: {
           OR: [
             { title: { search: ingredients } },

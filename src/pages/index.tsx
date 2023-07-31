@@ -166,6 +166,7 @@ const Home: NextPage = () => {
         query: randomProduce,
         offset: 0,
         limit: 10,
+        unsorted: true,
       });
 
     if (isLoadingRecommendations) {
