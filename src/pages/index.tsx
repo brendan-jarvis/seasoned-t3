@@ -243,6 +243,7 @@ const Home: NextPage = () => {
             <Button
               variant="outline"
               onClick={() => setShowCount(showCount + 2)}
+              className="border-slate-300 font-semibold drop-shadow-md"
             >
               Show More
             </Button>
