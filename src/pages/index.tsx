@@ -296,14 +296,18 @@ const Home: NextPage = () => {
             <h1 className="mt-16 text-2xl font-bold tracking-tight text-seasoned-orange">
               Recipe recommendations
             </h1>
-            <RecipeRecommendations
-              randomProduce={[
-                ...new Set(data?.map((item) => item.title.split(" - ")[0])),
-              ]
-                ?.sort(() => Math.random() - Math.random())
-                .slice(0, 3)
-                .join(", ")}
-            />
+            {isLoading ? (
+              <LoadingSpinner />
+            ) : (
+              <RecipeRecommendations
+                randomProduce={[
+                  ...new Set(data?.map((item) => item.title.split(" - ")[0])),
+                ]
+                  ?.sort(() => Math.random() - Math.random())
+                  .slice(0, 3)
+                  .join(", ")}
+              />
+            )}
           </div>
         </div>
       </PageLayout>
