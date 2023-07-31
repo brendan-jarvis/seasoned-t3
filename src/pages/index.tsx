@@ -137,6 +137,24 @@ const Home: NextPage = () => {
     );
   };
 
+  const RecipeCardSkeleton = () => (
+    <div className="mb-4 flex flex-wrap justify-center gap-4">
+      <div className="flex items-center gap-4">
+        <Card className="space-y-2 p-6">
+          <Skeleton className="h-4 w-[200px] bg-slate-300" />
+          <Skeleton className="h-4 w-[300px]" />
+          <Skeleton className="h-4 w-[300px]" />
+          <Skeleton className="h-[350px] w-full bg-slate-500" />
+          <div className="flex flex-wrap gap-2">
+            <Skeleton className="h-4 w-20" />
+            <Skeleton className="h-4 w-20" />
+            <Skeleton className="h-4 w-20" />
+          </div>
+        </Card>
+      </div>
+    </div>
+  );
+
   const RecipeRecommendations = ({
     randomProduce,
   }: {
@@ -151,7 +169,16 @@ const Home: NextPage = () => {
       });
 
     if (isLoadingRecommendations) {
-      return <LoadingSpinner />;
+      return (
+        <>
+          <Skeleton className="mx-auto my-2 max-w-[300px] bg-slate-300 py-2" />
+          <div className="mx-auto mb-4 flex max-w-[800px] flex-wrap justify-center gap-4">
+            {Array.from({ length: 2 }).map((_, index) => (
+              <RecipeCardSkeleton key={index} />
+            ))}
+          </div>
+        </>
+      );
     }
 
     if (randomRecipes) {
@@ -297,7 +324,14 @@ const Home: NextPage = () => {
               Recipe recommendations
             </h1>
             {isLoading ? (
-              <LoadingSpinner />
+              <>
+                <Skeleton className="mx-auto my-2 max-w-[300px] bg-slate-300 py-2" />
+                <div className="mx-auto mb-4 flex max-w-[800px] flex-wrap justify-center gap-4">
+                  {Array.from({ length: 2 }).map((_, index) => (
+                    <RecipeCardSkeleton key={index} />
+                  ))}
+                </div>
+              </>
             ) : (
               <RecipeRecommendations
                 randomProduce={[
