@@ -6,9 +6,9 @@ import {
   publicProcedure,
 } from "~/server/api/trpc";
 
-import { Redis } from "@upstash/redis";
+// import { Redis } from "@upstash/redis";
 
-const redis = Redis.fromEnv();
+// const redis = Redis.fromEnv();
 
 export const recipesRouter = createTRPCRouter({
   getAll: publicProcedure
