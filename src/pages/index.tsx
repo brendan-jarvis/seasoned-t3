@@ -2,7 +2,7 @@ import { type NextPage } from "next";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 import { PageLayout } from "~/components/Layout";
 import { api } from "~/utils/api";
@@ -55,6 +55,12 @@ const Home: NextPage = () => {
   });
 
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const randomProduce = useMemo(() => {
+    return [...new Set(data?.map((item) => item.title.split(" - ")[0]))]
+      ?.sort(() => Math.random() - Math.random())
+      .slice(0, 3)
+      .join(", ");
+  }, [data]);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -335,14 +341,7 @@ const Home: NextPage = () => {
                 </div>
               </>
             ) : (
-              <RecipeRecommendations
-                randomProduce={[
-                  ...new Set(data?.map((item) => item.title.split(" - ")[0])),
-                ]
-                  ?.sort(() => Math.random() - Math.random())
-                  .slice(0, 3)
-                  .join(", ")}
-              />
+              <RecipeRecommendations randomProduce={randomProduce} />
             )}
           </div>
         </div>
