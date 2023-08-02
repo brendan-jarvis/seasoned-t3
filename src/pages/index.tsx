@@ -6,7 +6,6 @@ import { useState, useMemo } from "react";
 
 import { PageLayout } from "~/components/Layout";
 import { api } from "~/utils/api";
-import { LoadingSpinner } from "~/components/LoadingSpinner";
 import { Search, PlusCircle } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
