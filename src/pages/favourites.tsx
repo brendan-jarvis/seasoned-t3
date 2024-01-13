@@ -16,7 +16,7 @@ import {
   TableRow,
 } from "~/components/ui/table";
 import { Button } from "~/components/ui/button";
-import { CheckCircle, MinusCircle, Trash2, Star, StarHalf } from "lucide-react";
+import { CheckCircle, MinusCircle, Trash2 } from "lucide-react";
 
 import { api } from "~/utils/api";
 
