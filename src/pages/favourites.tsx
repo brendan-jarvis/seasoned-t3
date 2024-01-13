@@ -92,7 +92,7 @@ const DeleteButton = ({ recipeId }: { recipeId: number }) => {
         toast.error("Recipe already deleted!");
       } else {
         toast.error(
-          "Failed to remove recipe from favourites! Please try again later."
+          "Failed to remove recipe from favourites! Please try again later.",
         );
       }
     },
@@ -121,24 +121,24 @@ const Favourites: NextPage = () => {
     error,
   } = api.favourites.getAll.useQuery();
 
-  const renderStars = (rating: number) => {
-    const fullStars = Math.floor(rating); // Get the integer part of the rating
-    const hasHalfStar = rating % 1 !== 0; // Check if there is a decimal part
+  // const renderStars = (rating: number) => {
+  //   const fullStars = Math.floor(rating); // Get the integer part of the rating
+  //   const hasHalfStar = rating % 1 !== 0; // Check if there is a decimal part
 
-    const stars = [];
+  //   const stars = [];
 
-    // Render full stars
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(<Star key={i} />);
-    }
+  //   // Render full stars
+  //   for (let i = 0; i < fullStars; i++) {
+  //     stars.push(<Star key={i} />);
+  //   }
 
-    // Render half star if necessary
-    if (hasHalfStar) {
-      stars.push(<StarHalf key={fullStars} />);
-    }
+  //   // Render half star if necessary
+  //   if (hasHalfStar) {
+  //     stars.push(<StarHalf key={fullStars} />);
+  //   }
 
-    return stars;
-  };
+  //   return stars;
+  // };
 
   if (isLoading) {
     return (
