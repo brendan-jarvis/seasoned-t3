@@ -23,7 +23,7 @@ import {
 import { Checkbox } from "~/components/ui/checkbox";
 
 const Produce: NextPage = () => {
-  const { data: allProduce, isLoading } = api.seasonality.getAll.useQuery();
+  const { data: allProduce } = api.seasonality.getAll.useQuery();
   const [filterMonth, setFilterMonth] = useState<boolean>(false);
   const currentMonth = getCurrentMonth();
   const months = [
