@@ -284,7 +284,7 @@ const Home: NextPage = () => {
                 src="/images/fa-carrot.svg"
                 width={46}
                 height={46}
-                alt="Orange carrot icon"
+                alt="Carrot icon"
                 className="bounce-once ml-1"
               />
             </div>
