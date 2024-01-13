@@ -61,7 +61,7 @@ export const CreateRecipe = () => {
 
   const ctx = api.useContext();
 
-  const { mutate, isLoading: isPosting } = api.recipes.create.useMutation({
+  const { isLoading: isPosting } = api.recipes.create.useMutation({
     onSuccess: () => {
       setInput({
         title: "",
