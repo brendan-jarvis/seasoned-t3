@@ -2,9 +2,9 @@ import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
-import { Redis } from "@upstash/redis";
+// import { Redis } from "@upstash/redis";
 
-const redis = Redis.fromEnv();
+// const redis = Redis.fromEnv();
 
 export const seasonalityRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
@@ -36,7 +36,7 @@ export const seasonalityRouter = createTRPCRouter({
     .input(
       z.object({
         name: z.string(),
-      })
+      }),
     )
     .query(async ({ ctx, input }) => {
       const { name } = input;
@@ -85,7 +85,7 @@ export const seasonalityRouter = createTRPCRouter({
     .input(
       z.object({
         month: z.string(),
-      })
+      }),
     )
     .query(async ({ ctx, input }) => {
       // const cachedAllProduce = await redis.get(
